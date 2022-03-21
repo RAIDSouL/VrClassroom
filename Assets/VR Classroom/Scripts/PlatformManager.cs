@@ -49,6 +49,24 @@ namespace ChiliGames.VRClassroom {
             instance = this;
             actorNum = PhotonNetwork.LocalPlayer.ActorNumber;
 
+            string mytype = PhotonNetwork.LocalPlayer.CustomProperties[PropertiesKey.PlayerType].ToString();
+
+            if(mytype == PlayerType.Teacher)
+            {
+                mode = Mode.Teacher;
+            }
+            else if(mytype == PlayerType.Student)
+            {
+                if(Application.platform == RuntimePlatform.Android)
+                {
+                    mode = Mode.StudentPhone;
+                }
+                else
+                {
+                    mode = Mode.StudentVR;
+                }
+            }
+
             //If student connecting from phone, limit the fps to save battery. Also avoid sleep.
             if (mode == Mode.StudentPhone) {
                 QualitySettings.vSyncCount = 0;
@@ -58,6 +76,10 @@ namespace ChiliGames.VRClassroom {
         }
 
         private void Start() {
+
+            
+
+
             //if this is the first player to connect, initialize the students list
             if (PhotonNetwork.IsMasterClient && !initialized) {
                 InitializeStudentList();
