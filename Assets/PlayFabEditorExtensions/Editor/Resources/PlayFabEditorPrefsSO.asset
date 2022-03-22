@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DevAccountEmail: testplayfabid001@gmail.com
   DevAccountToken: ssucxrumpadb681crz15x76fd79rrnst3zaybrpuqgjkit73qsq3c7aabp7qz33dc43umdwtjpja1xua3tdeuk6upgn4nfnh3hzexp9ke4jijstsfywfg3mchc5385bmgnpdssfowunt3tzg7wmfe9k33nmdjatutuhjeyimzg9zyo16z1is7dppmqygko1zxmqytnnz
-  SelectedStudio: 
+  SelectedStudio: My Game Studio
   SdkPath: Assets/PlayFabSDK
   EdExPath: 
   LocalCloudScriptPath: 
   PanelIsShown: 0
-  curMainMenuIdx: 0
+  curMainMenuIdx: 1
   curSubMenuIdx: 0
