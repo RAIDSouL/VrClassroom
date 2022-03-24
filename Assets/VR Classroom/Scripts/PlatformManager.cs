@@ -57,7 +57,8 @@ namespace ChiliGames.VRClassroom {
             }
             else if(mytype == PlayerType.Student)
             {
-                if(Application.platform == RuntimePlatform.Android)
+               
+                if (PlatformSetting.Instance.platform == Platform.ANDROID)
                 {
                     mode = Mode.StudentPhone;
                 }
