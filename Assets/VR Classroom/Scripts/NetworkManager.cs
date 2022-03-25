@@ -11,19 +11,29 @@ using Hashtable = ExitGames.Client.Photon.Hashtable;
 //
 //namespace Networking.Pun2
 //{
-public class NetworkManager : MonoBehaviourPunCallbacks
+public class NetworkManager : Scene
 {
-    public TMPro.TMP_InputField UserName, RoomInput;
-    public TMPro.TMP_Dropdown Type;
+    LobbyCanvas LobbyCanvas;
     public TMPro.TextMeshProUGUI status;
+    public GameObject Character;
 
-    public GameObject LoginCanvas, JoinCanvas, Character;
-
-    private void Start()
+    protected override void Start()
     {
-        LoginCanvas.SetActive(true);
-        JoinCanvas.SetActive(false);
-        Character.SetActive(false);
+        switch (PlatformSetting.Instance.platform)
+        {
+            case Platform.VR:
+                VrCanvas.gameObject.SetActive(true);
+                AndroidCanvas.gameObject.SetActive(false);
+                LobbyCanvas = VrCanvas.GetComponent<LobbyCanvas>();
+                break;
+            case Platform.ANDROID:
+                AndroidCanvas.gameObject.SetActive(true);
+                VrCanvas.gameObject.SetActive(false);
+                LobbyCanvas = AndroidCanvas.GetComponent<LobbyCanvas>();
+                break;
+            default:
+                break;
+        }
     }
 
     public void Connect()
@@ -35,7 +45,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public void ConnectToMaster()
     {
         PhotonNetwork.OfflineMode = false; //true would "fake" an online connection
-        PhotonNetwork.NickName = UserName.text; //we can use a input to change this 
+        PhotonNetwork.NickName = LobbyCanvas.UsernameInput.text; //we can use a input to change this 
         PhotonNetwork.AutomaticallySyncScene = true; //To call PhotonNetwork.LoadLevel()
         PhotonNetwork.GameVersion = "v1"; //only people with the same game version can play together
 
@@ -61,12 +71,12 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         base.OnConnectedToMaster();
 
-        string plyertype = Type.captionText.text;
-        if (Type.captionText.text == Type.options[0].text)
+        string plyertype = LobbyCanvas.UserType.captionText.text;
+        if (LobbyCanvas.UserType.captionText.text == LobbyCanvas.UserType.options[0].text)
         {
             plyertype = PlayerType.Teacher;
         }
-        else if(Type.captionText.text == Type.options[1].text)
+        else if(LobbyCanvas.UserType.captionText.text == LobbyCanvas.UserType.options[1].text)
         {
             plyertype = PlayerType.Student;
         }
@@ -84,8 +94,9 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         yield return new WaitForEndOfFrame();
         Debug.Log("Connecting");
-        LoginCanvas.SetActive(false);
-        JoinCanvas.SetActive(true);
+
+        LobbyCanvas.LoginGroup.SetActive(false);
+        LobbyCanvas.JoinGroup.SetActive(true);
         Character.SetActive(true);
         //ConnectToRoom();
     }
@@ -96,7 +107,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
             return;
         Debug.Log("ConnectToRoom");
         //PhotonNetwork.CreateRoom("name"); //Create a specific room - Callback OnCreateRoomFailed
-        PhotonNetwork.JoinRoom(RoomInput.text); //Join a specific room - Callback OnJoinRoomFailed
+        PhotonNetwork.JoinRoom(LobbyCanvas.RoomnameInput.text); //Join a specific room - Callback OnJoinRoomFailed
         
         //PhotonNetwork.JoinRandomRoom(); // Join a random room - Callback OnJoinRandomRoomFailed
                                         //PhotonNetwork.JoinRoom(RoomInput.text);
@@ -125,7 +136,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public void ConnectRoom()
     {
-        PhotonNetwork.JoinRoom(RoomInput.text);
+        PhotonNetwork.JoinRoom(LobbyCanvas.RoomnameInput.text);
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message)
@@ -138,7 +149,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("CreateRoom");
         //PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = 15 });
-        PhotonNetwork.CreateRoom(RoomInput.text, new RoomOptions { MaxPlayers = 15 });
+        PhotonNetwork.CreateRoom(LobbyCanvas.RoomnameInput.text, new RoomOptions { MaxPlayers = 15 });
     }
 }
 //}
