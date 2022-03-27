@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2016530085394540146
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1220468323626823812}
+  - component: {fileID: 2583152530047837813}
+  m_Layer: 0
+  m_Name: FaceMakeupManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1220468323626823812
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016530085394540146}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2583152530047837813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016530085394540146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96447110f4437fa43be29d34e85dd73c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorList:
+  - {r: 0.9294118, g: 0.8980393, b: 0.82745105, a: 1}
+  - {r: 0.85098046, g: 0.8196079, b: 0.7803922, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  browStartPosition: {x: 118, y: 358}
+  browTextureList:
+  - {fileID: 2800000, guid: b9befb5095a9bde4b9ef091c849281ea, type: 3}
+  - {fileID: 2800000, guid: b83500ad56934a749bc7035172c5026b, type: 3}
+  - {fileID: 2800000, guid: 52957f813f4d84547bd0afdcf569e8a3, type: 3}
+  - {fileID: 2800000, guid: 488087a9e3f008647b977c285e2d63c0, type: 3}
+  - {fileID: 2800000, guid: dad022cf966c4154cb00218e175f11c1, type: 3}
+  - {fileID: 2800000, guid: 08c1765cedc3d8447942d65a8a7ff770, type: 3}
+  eyeballStartPosition: {x: 0, y: 80}
+  eyeballTextureList:
+  - {fileID: 2800000, guid: 003ef10d37b75e3479cf30e3c0f74ef0, type: 3}
+  - {fileID: 2800000, guid: 16dabf8b607bd664ca974257c6857286, type: 3}
+  - {fileID: 2800000, guid: 9e11c76237ab56e48851f97d9164edbf, type: 3}
+  - {fileID: 2800000, guid: 853b6941a96cd8546bb0bb41fd239c34, type: 3}
+  - {fileID: 2800000, guid: daecbe7ff851fce4c89df404f0d0227e, type: 3}
+  - {fileID: 2800000, guid: a3741ddb3f1f997448b4dfe4efeceb75, type: 3}
+  eyeMakeupStartPosition: {x: 93, y: 282}
+  eyeMakeupTextureList:
+  - {fileID: 2800000, guid: 9b02f0fdca1f2bf468ea635a23762a9e, type: 3}
+  - {fileID: 2800000, guid: d7241824132151d4db44a0213ab91a8e, type: 3}
+  - {fileID: 2800000, guid: 888e4c2b19694b040931398772f835bb, type: 3}
+  - {fileID: 2800000, guid: 71858c4618b556142bc41c519e7fc510, type: 3}
+  - {fileID: 2800000, guid: a425a0aa144451d44a27d21a7ab26eb6, type: 3}
+  - {fileID: 2800000, guid: 60ab932761ba5be4ab473e84c559840b, type: 3}
+  cheekMakeupStartPosition: {x: 90, y: 177}
+  cheekMakeupTextureList:
+  - {fileID: 2800000, guid: 069433f80a2fcfd428ac7f43e7ac8ae2, type: 3}
+  - {fileID: 2800000, guid: 07b3f4bfc432a0b4381605a413f136b7, type: 3}
+  - {fileID: 2800000, guid: 24b49156b08f3bf48b677ab9f2e909c5, type: 3}
+  - {fileID: 2800000, guid: 8d7152ee97fe59545bdbfc8b87d37059, type: 3}
+  - {fileID: 2800000, guid: 951747db5d63fb84393d262c67338f33, type: 3}
+  - {fileID: 2800000, guid: 48996124b6576da488cd2c0ee7bd64ad, type: 3}
+  foreheadStartPosition: {x: 145, y: 397}
+  foreheadTextureList:
+  - {fileID: 2800000, guid: 3e1e29bd4f651f24b83134120d6ab2c2, type: 3}
+  - {fileID: 2800000, guid: 428f65791b98af4479ba08f39db4298b, type: 3}
+  - {fileID: 2800000, guid: 4eec47db494b44c4c864d9ea6789a475, type: 3}
+  - {fileID: 2800000, guid: 8ebf1926616ea6143b646ffc008e35b2, type: 3}
+  - {fileID: 2800000, guid: 92898da22d08d734b9e304e389251486, type: 3}
+  - {fileID: 2800000, guid: a131d7b78cafdc0488b0ab8fee72b659, type: 3}
+  lipStartPosition: {x: 181, y: 196}
+  lipTextureList:
+  - {fileID: 2800000, guid: b273532c3f899624d965aebd22d9be5d, type: 3}
+  - {fileID: 2800000, guid: 9f24e4c3546c9574db46b53f64694a42, type: 3}
+  - {fileID: 2800000, guid: ab9cc8606698ac7468a6bd818ee983b6, type: 3}
+  - {fileID: 2800000, guid: 731273747c54eea41af670dc65e85e8b, type: 3}
+  - {fileID: 2800000, guid: a54551dad1a75af449acf177b55712af, type: 3}
+  - {fileID: 2800000, guid: 79ecb52be27a3ec4db017350551893c0, type: 3}
