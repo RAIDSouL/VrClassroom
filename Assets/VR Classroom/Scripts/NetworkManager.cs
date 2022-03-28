@@ -17,18 +17,25 @@ public class NetworkManager : Scene
     public TMPro.TextMeshProUGUI status;
     public GameObject Character;
 
+    public static NetworkManager instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     protected override void Start()
     {
         switch (PlatformSetting.Instance.platform)
         {
             case Platform.VR:
-                VrCanvas.gameObject.SetActive(true);
-                AndroidCanvas.gameObject.SetActive(false);
+                VrCanvas.SetInstance(true);
+                AndroidCanvas.SetInstance(false);
                 LobbyCanvas = VrCanvas.GetComponent<LobbyCanvas>();
                 break;
             case Platform.ANDROID:
-                AndroidCanvas.gameObject.SetActive(true);
-                VrCanvas.gameObject.SetActive(false);
+                AndroidCanvas.SetInstance(true);
+                VrCanvas.SetInstance(false);
                 LobbyCanvas = AndroidCanvas.GetComponent<LobbyCanvas>();
                 break;
             default:
@@ -45,7 +52,7 @@ public class NetworkManager : Scene
     public void ConnectToMaster()
     {
         PhotonNetwork.OfflineMode = false; //true would "fake" an online connection
-        PhotonNetwork.NickName = LobbyCanvas.UsernameInput.text; //we can use a input to change this 
+        PhotonNetwork.NickName = "Test" + Random.Range(0,100);//LobbyCanvas.UsernameInput.text; //we can use a input to change this 
         PhotonNetwork.AutomaticallySyncScene = true; //To call PhotonNetwork.LoadLevel()
         PhotonNetwork.GameVersion = "v1"; //only people with the same game version can play together
 
@@ -71,15 +78,15 @@ public class NetworkManager : Scene
     {
         base.OnConnectedToMaster();
 
-        string plyertype = LobbyCanvas.UserType.captionText.text;
-        if (LobbyCanvas.UserType.captionText.text == LobbyCanvas.UserType.options[0].text)
+        string plyertype = PlayerType.Teacher;
+        /*if (LobbyCanvas.UserType.captionText.text == LobbyCanvas.UserType.options[0].text)
         {
             plyertype = PlayerType.Teacher;
         }
         else if(LobbyCanvas.UserType.captionText.text == LobbyCanvas.UserType.options[1].text)
         {
             plyertype = PlayerType.Student;
-        }
+        }*/
 
         Hashtable ConnectHash = new Hashtable();
         ConnectHash.Add(PropertiesKey.PlayerType, plyertype);

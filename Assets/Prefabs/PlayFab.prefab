@@ -615,6 +615,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09f7788c05d7b9949bd73d72ecc84b35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Login: {fileID: 222417126296310740}
+  Register: {fileID: 222417126248463894}
   messageText: {fileID: 222417126425449746}
   emailInput: {fileID: 222417125716844595}
   passwordInput: {fileID: 222417125630624337}

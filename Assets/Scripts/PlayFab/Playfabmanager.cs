@@ -9,6 +9,7 @@ using System;
 public class Playfabmanager : MonoBehaviour
 {
     // Start is called before the first frame update
+    public GameObject Login, Register;
     public Text messageText;
     [Header("Login UI")]
     public InputField emailInput;
@@ -73,11 +74,14 @@ public class Playfabmanager : MonoBehaviour
     {
         messageText.text = "Registered and logged in!";
         Debug.Log("Succesfull login!");
+        LobbyCanvas.instance.OnLogin();
         //getstat
     }
 
     void OnDataSend(UpdateUserDataResult result)
     {
         Debug.Log("Succesful user data send");
+        Login.SetActive(true);
+        Register.SetActive(false);
     }
 }
