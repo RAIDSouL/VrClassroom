@@ -668,9 +668,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Networking.Pun2.NetworkManager, Assembly-CSharp
-        m_MethodName: ConnectToRoom
+      - m_Target: {fileID: 9103512007429629557}
+        m_TargetAssemblyTypeName: LobbyCanvas, Assembly-CSharp
+        m_MethodName: JoinRoomClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

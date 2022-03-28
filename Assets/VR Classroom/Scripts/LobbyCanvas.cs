@@ -26,4 +26,9 @@ public class LobbyCanvas : CanvasManager
         JoinGroup.SetActive(true);
         NetworkManager.instance.Connect();
     }
+
+    public void JoinRoomClick()
+    {
+        NetworkManager.instance.ConnectToRoom();
+    }
 }
