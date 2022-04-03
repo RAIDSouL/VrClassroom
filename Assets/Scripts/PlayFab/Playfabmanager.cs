@@ -12,9 +12,10 @@ public class Playfabmanager : MonoBehaviour
     public GameObject Login, Register;
     public Text messageText;
     [Header("Login UI")]
-    public InputField emailInput;
+    public InputField usernameInput;
     public InputField passwordInput;
     [Header("Register UI")]
+    public InputField username2;
     public InputField emailInput2;
     public InputField passwordInput2;
     public Toggle toggle;
@@ -28,21 +29,21 @@ public class Playfabmanager : MonoBehaviour
         }
         var request = new RegisterPlayFabUserRequest
         {
+            Username = username2.text,
             Email = emailInput2.text,
             Password = passwordInput2.text,
-            RequireBothUsernameAndEmail = false
         };
         PlayFabClientAPI.RegisterPlayFabUser(request, OnRegisterSuccess, OnError);
     }
 
     public void LoginButtonn()
     {
-        var request = new LoginWithEmailAddressRequest
+        var request = new LoginWithPlayFabRequest
         {
-            Email = emailInput.text,
+            Username = usernameInput.text,
             Password = passwordInput.text
         };
-        PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess, OnError);
+        PlayFabClientAPI.LoginWithPlayFab(request, OnLoginSuccess, OnError);
     }
 
     private void OnError(PlayFabError error)
