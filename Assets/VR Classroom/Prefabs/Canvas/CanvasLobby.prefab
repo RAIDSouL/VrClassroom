@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &709107001833472433
 RectTransform:
   m_ObjectHideFlags: 0
@@ -334,10 +334,10 @@ RectTransform:
   m_Father: {fileID: 4801129111813535326}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 375, y: -117.1875}
+  m_SizeDelta: {x: 750, y: 75.625}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4801129110432080328
 CanvasRenderer:
@@ -582,10 +582,10 @@ RectTransform:
   m_Father: {fileID: 4801129110707190498}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 63.87}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 375, y: -227.5}
+  m_SizeDelta: {x: 750, y: 63.87}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4801129110814679190
 CanvasRenderer:
@@ -1140,10 +1140,10 @@ RectTransform:
   m_Father: {fileID: 4801129110707190498}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 155}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 375, y: -77.5}
+  m_SizeDelta: {x: 750, y: 155}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4801129111813535324
 CanvasRenderer:
@@ -1263,10 +1263,10 @@ RectTransform:
   m_Father: {fileID: 4801129111813535326}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 375, y: -39.6875}
+  m_SizeDelta: {x: 750, y: 79.375}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4801129112125258159
 CanvasRenderer:
@@ -1536,7 +1536,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 222417125730343323, guid: b8047173c33590046a309f8db5304725, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8047173c33590046a309f8db5304725, type: 3}
