@@ -22,8 +22,8 @@ public class LobbyCanvas : CanvasManager
 
     public void OnLogin()
     {
-        LoginGroup.SetActive(false);
-        JoinGroup.SetActive(true);
+        //LoginGroup.SetActive(false);
+        //JoinGroup.SetActive(true);
         NetworkManager.instance.Connect();
     }
 

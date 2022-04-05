@@ -2,6 +2,13 @@ using DG.Tweening;
 using UnityEngine;
 
 public class CharecterEditor : MonoBehaviour {
+    public static CharecterEditor _instance;
+
+    private void Awake() {
+        if (_instance == null) {
+            _instance = this;
+        }
+    }
 
     [Header("Gender Setup")]
     [SerializeField] GameObject sexPanel;
@@ -26,6 +33,10 @@ public class CharecterEditor : MonoBehaviour {
     public int BoyPrefIndex { get { return boyPrefIndex; } set { boyPrefIndex = value; } }
     public int GirlPrefIndex { get { return girlPrefIndex; } set { girlPrefIndex = value; } }
 
+    public void TogglePanel(bool index) {
+        transform.GetChild(0).gameObject.SetActive(index);
+    }
+
     public void ChooseBoy(bool index) {
         isMaleGender = index;
         ReloadAvatar();
@@ -41,7 +52,7 @@ public class CharecterEditor : MonoBehaviour {
         }
         if (isMaleGender) {
             boyPrefIndex = boyPrefIndex + 1 < boyPrefs.Length ? boyPrefIndex + 1 : 0;
-            avatar = Instantiate(boyPrefs[boyPrefIndex], spawnPos.position, Quaternion.identity) as GameObject;
+            avatar = Instantiate(boyPrefs[boyPrefIndex], spawnPos.position, spawnPos.rotation) as GameObject;
             boyTemp = avatar.GetComponent<BoyTKPrefabMaker>();
             boyTemp.Getready();
             if (boyTemp.hatactive) {
@@ -49,7 +60,7 @@ public class CharecterEditor : MonoBehaviour {
             }
         } else {
             girlPrefIndex = girlPrefIndex + 1 < girlPrefs.Length ? girlPrefIndex + 1 : 0;
-            avatar = Instantiate(girlPrefs[girlPrefIndex], spawnPos.position, Quaternion.identity) as GameObject;
+            avatar = Instantiate(girlPrefs[girlPrefIndex], spawnPos.position, spawnPos.rotation) as GameObject;
             girlTemp = avatar.GetComponent<GirlTKPrefabMaker>();
             girlTemp.Getready();
             if (girlTemp.hatactive) {
@@ -144,5 +155,8 @@ public class CharecterEditor : MonoBehaviour {
             girlTemp.FIX();
             Debug.Log("Hair : " + girlTemp.Hair + " Skintone : " + girlTemp.Skintone + " Chest : " + girlTemp.Chest + " Leg : " + girlTemp.Legs + " Feet : " + girlTemp.Feet);
         }
+
+        TogglePanel(false);
+        LobbyCanvas.instance.JoinGroup.SetActive(true);
     }
 }

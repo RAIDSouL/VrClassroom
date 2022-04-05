@@ -103,8 +103,11 @@ public class NetworkManager : Scene
         Debug.Log("Connecting");
 
         LobbyCanvas.LoginGroup.SetActive(false);
-        LobbyCanvas.JoinGroup.SetActive(true);
-        Character.SetActive(true);
+        CharecterEditor._instance.TogglePanel(true);
+
+        //LobbyCanvas.JoinGroup.SetActive(true);
+        //Character.SetActive(true);
+
         //ConnectToRoom();
     }
 
