@@ -3,18 +3,6 @@ using UnityEngine;
 
 public class CharecterEditor : MonoBehaviour {
 
-    //[SerializeField] GameObject boy;
-
-    //CharecterAccess charecterAccess;
-
-    //private void Start() {
-    //    charecterAccess = boy.transform.GetChild(0).transform.gameObject.GetComponent<CharecterAccess>();
-    //}
-
-    //public void CallReSkin() {
-    //    charecterAccess.ReSkin();
-    //}
-
     [Header("Gender Setup")]
     [SerializeField] GameObject sexPanel;
     [SerializeField] GameObject[] boyPrefs;
