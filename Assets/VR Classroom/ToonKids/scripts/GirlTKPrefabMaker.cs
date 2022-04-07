@@ -4,8 +4,7 @@ using UnityEngine;
 
 [ExecuteInEditMode]
 
-public class GirlTKPrefabMaker : MonoBehaviour
-{
+public class GirlTKPrefabMaker : MonoBehaviour {
     public bool allOptions;
     int hair;
     int chest;
@@ -50,53 +49,45 @@ public class GirlTKPrefabMaker : MonoBehaviour
     public int Feet { get { return feet; } set { feet = value; } }
     public int Skintone { get { return skintone; } set { skintone = value; } }
 
-    void Start()
-    {
+    void Start() {
         allOptions = false;
     }
 
-    public void Getready()
-    {
+    public void Getready() {
         GOhead = (GetComponent<Transform>().GetChild(2).gameObject);
         GOheadsimple = (GetComponent<Transform>().GetChild(3).gameObject);
         GOheadsimple.SetActive(false);
-        
+
         GOfeet = new GameObject[4];
         GOhair = new GameObject[8];
         GOchest = new GameObject[8];
-        GOlegs = new GameObject[6];        
+        GOlegs = new GameObject[6];
 
         //load models
-        for (int forAUX = 0; forAUX < 2; forAUX++) GOhair[forAUX+6] = (GetComponent<Transform>().GetChild(forAUX).gameObject);
-        for (int forAUX = 0; forAUX < 6; forAUX++) GOhair[forAUX] = (GetComponent<Transform>().GetChild(forAUX + 11).gameObject);        
+        for (int forAUX = 0; forAUX < 2; forAUX++) GOhair[forAUX + 6] = (GetComponent<Transform>().GetChild(forAUX).gameObject);
+        for (int forAUX = 0; forAUX < 6; forAUX++) GOhair[forAUX] = (GetComponent<Transform>().GetChild(forAUX + 11).gameObject);
         for (int forAUX = 0; forAUX < 2; forAUX++) GOchest[forAUX] = (GetComponent<Transform>().GetChild(forAUX + 8).gameObject);
-        for (int forAUX = 0; forAUX < 6; forAUX++) GOchest[forAUX+2] = (GetComponent<Transform>().GetChild(forAUX + 23).gameObject);
+        for (int forAUX = 0; forAUX < 6; forAUX++) GOchest[forAUX + 2] = (GetComponent<Transform>().GetChild(forAUX + 23).gameObject);
         for (int forAUX = 0; forAUX < 6; forAUX++) GOlegs[forAUX] = (GetComponent<Transform>().GetChild(forAUX + 17).gameObject);
         for (int forAUX = 0; forAUX < 3; forAUX++) GOfeet[forAUX] = (GetComponent<Transform>().GetChild(forAUX + 5).gameObject);
         GOfeet[3] = (GetComponent<Transform>().GetChild(10).gameObject);
         GOglasses = transform.Find("ROOT/TK/TK Pelvis/TK Spine/TK Spine1/TK Spine2/TK Neck/TK Head/Glasses").gameObject as GameObject;
-        
-        if (GOfeet[0].activeSelf && GOfeet[1].activeSelf && GOfeet[2].activeSelf)
-        {
+
+        if (GOfeet[0].activeSelf && GOfeet[1].activeSelf && GOfeet[2].activeSelf) {
             ResetSkin();
             Randomize();
-        }
-        else
-        {
+        } else {
             for (int forAUX = 0; forAUX < GOhair.Length; forAUX++) { if (GOhair[forAUX].activeSelf) hair = forAUX; }
             while (!GOchest[chest].activeSelf) chest++;
-            if (chest != 0)
-            {
+            if (chest != 0) {
                 while (!GOlegs[legs].activeSelf) legs++;
-            }
-            else legs = 0;
+            } else legs = 0;
             while (!GOfeet[feet].activeSelf) feet++;
-            if (hair > 6) hatactive = true;            
+            if (hair > 6) hatactive = true;
         }
     }
-    void ResetSkin()
-    {
-        string[] allskins = new string[6] { "TKGirlA0", "TKGirlB0", "TKGirlC0" , "TKBoyA0", "TKBoyB0", "TKBoyC0" };
+    void ResetSkin() {
+        string[] allskins = new string[6] { "TKGirlA0", "TKGirlB0", "TKGirlC0", "TKBoyA0", "TKBoyB0", "TKBoyC0" };
         Material[] AUXmaterials;
         int materialcount = GOhead.GetComponent<Renderer>().sharedMaterials.Length;
         //ref head material
@@ -104,64 +95,52 @@ public class GirlTKPrefabMaker : MonoBehaviour
         materialcount = GOhead.GetComponent<Renderer>().sharedMaterials.Length;
         for (int forAUX2 = 0; forAUX2 < materialcount; forAUX2++)
             for (int forAUX3 = 0; forAUX3 < allskins.Length; forAUX3++)
-                for (int forAUX4 = 1; forAUX4 < 5; forAUX4++)
-                {
-                    if (AUXmaterials[forAUX2].name == allskins[forAUX3] + forAUX4)
-                    {
+                for (int forAUX4 = 1; forAUX4 < 5; forAUX4++) {
+                    if (AUXmaterials[forAUX2].name == allskins[forAUX3] + forAUX4) {
                         headskin = AUXmaterials[forAUX2];
                     }
                 }
         //chest
-        for (int forAUX = 0; forAUX < GOchest.Length; forAUX++)
-        {
+        for (int forAUX = 0; forAUX < GOchest.Length; forAUX++) {
             AUXmaterials = GOchest[forAUX].GetComponent<Renderer>().sharedMaterials;
             materialcount = GOchest[forAUX].GetComponent<Renderer>().sharedMaterials.Length;
             for (int forAUX2 = 0; forAUX2 < materialcount; forAUX2++)
                 for (int forAUX3 = 0; forAUX3 < allskins.Length; forAUX3++)
-                    for (int forAUX4 = 1; forAUX4 < 5; forAUX4++)
-                    {
-                        if (AUXmaterials[forAUX2].name == allskins[forAUX3] + forAUX4)
-                        {
+                    for (int forAUX4 = 1; forAUX4 < 5; forAUX4++) {
+                        if (AUXmaterials[forAUX2].name == allskins[forAUX3] + forAUX4) {
                             AUXmaterials[forAUX2] = headskin;
                             GOchest[forAUX].GetComponent<Renderer>().sharedMaterials = AUXmaterials;
                         }
                     }
         }
         //legs
-        for (int forAUX = 0; forAUX < GOlegs.Length; forAUX++)
-        {
+        for (int forAUX = 0; forAUX < GOlegs.Length; forAUX++) {
             AUXmaterials = GOlegs[forAUX].GetComponent<Renderer>().sharedMaterials;
             materialcount = GOlegs[forAUX].GetComponent<Renderer>().sharedMaterials.Length;
             for (int forAUX2 = 0; forAUX2 < materialcount; forAUX2++)
                 for (int forAUX3 = 0; forAUX3 < allskins.Length; forAUX3++)
-                    for (int forAUX4 = 1; forAUX4 < 5; forAUX4++)
-                    {
-                        if (AUXmaterials[forAUX2].name == allskins[forAUX3] + forAUX4)
-                        {
+                    for (int forAUX4 = 1; forAUX4 < 5; forAUX4++) {
+                        if (AUXmaterials[forAUX2].name == allskins[forAUX3] + forAUX4) {
                             AUXmaterials[forAUX2] = headskin;
                             GOlegs[forAUX].GetComponent<Renderer>().sharedMaterials = AUXmaterials;
                         }
                     }
         }
         //feet
-        for (int forAUX = 0; forAUX < GOfeet.Length; forAUX++)
-        {
+        for (int forAUX = 0; forAUX < GOfeet.Length; forAUX++) {
             AUXmaterials = GOfeet[forAUX].GetComponent<Renderer>().sharedMaterials;
             materialcount = GOfeet[forAUX].GetComponent<Renderer>().sharedMaterials.Length;
             for (int forAUX2 = 0; forAUX2 < materialcount; forAUX2++)
                 for (int forAUX3 = 0; forAUX3 < allskins.Length; forAUX3++)
-                    for (int forAUX4 = 1; forAUX4 < 5; forAUX4++)
-                    {
-                        if (AUXmaterials[forAUX2].name == allskins[forAUX3] + forAUX4)
-                        {
+                    for (int forAUX4 = 1; forAUX4 < 5; forAUX4++) {
+                        if (AUXmaterials[forAUX2].name == allskins[forAUX3] + forAUX4) {
                             AUXmaterials[forAUX2] = headskin;
                             GOfeet[forAUX].GetComponent<Renderer>().sharedMaterials = AUXmaterials;
                         }
                     }
         }
     }
-    public void Deactivateall()
-    {
+    public void Deactivateall() {
         for (int forAUX = 0; forAUX < GOhair.Length; forAUX++) GOhair[forAUX].SetActive(false);
         for (int forAUX = 0; forAUX < GOchest.Length; forAUX++) GOchest[forAUX].SetActive(false);
         for (int forAUX = 0; forAUX < GOlegs.Length; forAUX++) GOlegs[forAUX].SetActive(false);
@@ -169,8 +148,7 @@ public class GirlTKPrefabMaker : MonoBehaviour
         GOglasses.SetActive(false);
         glassesactive = false;
     }
-    public void Activateall()
-    {
+    public void Activateall() {
         for (int forAUX = 0; forAUX < GOhair.Length; forAUX++) GOhair[forAUX].SetActive(true);
         for (int forAUX = 0; forAUX < GOchest.Length; forAUX++) GOchest[forAUX].SetActive(true);
         for (int forAUX = 0; forAUX < GOlegs.Length; forAUX++) GOlegs[forAUX].SetActive(true);
@@ -178,66 +156,51 @@ public class GirlTKPrefabMaker : MonoBehaviour
         GOglasses.SetActive(true);
         glassesactive = true;
     }
-    public void Menu()
-    {
+    public void Menu() {
         allOptions = !allOptions;
     }
-    public void Glasseson()
-    {
+    public void Glasseson() {
         glassesactive = !glassesactive;
         GOglasses.SetActive(glassesactive);
     }
-    public void Checklegs()
-    {
-        if (chest == 0)
-        {
+    public void Checklegs() {
+        if (chest == 0) {
             legsactive = false;
             GOlegs[legs].SetActive(false);
-        }
-        else
-        {
+        } else {
             legsactive = true;
             GOlegs[legs].SetActive(true);
         }
     }
 
     //models
-    public void NextHat()
-    {
-        if (!hatactive)
-        {
+    public void NextHat() {
+        if (!hatactive) {
             GOhair[hair].SetActive(false);
             hair = 6;
             GOhair[hair].SetActive(true);
             hatactive = true;
-        }
-        else
-        {
+        } else {
             GOhair[hair].SetActive(false);
-            hair ++;if (hair > GOhair.Length-1) hair = 6;
+            hair++; if (hair > GOhair.Length - 1) hair = 6;
             GOhair[hair].SetActive(true);
             hatactive = true;
         }
     }
-    public void PrevHat()
-    {
-        if (!hatactive)
-        {
+    public void PrevHat() {
+        if (!hatactive) {
             GOhair[hair].SetActive(false);
             hair = 7;
             GOhair[hair].SetActive(true);
             hatactive = true;
-        }
-        else
-        {
+        } else {
             GOhair[hair].SetActive(false);
-            hair--; if (hair < GOhair.Length-2) hair = 7;
+            hair--; if (hair < GOhair.Length - 2) hair = 7;
             GOhair[hair].SetActive(true);
             hatactive = true;
         }
     }
-    public void Nexthair()
-    {
+    public void Nexthair() {
         GOhair[hair].SetActive(false);
         if (hatactive) hair = 0;
         hatactive = false;
@@ -245,8 +208,7 @@ public class GirlTKPrefabMaker : MonoBehaviour
         else hair = 0;
         GOhair[hair].SetActive(true);
     }
-    public void Prevhair()
-    {
+    public void Prevhair() {
         GOhair[hair].SetActive(false);
         if (hatactive) hair = GOhair.Length - 2;
         hatactive = false;
@@ -254,70 +216,73 @@ public class GirlTKPrefabMaker : MonoBehaviour
         else hair = GOhair.Length - 2;
         GOhair[hair].SetActive(true);
     }
-    public void Nextchest()
-    {
+    public void Nextchest() {
         GOchest[chest].SetActive(false);
         if (chest < GOchest.Length - 1) chest++;
         else chest = 0;
         GOchest[chest].SetActive(true);
         Checklegs();
     }
-    public void Prevchest()
-    {
+    public void Prevchest() {
         GOchest[chest].SetActive(false);
         chest--;
         if (chest < 0) chest = GOchest.Length - 1;
         GOchest[chest].SetActive(true);
         Checklegs();
     }
-    public void Nextlegs()
-    {
+    public void Nextlegs() {
         GOlegs[legs].SetActive(false);
         if (legs < GOlegs.Length - 1) legs++;
         else legs = 0;
         GOlegs[legs].SetActive(true);
     }
-    public void Prevlegs()
-    {
+    public void Prevlegs() {
         GOlegs[legs].SetActive(false);
         if (legs > 0) legs--;
         else legs = GOlegs.Length - 1;
         GOlegs[legs].SetActive(true);
     }
-    public void Nextfeet()
-    {
+    public void Nextfeet() {
         GOfeet[feet].SetActive(false);
         if (feet < GOfeet.Length - 1) feet++;
         else feet = 0;
         GOfeet[feet].SetActive(true);
     }
-    public void Prevfeet()
-    {
+    public void Prevfeet() {
         GOfeet[feet].SetActive(false);
         if (feet > 0) feet--;
         else feet = GOfeet.Length - 1;
         GOfeet[feet].SetActive(true);
     }
 
-    //materials
-    public void Nextskincolor(int todo)
-    {
-        ChangeMaterials(MATSkins, todo);
+    public void LoadOldModel(int skinIndex, int hairIndex, int chestIndex, int legIndex, int feetIndex) {
+        GOlegs[legs].SetActive(false);
+        GOchest[chest].SetActive(false);
+        GOhair[hair].SetActive(false);
+        GOfeet[feet].SetActive(false);
+
+        GOhair[hairIndex].SetActive(true);
+        GOchest[chestIndex].SetActive(true);
+        GOlegs[legIndex].SetActive(true);
+        GOfeet[feetIndex].SetActive(true);
+        Nextskincolor(skinIndex);
     }
-    public void Nextglasses(int todo)
-    {
+
+    //materials
+    public void Nextskincolor(int todo) {
+        ChangeMaterials(MATSkins, todo);
+        Skintone = todo;
+    }
+    public void Nextglasses(int todo) {
         ChangeMaterials(MATGlasses, todo);
     }
-    public void Nexteyescolor(int todo)
-    {
+    public void Nexteyescolor(int todo) {
         ChangeMaterials(MATEyes, todo);
     }
-    public void Nextteethcolor(int todo)
-    {
+    public void Nextteethcolor(int todo) {
         ChangeMaterials(MATTeeth, todo);
     }
-    public void Nexthaircolor(int todo)
-    {
+    public void Nexthaircolor(int todo) {
         ChangeMaterials(MATHairA, todo);
         ChangeMaterials(MATHairB, todo);
         ChangeMaterials(MATHairC, todo);
@@ -325,35 +290,29 @@ public class GirlTKPrefabMaker : MonoBehaviour
         ChangeMaterials(MATHairE, todo);
         ChangeMaterials(MATHairF, todo);
     }
-    public void Nexthatcolor(int todo)
-    {
-        if (hatactive)
-        {
+    public void Nexthatcolor(int todo) {
+        if (hatactive) {
             if (hair == 6) ChangeMaterials(MATHatA, todo);
             if (hair == 7) ChangeMaterials(MATHatB, todo);
         }
     }
-    public void Nextchestcolor(int todo)
-    {
-        if (chest < 2) ChangeMaterials(MATDress, todo); 
+    public void Nextchestcolor(int todo) {
+        if (chest < 2) ChangeMaterials(MATDress, todo);
         if (chest == 2 || chest == 3) ChangeMaterials(MATShirt, todo);
-        if (chest == 4 ) ChangeMaterials(MATSweater, todo);
-        if (chest > 4) ChangeMaterials(MATTshirt, todo); 
+        if (chest == 4) ChangeMaterials(MATSweater, todo);
+        if (chest > 4) ChangeMaterials(MATTshirt, todo);
     }
-    public void Nextlegscolor(int todo)
-    {
+    public void Nextlegscolor(int todo) {
         if (legs == 0) ChangeMaterials(MATDress, todo);
-        else ChangeMaterials(MATLegs, todo);        
+        else ChangeMaterials(MATLegs, todo);
     }
-    public void Nextfeetcolor(int todo)
-    {
-        if (feet < 2) ChangeMaterials(MATFeetA, todo); 
+    public void Nextfeetcolor(int todo) {
+        if (feet < 2) ChangeMaterials(MATFeetA, todo);
         if (feet == 2) ChangeMaterials(MATFeetB, todo);
-        if (feet == 3) ChangeMaterials(MATFeetC, todo); 
+        if (feet == 3) ChangeMaterials(MATFeetC, todo);
     }
 
-    public void Resetmodel()
-    {
+    public void Resetmodel() {
         Activateall();
         ChangeMaterials(MATHatA, 3);
         ChangeMaterials(MATHatB, 3);
@@ -375,9 +334,8 @@ public class GirlTKPrefabMaker : MonoBehaviour
         ChangeMaterials(MATFeetC, 3);
         Menu();
     }
-    
-    public void Randomize()
-    {
+
+    public void Randomize() {
         Deactivateall();
         ResetSkin();
         //models
@@ -386,15 +344,13 @@ public class GirlTKPrefabMaker : MonoBehaviour
         if (hair > 4) hatactive = true; else hatactive = false;
         chest = Random.Range(0, GOchest.Length); GOchest[chest].SetActive(true);
         legs = Random.Range(0, GOlegs.Length);
-        Checklegs();        
+        Checklegs();
         feet = Random.Range(0, GOfeet.Length); GOfeet[feet].SetActive(true);
-        if (Random.Range(0, 4) > 2)
-        {
+        if (Random.Range(0, 4) > 2) {
             glassesactive = true;
             GOglasses.SetActive(true);
             ChangeMaterials(MATGlasses, 2);
-        }
-        else glassesactive = false;
+        } else glassesactive = false;
 
         //materials        
         ChangeMaterials(MATEyes, 2);
@@ -407,21 +363,17 @@ public class GirlTKPrefabMaker : MonoBehaviour
         for (int forAUX = 0; forAUX < (Random.Range(0, 5)); forAUX++) Nextskincolor(0);
 
     }
-    public void CreateCopy()
-    {
+    public void CreateCopy() {
         GameObject newcharacter = Instantiate(gameObject, transform.position, transform.rotation);
-        for (int forAUX = 28; forAUX > 0; forAUX--)
-        {
+        for (int forAUX = 28; forAUX > 0; forAUX--) {
             if (!newcharacter.transform.GetChild(forAUX).gameObject.activeSelf) DestroyImmediate(newcharacter.transform.GetChild(forAUX).gameObject);
         }
         if (!GOglasses.activeSelf) DestroyImmediate(newcharacter.transform.Find("ROOT/TK/TK Pelvis/TK Spine/TK Spine1/TK Spine2/TK Neck/TK Head/Glasses").gameObject as GameObject);
         DestroyImmediate(newcharacter.GetComponent<GirlTKPrefabMaker>());
     }
-    public void FIX()
-    {
+    public void FIX() {
         GameObject newcharacter = Instantiate(gameObject, transform.position, transform.rotation);
-        for (int forAUX = 28; forAUX > 0; forAUX--)
-        {
+        for (int forAUX = 28; forAUX > 0; forAUX--) {
             if (!newcharacter.transform.GetChild(forAUX).gameObject.activeSelf) DestroyImmediate(newcharacter.transform.GetChild(forAUX).gameObject);
         }
         if (!GOglasses.activeSelf) DestroyImmediate(newcharacter.transform.Find("ROOT/TK/TK Pelvis/TK Spine/TK Spine1/TK Spine2/TK Neck/TK Head/Glasses").gameObject as GameObject);
@@ -430,8 +382,7 @@ public class GirlTKPrefabMaker : MonoBehaviour
     }
 
 
-    void ChangeMaterial(GameObject GO, Object[] MAT, int todo)
-    {
+    void ChangeMaterial(GameObject GO, Object[] MAT, int todo) {
         bool found = false;
         int MATindex = 0;
         int subMAT = 0;
@@ -440,17 +391,14 @@ public class GirlTKPrefabMaker : MonoBehaviour
         int materialcount = GO.GetComponent<Renderer>().sharedMaterials.Length;
 
         for (int forAUX = 0; forAUX < materialcount; forAUX++)
-            for (int forAUX2 = 0; forAUX2 < MAT.Length; forAUX2++)
-            {
-                if (AUXmaterials[forAUX].name == MAT[forAUX2].name)
-                {
+            for (int forAUX2 = 0; forAUX2 < MAT.Length; forAUX2++) {
+                if (AUXmaterials[forAUX].name == MAT[forAUX2].name) {
                     subMAT = forAUX;
                     MATindex = forAUX2;
                     found = true;
                 }
             }
-        if (found)
-        {
+        if (found) {
             if (todo == 0) //increase
             {
                 MATindex++;
@@ -481,8 +429,7 @@ public class GirlTKPrefabMaker : MonoBehaviour
             GO.GetComponent<Renderer>().sharedMaterials = AUXmaterials;
         }
     }
-    void ChangeMaterials(Object[] MAT, int todo)
-    {
+    void ChangeMaterials(Object[] MAT, int todo) {
         for (int forAUX = 0; forAUX < GOhair.Length; forAUX++) ChangeMaterial(GOhair[forAUX], MAT, todo);
         ChangeMaterial(GOhead, MAT, todo);
         ChangeMaterial(GOheadsimple, MAT, todo);
@@ -491,17 +438,14 @@ public class GirlTKPrefabMaker : MonoBehaviour
         for (int forAUX = 0; forAUX < GOlegs.Length; forAUX++) ChangeMaterial(GOlegs[forAUX], MAT, todo);
         for (int forAUX = 0; forAUX < GOfeet.Length; forAUX++) ChangeMaterial(GOfeet[forAUX], MAT, todo);
     }
-    void SwitchMaterial(GameObject GO, Object[] MAT1, Object[] MAT2)
-    {
+    void SwitchMaterial(GameObject GO, Object[] MAT1, Object[] MAT2) {
         Material[] AUXmaterials;
         AUXmaterials = GO.GetComponent<Renderer>().sharedMaterials;
         int materialcount = GO.GetComponent<Renderer>().sharedMaterials.Length;
         int index = 0;
         for (int forAUX = 0; forAUX < materialcount; forAUX++)
-            for (int forAUX2 = 0; forAUX2 < MAT1.Length; forAUX2++)
-            {
-                if (AUXmaterials[forAUX].name == MAT1[forAUX2].name)
-                {
+            for (int forAUX2 = 0; forAUX2 < MAT1.Length; forAUX2++) {
+                if (AUXmaterials[forAUX].name == MAT1[forAUX2].name) {
                     index = forAUX2;
                     if (forAUX2 > MAT2.Length - 1) index -= (int)Mathf.Floor(index / 4) * 4;
                     AUXmaterials[forAUX] = MAT2[index] as Material;

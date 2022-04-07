@@ -33,6 +33,11 @@ public class CharecterEditor : MonoBehaviour {
     public int BoyPrefIndex { get { return boyPrefIndex; } set { boyPrefIndex = value; } }
     public int GirlPrefIndex { get { return girlPrefIndex; } set { girlPrefIndex = value; } }
 
+    private void Start() {
+        //PlayerPrefs.DeleteAll();
+        LoadModel();
+    }
+
     public void TogglePanel(bool index) {
         transform.GetChild(0).gameObject.SetActive(index);
     }
@@ -148,15 +153,71 @@ public class CharecterEditor : MonoBehaviour {
     }
 
     public void SaveAvatar() {
+        if (IsMaleGender) {
+            PlayerPrefs.SetInt("Gender", 0);
+        } else {
+            PlayerPrefs.SetInt("Gender", 1);
+        }
+
         if (isMaleGender) {
             boyTemp.FIX();
-            Debug.Log("Hair : " + boyTemp.Hair + " Skintone : " + boyTemp.Skintone + " Chest : " + boyTemp.Chest + " Leg : " + boyTemp.Legs + " Feet : " + boyTemp.Feet);
+            SaveModelBoy(boyTemp);
         } else {
             girlTemp.FIX();
-            Debug.Log("Hair : " + girlTemp.Hair + " Skintone : " + girlTemp.Skintone + " Chest : " + girlTemp.Chest + " Leg : " + girlTemp.Legs + " Feet : " + girlTemp.Feet);
+            SaveModelGirl(girlTemp);
         }
 
         TogglePanel(false);
         LobbyCanvas.instance.JoinGroup.SetActive(true);
+    }
+
+    void SaveModelBoy(BoyTKPrefabMaker boy) {
+        Debug.Log("Hair : " + boy.Hair + " Skintone : " + boy.Skintone + " Chest : " + boy.Chest + " Leg : " + boy.Legs + " Feet : " + boy.Feet);
+        PlayerPrefs.SetInt("BoyModel", BoyPrefIndex);
+        PlayerPrefs.SetInt("BoyHair", boy.Hair);
+        PlayerPrefs.SetInt("BoySkintone", boy.Skintone);
+        PlayerPrefs.SetInt("BoyChest", boy.Chest);
+        PlayerPrefs.SetInt("BoyLeg", boy.Legs);
+        PlayerPrefs.SetInt("BoyFeet", boy.Feet);
+    }
+
+    void SaveModelGirl(GirlTKPrefabMaker girl) {
+        Debug.Log("Hair : " + girl.Hair + " Skintone : " + girl.Skintone + " Chest : " + girl.Chest + " Leg : " + girl.Legs + " Feet : " + girl.Feet);
+        PlayerPrefs.SetInt("GirlModel", GirlPrefIndex);
+        PlayerPrefs.SetInt("GirlHair", girl.Hair);
+        PlayerPrefs.SetInt("GirlSkintone", girl.Skintone);
+        PlayerPrefs.SetInt("GirlChest", girl.Chest);
+        PlayerPrefs.SetInt("GirlLeg", girl.Legs);
+        PlayerPrefs.SetInt("GirlFeet", girl.Feet);
+    }
+
+    void LoadModel() {
+        if (PlayerPrefs.HasKey("Gender")) {
+            if (PlayerPrefs.GetInt("Gender") == 0) {
+                LoadBoy();
+            } else if (PlayerPrefs.GetInt("Gender") == 1) {
+                LoadGirl();
+            }
+        }
+    }
+
+    void LoadBoy() {
+        if (PlayerPrefs.HasKey("BoyModel")) {
+            var buffer = Instantiate(boyPrefs[PlayerPrefs.GetInt("BoyModel")], spawnPos.position, spawnPos.rotation) as GameObject;
+            buffer.GetComponent<BoyTKPrefabMaker>().Getready();
+            if (PlayerPrefs.HasKey("BoySkintone")) {
+                buffer.GetComponent<BoyTKPrefabMaker>().LoadOldModel(PlayerPrefs.GetInt("BoySkintone"), PlayerPrefs.GetInt("BoyHair"), PlayerPrefs.GetInt("BoyChest"), PlayerPrefs.GetInt("BoyLeg"), PlayerPrefs.GetInt("BoyFeet"));
+            }
+        }
+    }
+
+    void LoadGirl() {
+        if (PlayerPrefs.HasKey("GirlModel")) {
+            var buffer = Instantiate(girlPrefs[PlayerPrefs.GetInt("GirlModel")], spawnPos.position, spawnPos.rotation) as GameObject;
+            buffer.GetComponent<GirlTKPrefabMaker>().Getready();
+            if (PlayerPrefs.HasKey("GirlSkintone")) {
+                buffer.GetComponent<GirlTKPrefabMaker>().LoadOldModel(PlayerPrefs.GetInt("GirlSkintone"), PlayerPrefs.GetInt("GirlHair"), PlayerPrefs.GetInt("GirlChest"), PlayerPrefs.GetInt("GirlLeg"), PlayerPrefs.GetInt("GirlFeet"));
+            }
+        }
     }
 }
