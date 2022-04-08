@@ -85,4 +85,21 @@ public class Playfabmanager : MonoBehaviour
         Login.SetActive(true);
         Register.SetActive(false);
     }
+
+    public void ToggleInputType()
+    {
+        if (this.passwordInput2 != null)
+        {
+            if (this.passwordInput2.contentType == InputField.ContentType.Password)
+            {
+                this.passwordInput2.contentType = InputField.ContentType.Standard;
+            }
+            else
+            {
+                this.passwordInput2.contentType = InputField.ContentType.Password;
+            }
+
+            this.passwordInput2.ForceLabelUpdate();
+        }
+    }
 }
