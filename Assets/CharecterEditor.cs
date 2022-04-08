@@ -35,7 +35,7 @@ public class CharecterEditor : MonoBehaviour {
 
     private void Start() {
         //PlayerPrefs.DeleteAll();
-        LoadModel();
+        //LoadModel();
     }
 
     public void TogglePanel(bool index) {
