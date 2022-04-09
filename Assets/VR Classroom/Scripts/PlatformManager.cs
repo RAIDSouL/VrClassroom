@@ -103,7 +103,8 @@ namespace ChiliGames.VRClassroom {
         }
 
         void CreateTeacherBody() {
-            teacherBodyFollow = PhotonNetwork.Instantiate(teacherBody.name, transform.position, transform.rotation).GetComponent<FollowVRRig>();
+            object[] d = new object[] { GetAvatarData() };
+            teacherBodyFollow = PhotonNetwork.Instantiate(teacherBody.name, transform.position, transform.rotation,0, d).GetComponent<FollowVRRig>();
             foreach (var item in teacherAvatars) {
                 item.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
             }
@@ -133,10 +134,11 @@ namespace ChiliGames.VRClassroom {
         }
 
         void CreateStudentBody() {
+            object[] d = new object[] { GetAvatarData() };
             if (mode == Mode.StudentVR) {
-                PhotonNetwork.Instantiate(studentBody.name, transform.position, transform.rotation);
+                PhotonNetwork.Instantiate(studentBody.name, transform.position, transform.rotation,0, d);
             } else if (mode == Mode.StudentPhone) {
-                PhotonNetwork.Instantiate(studentBodyNonVR.name, transform.position, transform.rotation);
+                PhotonNetwork.Instantiate(studentBodyNonVR.name, transform.position, transform.rotation,0, d);
             }
         }
 
@@ -246,6 +248,21 @@ namespace ChiliGames.VRClassroom {
             {
                 Destroy(gameObject);
             }
+        }
+
+        int[] GetAvatarData()
+        {
+            int[] Data = new int[] 
+            { 
+                PlayerPrefs.GetInt("Gender"), 
+                PlayerPrefs.GetInt("Model"), 
+                PlayerPrefs.GetInt("Hair"), 
+                PlayerPrefs.GetInt("Skintone"), 
+                PlayerPrefs.GetInt("Chest"), 
+                PlayerPrefs.GetInt("Leg"), 
+                PlayerPrefs.GetInt("Feet"), 
+            };
+            return Data;
         }
     }
 }
