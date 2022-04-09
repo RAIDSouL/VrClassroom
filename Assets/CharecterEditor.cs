@@ -173,22 +173,24 @@ public class CharecterEditor : MonoBehaviour {
 
     void SaveModelBoy(BoyTKPrefabMaker boy) {
         Debug.Log("Hair : " + boy.Hair + " Skintone : " + boy.Skintone + " Chest : " + boy.Chest + " Leg : " + boy.Legs + " Feet : " + boy.Feet);
-        PlayerPrefs.SetInt("BoyModel", BoyPrefIndex);
-        PlayerPrefs.SetInt("BoyHair", boy.Hair);
-        PlayerPrefs.SetInt("BoySkintone", boy.Skintone);
-        PlayerPrefs.SetInt("BoyChest", boy.Chest);
-        PlayerPrefs.SetInt("BoyLeg", boy.Legs);
-        PlayerPrefs.SetInt("BoyFeet", boy.Feet);
+        PlayerPrefs.SetInt("Gender", 0);
+        PlayerPrefs.SetInt("Model", BoyPrefIndex);
+        PlayerPrefs.SetInt("Hair", boy.Hair);
+        PlayerPrefs.SetInt("Skintone", boy.Skintone);
+        PlayerPrefs.SetInt("Chest", boy.Chest);
+        PlayerPrefs.SetInt("Leg", boy.Legs);
+        PlayerPrefs.SetInt("Feet", boy.Feet);
     }
 
     void SaveModelGirl(GirlTKPrefabMaker girl) {
         Debug.Log("Hair : " + girl.Hair + " Skintone : " + girl.Skintone + " Chest : " + girl.Chest + " Leg : " + girl.Legs + " Feet : " + girl.Feet);
-        PlayerPrefs.SetInt("GirlModel", GirlPrefIndex);
-        PlayerPrefs.SetInt("GirlHair", girl.Hair);
-        PlayerPrefs.SetInt("GirlSkintone", girl.Skintone);
-        PlayerPrefs.SetInt("GirlChest", girl.Chest);
-        PlayerPrefs.SetInt("GirlLeg", girl.Legs);
-        PlayerPrefs.SetInt("GirlFeet", girl.Feet);
+        PlayerPrefs.SetInt("Gender", 1);
+        PlayerPrefs.SetInt("Model", GirlPrefIndex);
+        PlayerPrefs.SetInt("Hair", girl.Hair);
+        PlayerPrefs.SetInt("Skintone", girl.Skintone);
+        PlayerPrefs.SetInt("Chest", girl.Chest);
+        PlayerPrefs.SetInt("Leg", girl.Legs);
+        PlayerPrefs.SetInt("Feet", girl.Feet);
     }
 
     void LoadModel() {

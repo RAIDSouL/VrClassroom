@@ -4,7 +4,8 @@ using Photon.Pun;
 namespace ChiliGames.VRClassroom {
     //This script is attached to the VR body, to ensure each part is following the correct tracker. This is done only if the body is owned by the player
     //and replicated around the network with the Photon Transform View component
-    public class FollowVRRig : MonoBehaviour {
+    public class FollowVRRig : MonoBehaviourPunCallbacks, IPunInstantiateMagicCallback
+    {
         public Transform[] body;
         [SerializeField] SkinnedMeshRenderer lHand;
         [SerializeField] SkinnedMeshRenderer rHand;
@@ -40,6 +41,30 @@ namespace ChiliGames.VRClassroom {
                 body[i].localPosition = PlatformManager.instance.teacherRigParts[i].localPosition;
                 body[i].localRotation = PlatformManager.instance.teacherRigParts[i].localRotation;
             }
+        }
+
+        public override void OnEnable()
+        {
+            base.OnEnable();
+        }
+
+        public override void OnDisable()
+        {
+            base.OnDisable();
+        }
+        public int Gender, Model, Hair, Skintone, Chest, Leg, Feet;
+        public virtual void OnPhotonInstantiate(PhotonMessageInfo info)
+        {
+            object[] instantiationData = info.photonView.InstantiationData;
+            int[] AvatarData = (int[])instantiationData[0];
+            Gender = AvatarData[0];
+            Model = AvatarData[1];
+            Hair = AvatarData[2];
+            Skintone = AvatarData[3];
+            Chest = AvatarData[4];
+            Leg = AvatarData[5];
+            Feet = AvatarData[6];
+            Debug.LogErrorFormat("Gender {0} Model {1} Hair {2} Skintone {3} Chest {4} Leg {5} Feet {6}", Gender == 0 ? "Boy" : "Girl", Model, Hair, Skintone, Chest, Leg, Feet);
         }
     }
 }
