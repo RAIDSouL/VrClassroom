@@ -81,9 +81,7 @@ public class Playfabmanager : MonoBehaviour
 
     void OnDataSend(UpdateUserDataResult result)
     {
-        Debug.Log("Succesful user data send");
-        Login.SetActive(true);
-        Register.SetActive(false);
+        LobbyCanvas.instance.OnLogin();
     }
 
     public void ToggleInputType()
