@@ -16,6 +16,7 @@ public class NetworkManager : Scene
     LobbyCanvas LobbyCanvas;
     public TMPro.TextMeshProUGUI status;
     public GameObject Character;
+    public Playfabmanager playfabmanager;
 
     public static NetworkManager instance;
 
@@ -26,6 +27,7 @@ public class NetworkManager : Scene
 
     protected override void Start()
     {
+        playfabmanager = FindObjectOfType<Playfabmanager>();
         switch (PlatformSetting.Instance.platform)
         {
             case Platform.VR:
@@ -78,7 +80,7 @@ public class NetworkManager : Scene
     {
         base.OnConnectedToMaster();
 
-        string plyertype = PlayerType.Teacher;
+        string plyertype = playfabmanager.GetTeacherValue() ? PlayerType.Teacher : PlayerType.Student;
         /*if (LobbyCanvas.UserType.captionText.text == LobbyCanvas.UserType.options[0].text)
         {
             plyertype = PlayerType.Teacher;

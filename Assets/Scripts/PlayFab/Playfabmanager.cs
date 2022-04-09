@@ -20,6 +20,8 @@ public class Playfabmanager : MonoBehaviour
     public InputField passwordInput2;
     public Toggle toggle;
 
+    bool isTeacher;
+
     public void RegisterButton()
     {
         if (passwordInput2.text.Length < 6)
@@ -68,13 +70,15 @@ public class Playfabmanager : MonoBehaviour
                 {"EyeColor", "0" }
             }
         };
+        isTeacher = toggle.isOn;
         PlayFabClientAPI.UpdateUserData(request2, OnDataSend, OnError);
     }
 
     void OnLoginSuccess(LoginResult result)
     {
-        messageText.text = "Registered and logged in!";
+        messageText.text = "logged in!";
         Debug.Log("Succesfull login!");
+        CheckIfTeacher();
         LobbyCanvas.instance.OnLogin();
         //getstat
     }
@@ -99,5 +103,21 @@ public class Playfabmanager : MonoBehaviour
 
             this.passwordInput2.ForceLabelUpdate();
         }
+    }
+
+    public void CheckIfTeacher()
+    {
+        PlayFabClientAPI.GetUserData(new GetUserDataRequest(), OnLoadTeacherComplete, OnError);
+    }
+
+    private void OnLoadTeacherComplete(GetUserDataResult result)
+    {
+        isTeacher = result.Data["IsTeacher"].Value == "True";
+        Debug.Log("isTeacher = " + isTeacher);
+    }
+
+    public bool GetTeacherValue()
+    {
+        return isTeacher;
     }
 }
