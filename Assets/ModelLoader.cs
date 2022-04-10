@@ -20,25 +20,25 @@ public class ModelLoader : MonoBehaviour
     }
 
     void LoadBoy() {
-        if (PlayerPrefs.HasKey("BoyModel")) {
+        if (PlayerPrefs.HasKey("Model")) {
             //var buffer = Instantiate(boyPrefs[PlayerPrefs.GetInt("BoyModel")], spawnPos.position, spawnPos.rotation) as GameObject;
-            var buffer = boyPrefs[PlayerPrefs.GetInt("BoyModel")];
+            var buffer = boyPrefs[PlayerPrefs.GetInt("Model")];
             buffer.SetActive(true);
             buffer.GetComponent<BoyTKPrefabMaker>().Getready();
-            if (PlayerPrefs.HasKey("BoySkintone")) {
-                buffer.GetComponent<BoyTKPrefabMaker>().LoadOldModel(PlayerPrefs.GetInt("BoySkintone"), PlayerPrefs.GetInt("BoyHair"), PlayerPrefs.GetInt("BoyChest"), PlayerPrefs.GetInt("BoyLeg"), PlayerPrefs.GetInt("BoyFeet"));
+            if (PlayerPrefs.HasKey("Skintone")) {
+                buffer.GetComponent<BoyTKPrefabMaker>().LoadOldModel(PlayerPrefs.GetInt("Skintone"), PlayerPrefs.GetInt("Hair"), PlayerPrefs.GetInt("Chest"), PlayerPrefs.GetInt("Leg"), PlayerPrefs.GetInt("Feet"));
             }
         }
     }
 
     void LoadGirl() {
-        if (PlayerPrefs.HasKey("GirlModel")) {
+        if (PlayerPrefs.HasKey("Model")) {
             //var buffer = Instantiate(girlPrefs[PlayerPrefs.GetInt("GirlModel")], spawnPos.position, spawnPos.rotation) as GameObject;
-            var buffer = girlPrefs[PlayerPrefs.GetInt("BoyModel")];
+            var buffer = girlPrefs[PlayerPrefs.GetInt("Model")];
             buffer.SetActive(true);
             buffer.GetComponent<GirlTKPrefabMaker>().Getready();
-            if (PlayerPrefs.HasKey("GirlSkintone")) {
-                buffer.GetComponent<GirlTKPrefabMaker>().LoadOldModel(PlayerPrefs.GetInt("GirlSkintone"), PlayerPrefs.GetInt("GirlHair"), PlayerPrefs.GetInt("GirlChest"), PlayerPrefs.GetInt("GirlLeg"), PlayerPrefs.GetInt("GirlFeet"));
+            if (PlayerPrefs.HasKey("Skintone")) {
+                buffer.GetComponent<GirlTKPrefabMaker>().LoadOldModel(PlayerPrefs.GetInt("Skintone"), PlayerPrefs.GetInt("Hair"), PlayerPrefs.GetInt("Chest"), PlayerPrefs.GetInt("Leg"), PlayerPrefs.GetInt("Feet"));
             }
         }
     }
