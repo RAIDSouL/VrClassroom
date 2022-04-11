@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using Photon.Realtime;
 using Photon.Pun;
 using UnityEngine.SceneManagement;
@@ -14,7 +15,7 @@ using Hashtable = ExitGames.Client.Photon.Hashtable;
 public class NetworkManager : Scene
 {
     LobbyCanvas LobbyCanvas;
-    public TMPro.TextMeshProUGUI status;
+    public Text status;
     public GameObject Character;
     public Playfabmanager playfabmanager;
 
