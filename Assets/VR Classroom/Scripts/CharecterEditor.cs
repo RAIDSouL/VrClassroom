@@ -180,6 +180,7 @@ public class CharecterEditor : MonoBehaviour {
         PlayerPrefs.SetInt("Chest", boy.Chest);
         PlayerPrefs.SetInt("Leg", boy.Legs);
         PlayerPrefs.SetInt("Feet", boy.Feet);
+        Playfabmanager._instance.PlayFabSaveAvatar(BoyPrefIndex, boy);
     }
 
     void SaveModelGirl(GirlTKPrefabMaker girl) {
@@ -191,6 +192,7 @@ public class CharecterEditor : MonoBehaviour {
         PlayerPrefs.SetInt("Chest", girl.Chest);
         PlayerPrefs.SetInt("Leg", girl.Legs);
         PlayerPrefs.SetInt("Feet", girl.Feet);
+        Playfabmanager._instance.PlayFabSaveAvatar(GirlPrefIndex, girl);
     }
 
     void LoadModel() {

@@ -8,6 +8,16 @@ using System;
 
 public class Playfabmanager : MonoBehaviour
 {
+    public static Playfabmanager _instance;
+
+    private void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+        }
+    }
+
     // Start is called before the first frame update
     public GameObject Login, Register;
     public Text messageText;
@@ -64,10 +74,12 @@ public class Playfabmanager : MonoBehaviour
         {
             Data = new Dictionary<string, string>{
                 {"IsTeacher", toggle.isOn.ToString() },
+                {"Model" , "0"},
                 {"Hair", "0" },
-                {"Face", "0" },
-                {"EyeStyle", "0" },
-                {"EyeColor", "0" }
+                {"Skintone", "0" },
+                {"Chest", "0" },
+                { "Leg", "0" },
+                { "Feet", "0" }
             }
         };
         isTeacher = toggle.isOn;
@@ -119,5 +131,43 @@ public class Playfabmanager : MonoBehaviour
     public bool GetTeacherValue()
     {
         return isTeacher;
+    }
+
+    public void PlayFabSaveAvatar(int boyPrefIndex, BoyTKPrefabMaker boy)
+    {
+        var request = new UpdateUserDataRequest
+        {
+            Data = new Dictionary<string, string>{
+                {"Gender", "0" },
+                {"Model" , boyPrefIndex.ToString()},
+                {"Hair", boy.Hair.ToString() },
+                {"Skintone", boy.Skintone.ToString() },
+                {"Chest", boy.Chest.ToString() },
+                { "Leg", boy.Legs.ToString() },
+                { "Feet", boy.Feet.ToString() }
+            }
+        };
+        PlayFabClientAPI.UpdateUserData(request, OnDataSave, OnError);
+    }
+
+    public void PlayFabSaveAvatar(int GirlPrefIndex, GirlTKPrefabMaker girl)
+    {
+        var request = new UpdateUserDataRequest
+        {
+            Data = new Dictionary<string, string>{
+                {"Gender", "1" },
+                {"Model" , GirlPrefIndex.ToString()},
+                {"Hair", girl.Hair.ToString() },
+                {"Skintone", girl.Skintone.ToString() },
+                {"Chest", girl.Chest.ToString() },
+                { "Leg", girl.Legs.ToString() },
+                { "Feet", girl.Feet.ToString() }
+            }
+        };
+        PlayFabClientAPI.UpdateUserData(request, OnDataSave, OnError);
+    }
+    void OnDataSave(UpdateUserDataResult result)
+    {
+        Debug.Log("Done Save avatar to playfab");
     }
 }
