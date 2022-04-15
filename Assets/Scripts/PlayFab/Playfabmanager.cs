@@ -21,6 +21,7 @@ public class Playfabmanager : MonoBehaviour
     // Start is called before the first frame update
     public GameObject Login, Register;
     public Text messageText;
+    public Text registerMessageText;
     [Header("Login UI")]
     public InputField usernameInput;
     public InputField passwordInput;
@@ -36,7 +37,7 @@ public class Playfabmanager : MonoBehaviour
     {
         if (passwordInput2.text.Length < 6)
         {
-            messageText.text = "Password too short!";
+            registerMessageText.text = "Password too short!";
             return;
         }
         var request = new RegisterPlayFabUserRequest
@@ -61,6 +62,7 @@ public class Playfabmanager : MonoBehaviour
     private void OnError(PlayFabError error)
     {
         messageText.text = "" + error.ErrorMessage;
+        registerMessageText.text = "" + error.ErrorMessage;
         Debug.Log(error.Error.ToString());
         Debug.Log(error.ErrorMessage);
         Debug.Log(error.ErrorDetails);
@@ -69,7 +71,7 @@ public class Playfabmanager : MonoBehaviour
 
     void OnRegisterSuccess(RegisterPlayFabUserResult result)
     {
-        messageText.text = "Registered and logged in!";
+        registerMessageText.text = "Registered and logged in!";
         var request2 = new UpdateUserDataRequest
         {
             Data = new Dictionary<string, string>{
@@ -169,5 +171,10 @@ public class Playfabmanager : MonoBehaviour
     void OnDataSave(UpdateUserDataResult result)
     {
         Debug.Log("Done Save avatar to playfab");
+    }
+
+    public void MoveCallbackText()
+    {
+        
     }
 }
