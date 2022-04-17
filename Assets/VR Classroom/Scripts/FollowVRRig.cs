@@ -57,6 +57,7 @@ namespace ChiliGames.VRClassroom {
         {
             object[] instantiationData = info.photonView.InstantiationData;
             int[] AvatarData = (int[])instantiationData[0];
+            string type = (string)instantiationData[1];
             Gender = AvatarData[0];
             Model = AvatarData[1];
             Hair = AvatarData[2];
@@ -64,7 +65,7 @@ namespace ChiliGames.VRClassroom {
             Chest = AvatarData[4];
             Leg = AvatarData[5];
             Feet = AvatarData[6];
-            Debug.LogErrorFormat("Gender {0} Model {1} Hair {2} Skintone {3} Chest {4} Leg {5} Feet {6}", Gender == 0 ? "Boy" : "Girl", Model, Hair, Skintone, Chest, Leg, Feet);
+            Debug.LogErrorFormat("{0} Gender {1} Model {2} Hair {3} Skintone {4} Chest {5} Leg {6} Feet {7}", type,Gender == 0 ? "Boy" : "Girl", Model, Hair, Skintone, Chest, Leg, Feet);
         }
     }
 }

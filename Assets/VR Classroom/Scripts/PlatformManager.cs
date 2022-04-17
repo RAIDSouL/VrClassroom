@@ -103,7 +103,7 @@ namespace ChiliGames.VRClassroom {
         }
 
         void CreateTeacherBody() {
-            object[] d = new object[] { GetAvatarData() };
+            object[] d = new object[] { GetAvatarData(),"teacher" };
             teacherBodyFollow = PhotonNetwork.Instantiate(teacherBody.name, transform.position, transform.rotation,0, d).GetComponent<FollowVRRig>();
             foreach (var item in teacherAvatars) {
                 item.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
@@ -134,7 +134,7 @@ namespace ChiliGames.VRClassroom {
         }
 
         void CreateStudentBody() {
-            object[] d = new object[] { GetAvatarData() };
+            object[] d = new object[] { GetAvatarData(), "student" };
             if (mode == Mode.StudentVR) {
                 PhotonNetwork.Instantiate(studentBody.name, transform.position, transform.rotation,0, d);
             } else if (mode == Mode.StudentPhone) {
