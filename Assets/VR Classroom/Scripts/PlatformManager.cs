@@ -77,7 +77,7 @@ namespace ChiliGames.VRClassroom {
             }
         }
 
-        private void Start() {
+        private IEnumerator Start() {
 
             
 
@@ -86,6 +86,7 @@ namespace ChiliGames.VRClassroom {
             if (PhotonNetwork.IsMasterClient && !initialized) {
                 InitializeStudentList();
             }
+            yield return new WaitUntil(()=>PhotonNetwork.CurrentRoom.CustomProperties["Initialized"] != null);
             //if this is the teacher, activate its rig and create the body
             if (mode == Mode.Teacher) {
                 teacherRig.SetActive(true);
@@ -97,9 +98,9 @@ namespace ChiliGames.VRClassroom {
             else if (mode == Mode.StudentVR || mode == Mode.StudentPhone) {
                 studentRig.SetActive(true);
                 CreateStudentBody();
-                if (PhotonNetwork.CurrentRoom.CustomProperties["Initialized"] != null) {
+                /*if (PhotonNetwork.CurrentRoom.CustomProperties["Initialized"] != null) {
                     Sit(GetFreeSeat());
-                }
+                }*/
             }
         }
 
