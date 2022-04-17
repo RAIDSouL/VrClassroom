@@ -6,7 +6,21 @@ public class ModelLoader : MonoBehaviour
     [SerializeField] GameObject[] girlPrefs;
 
     private void Start() {
-        LoadModel();
+        //LoadModel();
+    }
+
+    public GameObject Load(int Gender, int Model, int Hair, int Skintone, int Chest, int Leg, int Feet)
+    {
+        GameObject character = null;
+        if (Gender == 0)
+        {
+            LoadBoy();
+        }
+        else if (Gender == 1)
+        {
+            LoadGirl();
+        }
+        return character;
     }
 
     void LoadModel() {
@@ -30,6 +44,14 @@ public class ModelLoader : MonoBehaviour
             }
         }
     }
+    GameObject LoadBoy(int Model, int Hair, int Skintone, int Chest, int Leg, int Feet)
+    {
+        GameObject buffer = boyPrefs[Model];
+        buffer.SetActive(true);
+        buffer.GetComponent<BoyTKPrefabMaker>().Getready();
+        buffer.GetComponent<BoyTKPrefabMaker>().LoadOldModel(Skintone, Hair, Chest, Leg, Feet);
+        return buffer;
+    }
 
     void LoadGirl() {
         if (PlayerPrefs.HasKey("Model")) {
@@ -41,5 +63,15 @@ public class ModelLoader : MonoBehaviour
                 buffer.GetComponent<GirlTKPrefabMaker>().LoadOldModel(PlayerPrefs.GetInt("Skintone"), PlayerPrefs.GetInt("Hair"), PlayerPrefs.GetInt("Chest"), PlayerPrefs.GetInt("Leg"), PlayerPrefs.GetInt("Feet"));
             }
         }
+    }
+
+    GameObject LoadGirl(int Model, int Hair, int Skintone, int Chest, int Leg, int Feet)
+    {
+        //var buffer = Instantiate(girlPrefs[PlayerPrefs.GetInt("GirlModel")], spawnPos.position, spawnPos.rotation) as GameObject;
+        GameObject buffer = girlPrefs[Model];
+        buffer.SetActive(true);
+        buffer.GetComponent<GirlTKPrefabMaker>().Getready();
+        buffer.GetComponent<GirlTKPrefabMaker>().LoadOldModel(Skintone, Hair, Chest, Leg, Feet);
+        return buffer;
     }
 }

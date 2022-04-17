@@ -10,6 +10,7 @@ namespace ChiliGames.VRClassroom {
     public class PlatformManager : MonoBehaviourPunCallbacks {
         [SerializeField] GameObject teacherRig;
         public GameObject studentRig;
+        public ModelLoader ModelLoader;
         [SerializeField] Transform[] studentPositions;
 
         public Avatar avatar;
@@ -103,7 +104,7 @@ namespace ChiliGames.VRClassroom {
         }
 
         void CreateTeacherBody() {
-            object[] d = new object[] { GetAvatarData(),"teacher" };
+            object[] d = new object[] { GetAvatarData(),"teacher", -1 };
             teacherBodyFollow = PhotonNetwork.Instantiate(teacherBody.name, transform.position, transform.rotation,0, d).GetComponent<FollowVRRig>();
             foreach (var item in teacherAvatars) {
                 item.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
@@ -134,12 +135,14 @@ namespace ChiliGames.VRClassroom {
         }
 
         void CreateStudentBody() {
-            object[] d = new object[] { GetAvatarData(), "student" };
+            int sit = GetFreeSeat();
+            object[] d = new object[] { GetAvatarData(), "student" , sit };
             if (mode == Mode.StudentVR) {
                 PhotonNetwork.Instantiate(studentBody.name, transform.position, transform.rotation,0, d);
             } else if (mode == Mode.StudentPhone) {
                 PhotonNetwork.Instantiate(studentBodyNonVR.name, transform.position, transform.rotation,0, d);
             }
+            Sit(sit);
         }
 
 
