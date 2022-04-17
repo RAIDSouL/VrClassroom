@@ -11,7 +11,7 @@ namespace ChiliGames.VRClassroom {
         [SerializeField] GameObject teacherRig;
         public GameObject studentRig;
         public ModelLoader ModelLoader;
-        [SerializeField] Transform[] studentPositions;
+        public Transform[] studentPositions;
 
         public Avatar avatar;
         private FollowVRRig teacherBodyFollow;

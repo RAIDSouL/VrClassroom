@@ -14,11 +14,11 @@ public class ModelLoader : MonoBehaviour
         GameObject character = null;
         if (Gender == 0)
         {
-            LoadBoy(Model, Hair, Skintone, Chest, Leg, Feet);
+            character = LoadBoy(Model, Hair, Skintone, Chest, Leg, Feet);
         }
         else if (Gender == 1)
         {
-            LoadGirl(Model, Hair, Skintone, Chest, Leg, Feet);
+            character = LoadGirl(Model, Hair, Skintone, Chest, Leg, Feet);
         }
         return character;
     }
@@ -50,7 +50,9 @@ public class ModelLoader : MonoBehaviour
         buffer.SetActive(true);
         buffer.GetComponent<BoyTKPrefabMaker>().Getready();
         buffer.GetComponent<BoyTKPrefabMaker>().LoadOldModel(Skintone, Hair, Chest, Leg, Feet);
-        return buffer;
+        GameObject character = Instantiate(buffer);
+        buffer.SetActive(false);
+        return character;
     }
 
     void LoadGirl() {
@@ -72,6 +74,8 @@ public class ModelLoader : MonoBehaviour
         buffer.SetActive(true);
         buffer.GetComponent<GirlTKPrefabMaker>().Getready();
         buffer.GetComponent<GirlTKPrefabMaker>().LoadOldModel(Skintone, Hair, Chest, Leg, Feet);
-        return buffer;
+        GameObject character = Instantiate(buffer);
+        buffer.SetActive(false);
+        return character;
     }
 }
