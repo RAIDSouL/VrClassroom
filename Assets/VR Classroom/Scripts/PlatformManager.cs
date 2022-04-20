@@ -11,7 +11,7 @@ namespace ChiliGames.VRClassroom {
         [SerializeField] GameObject teacherRig;
         public GameObject studentRig;
         public ModelLoader ModelLoader;
-        public Transform[] studentPositions;
+        public Desk[] studentdesk;
 
         public Avatar avatar;
         private FollowVRRig teacherBodyFollow;
@@ -156,7 +156,7 @@ namespace ChiliGames.VRClassroom {
         void InitializeStudentList() {
             if (PhotonNetwork.CurrentRoom.CustomProperties["Initialized"] == null) {
                 h.Add("Initialized", actorNum);
-                for (int i = 0; i < studentPositions.Length; i++) {
+                for (int i = 0; i < studentdesk.Length; i++) {
                     h.Add("" + i, 0);
                 }
             }
@@ -165,7 +165,7 @@ namespace ChiliGames.VRClassroom {
 
         //Gets the first sit that is free (that has a value of 0)
         int GetFreeSeat() {
-            for (int i = 0; i < studentPositions.Length; i++) {
+            for (int i = 0; i < studentdesk.Length; i++) {
                 if ((int)PhotonNetwork.CurrentRoom.CustomProperties["" + i] == 0) {
                     return i;
                 }
@@ -180,11 +180,11 @@ namespace ChiliGames.VRClassroom {
             }
             Debug.Log("Sitting student in seat " + n);
             if (mode == Mode.StudentVR) {
-                studentRig.transform.position = studentPositions[n].position + (studentPositions[n].forward * 0.4f) - (studentPositions[n].up * 0.3f);
+                studentRig.transform.position = studentdesk[n].transform.position + (studentdesk[n].transform.forward * 0.4f) - (studentdesk[n].transform.up * 0.3f);
             } else if (mode == Mode.StudentPhone) {
-                studentRig.transform.position = studentPositions[n].position + (studentPositions[n].forward * 0.4f) + (studentPositions[n].up * 0.5f);
+                studentRig.transform.position = studentdesk[n].transform.position + (studentdesk[n].transform.forward * 0.4f) + (studentdesk[n].transform.up * 0.5f);
             }
-            studentRig.transform.forward = -studentPositions[n].forward;
+            studentRig.transform.forward = -studentdesk[n].transform.forward;
             seated = true;
             h["" + n] = actorNum;
             PhotonNetwork.CurrentRoom.SetCustomProperties(h);
@@ -197,7 +197,7 @@ namespace ChiliGames.VRClassroom {
             if (propertiesThatChanged.ContainsKey("Initialized") && !initialized) {
                 Debug.Log("Student list initialized");
                 initialized = true;
-                for (int i = 0; i < studentPositions.Length; i++) {
+                for (int i = 0; i < studentdesk.Length; i++) {
                     Debug.Log((int)propertiesThatChanged["" + i]);
                 }
                 if ((mode == Mode.StudentVR || mode == Mode.StudentPhone) && !seated) {
@@ -210,7 +210,7 @@ namespace ChiliGames.VRClassroom {
         public override void OnPlayerLeftRoom(Player otherPlayer) {
             //get the seat number of plaer that left the room, and update room properties with the free seat (value to 0)
             if (PhotonNetwork.IsMasterClient) {
-                for (int i = 0; i < studentPositions.Length; i++) {
+                for (int i = 0; i < studentdesk.Length; i++) {
                     if ((int)PhotonNetwork.CurrentRoom.CustomProperties["" + i] == otherPlayer.ActorNumber) {
                         h["" + i] = 0;
                         PhotonNetwork.CurrentRoom.SetCustomProperties(h);

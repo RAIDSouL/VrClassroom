@@ -1031,18 +1031,18 @@ MonoBehaviour:
   teacherRig: {fileID: 6246618556679375970}
   studentRig: {fileID: 608228472}
   ModelLoader: {fileID: 2061630047}
-  studentPositions:
-  - {fileID: 810454692}
-  - {fileID: 1347729876}
-  - {fileID: 1874525787}
-  - {fileID: 2009831944}
-  - {fileID: 437916862}
-  - {fileID: 1968260391}
-  - {fileID: 1601387982}
-  - {fileID: 1232800325}
-  - {fileID: 1092949387}
-  - {fileID: 1212436692}
-  - {fileID: 1261566349}
+  studentdesk:
+  - {fileID: 1001839214}
+  - {fileID: 314919940}
+  - {fileID: 1356819717}
+  - {fileID: 1811056907}
+  - {fileID: 851989013}
+  - {fileID: 999757161}
+  - {fileID: 1338086098}
+  - {fileID: 1159559357}
+  - {fileID: 663227329}
+  - {fileID: 1783714107}
+  - {fileID: 1463845979}
   avatar: {fileID: 1976599286}
   teacherAvatars:
   - {fileID: 1976599285}
@@ -1302,6 +1302,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 314919939}
+  - component: {fileID: 314919940}
   m_Layer: 4
   m_Name: StudentDesk (1)
   m_TagString: Untagged
@@ -1324,6 +1325,19 @@ Transform:
   m_Father: {fileID: 1087127311}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &314919940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314919938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e4bd1920ceeab44595decb1841d2171, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Charpos: {fileID: 1347729876}
 --- !u!1 &389409823
 GameObject:
   m_ObjectHideFlags: 0
@@ -1603,6 +1617,7 @@ GameObject:
   m_Component:
   - component: {fileID: 503825775}
   - component: {fileID: 503825776}
+  - component: {fileID: 503825777}
   m_Layer: 4
   m_Name: Directional Light (1)
   m_TagString: Untagged
@@ -1686,6 +1701,19 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &503825777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503825774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e4bd1920ceeab44595decb1841d2171, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Charpos: {fileID: 0}
 --- !u!43 &506133862
 Mesh:
   m_ObjectHideFlags: 0
@@ -2337,6 +2365,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 663227328}
+  - component: {fileID: 663227329}
   m_Layer: 4
   m_Name: StudentDesk (9)
   m_TagString: Untagged
@@ -2359,6 +2388,19 @@ Transform:
   m_Father: {fileID: 1087127311}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &663227329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663227327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e4bd1920ceeab44595decb1841d2171, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Charpos: {fileID: 1092949387}
 --- !u!1 &683756450
 GameObject:
   m_ObjectHideFlags: 0
@@ -2963,6 +3005,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 851989012}
+  - component: {fileID: 851989013}
   m_Layer: 4
   m_Name: StudentDesk (4)
   m_TagString: Untagged
@@ -2985,6 +3028,19 @@ Transform:
   m_Father: {fileID: 1087127311}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &851989013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851989011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e4bd1920ceeab44595decb1841d2171, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Charpos: {fileID: 437916862}
 --- !u!1001 &860842948
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3514,6 +3570,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 999757160}
+  - component: {fileID: 999757161}
   m_Layer: 4
   m_Name: StudentDesk (5)
   m_TagString: Untagged
@@ -3536,6 +3593,19 @@ Transform:
   m_Father: {fileID: 1087127311}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &999757161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999757159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e4bd1920ceeab44595decb1841d2171, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Charpos: {fileID: 1968260391}
 --- !u!1 &1001839212
 GameObject:
   m_ObjectHideFlags: 0
@@ -3545,6 +3615,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1001839213}
+  - component: {fileID: 1001839214}
   m_Layer: 4
   m_Name: StudentDesk
   m_TagString: Untagged
@@ -3567,6 +3638,19 @@ Transform:
   m_Father: {fileID: 1087127311}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1001839214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001839212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e4bd1920ceeab44595decb1841d2171, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Charpos: {fileID: 810454692}
 --- !u!1 &1025120186
 GameObject:
   m_ObjectHideFlags: 0
@@ -4274,6 +4358,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1159559356}
+  - component: {fileID: 1159559357}
   m_Layer: 4
   m_Name: StudentDesk (8)
   m_TagString: Untagged
@@ -4296,6 +4381,19 @@ Transform:
   m_Father: {fileID: 1087127311}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1159559357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159559355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e4bd1920ceeab44595decb1841d2171, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Charpos: {fileID: 1232800325}
 --- !u!1 &1176879600
 GameObject:
   m_ObjectHideFlags: 0
@@ -4650,6 +4748,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1338086097}
+  - component: {fileID: 1338086098}
   m_Layer: 4
   m_Name: StudentDesk (6)
   m_TagString: Untagged
@@ -4672,6 +4771,19 @@ Transform:
   m_Father: {fileID: 1087127311}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1338086098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338086096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e4bd1920ceeab44595decb1841d2171, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Charpos: {fileID: 1601387982}
 --- !u!1 &1347729875
 GameObject:
   m_ObjectHideFlags: 0
@@ -4722,6 +4834,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1356819716}
+  - component: {fileID: 1356819717}
   m_Layer: 4
   m_Name: StudentDesk (2)
   m_TagString: Untagged
@@ -4744,6 +4857,19 @@ Transform:
   m_Father: {fileID: 1087127311}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1356819717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356819715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e4bd1920ceeab44595decb1841d2171, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Charpos: {fileID: 1874525787}
 --- !u!850595691 &1363267559
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -5039,6 +5165,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1463845978}
+  - component: {fileID: 1463845979}
   m_Layer: 4
   m_Name: StudentDesk (11)
   m_TagString: Untagged
@@ -5061,6 +5188,19 @@ Transform:
   m_Father: {fileID: 1087127311}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1463845979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463845977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e4bd1920ceeab44595decb1841d2171, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Charpos: {fileID: 1261566349}
 --- !u!1 &1467429786
 GameObject:
   m_ObjectHideFlags: 0
@@ -5883,6 +6023,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1783714106}
+  - component: {fileID: 1783714107}
   m_Layer: 4
   m_Name: StudentDesk (10)
   m_TagString: Untagged
@@ -5905,6 +6046,19 @@ Transform:
   m_Father: {fileID: 1087127311}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1783714107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783714105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e4bd1920ceeab44595decb1841d2171, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Charpos: {fileID: 1212436692}
 --- !u!1 &1811056905
 GameObject:
   m_ObjectHideFlags: 0
@@ -5914,6 +6068,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1811056906}
+  - component: {fileID: 1811056907}
   m_Layer: 4
   m_Name: StudentDesk (3)
   m_TagString: Untagged
@@ -5936,6 +6091,19 @@ Transform:
   m_Father: {fileID: 1087127311}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1811056907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811056905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e4bd1920ceeab44595decb1841d2171, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Charpos: {fileID: 2009831944}
 --- !u!1 &1850279382
 GameObject:
   m_ObjectHideFlags: 0
