@@ -97,7 +97,8 @@ public class NetworkManager : Scene
     public void LoadAfterGetUserData(bool plyertype)
     {
         Hashtable ConnectHash = new Hashtable();
-        ConnectHash.Add(PropertiesKey.PlayerType, plyertype);
+        string plyer = plyertype ? PlayerType.Teacher : PlayerType.Student;
+        ConnectHash.Add(PropertiesKey.PlayerType, plyer);
         PhotonNetwork.LocalPlayer.SetCustomProperties(ConnectHash);
         StartCoroutine(WaitFrameAndConnect());
         Debug.Log("Connected to master!");
