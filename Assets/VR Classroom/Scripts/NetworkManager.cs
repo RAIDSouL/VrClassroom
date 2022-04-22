@@ -82,6 +82,7 @@ public class NetworkManager : Scene
         base.OnConnectedToMaster();
 
         string plyertype = playfabmanager.GetTeacherValue() ? PlayerType.Teacher : PlayerType.Student;
+        Debug.LogError(plyertype);
         /*if (LobbyCanvas.UserType.captionText.text == LobbyCanvas.UserType.options[0].text)
         {
             plyertype = PlayerType.Teacher;
