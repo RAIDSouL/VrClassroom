@@ -92,7 +92,6 @@ public class Playfabmanager : MonoBehaviour
     {
         messageText.text = "logged in!";
         Debug.Log("Succesfull login!");
-        CheckIfTeacher();
         LobbyCanvas.instance.OnLogin();
         //getstat
     }
@@ -127,6 +126,7 @@ public class Playfabmanager : MonoBehaviour
     private void OnLoadTeacherComplete(GetUserDataResult result)
     {
         isTeacher = result.Data["IsTeacher"].Value == "True";
+        NetworkManager.instance.LoadAfterGetUserData(isTeacher);
         Debug.Log("isTeacher = " + isTeacher);
     }
 

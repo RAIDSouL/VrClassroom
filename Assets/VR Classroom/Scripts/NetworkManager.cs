@@ -80,9 +80,9 @@ public class NetworkManager : Scene
     public override void OnConnectedToMaster()
     {
         base.OnConnectedToMaster();
-
-        string plyertype = playfabmanager.GetTeacherValue() ? PlayerType.Teacher : PlayerType.Student;
-        Debug.LogError(plyertype);
+        playfabmanager.CheckIfTeacher();
+        //Debug.Log(playfabmanager.GetTeacherValue());
+        //string plyertype = playfabmanager.GetTeacherValue() ? PlayerType.Teacher : PlayerType.Student;
         /*if (LobbyCanvas.UserType.captionText.text == LobbyCanvas.UserType.options[0].text)
         {
             plyertype = PlayerType.Teacher;
@@ -92,15 +92,17 @@ public class NetworkManager : Scene
             plyertype = PlayerType.Student;
         }*/
 
+    }
+
+    public void LoadAfterGetUserData(bool plyertype)
+    {
         Hashtable ConnectHash = new Hashtable();
         ConnectHash.Add(PropertiesKey.PlayerType, plyertype);
         PhotonNetwork.LocalPlayer.SetCustomProperties(ConnectHash);
         StartCoroutine(WaitFrameAndConnect());
         Debug.Log("Connected to master!");
         setstatus("Connected");
-
     }
-
     IEnumerator WaitFrameAndConnect()
     {
         yield return new WaitForEndOfFrame();
