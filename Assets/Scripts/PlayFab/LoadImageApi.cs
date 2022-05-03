@@ -3,14 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Networking;
 
 public class LoadImageApi : MonoBehaviour
 {
     // Start is called before the first frame update
+    public RawImage rawImage;
+    public List<Texture2D> texture2Ds;
+    int i = 0;
     void Start()
     {
-        StartCoroutine(GetRequest("http://d5c7-2001-44c8-4020-b210-ad22-7e1e-72f2-852b.ngrok.io/api/galleries"));
+        StartCoroutine(GetRequest("https://5a48-202-29-32-87.ngrok.io/api/gallery"));
+        //StartCoroutine(DownloadImage("https://5a48-202-29-32-87.ngrok.io/storage/files/evAjLpSQxgjidws5NWzCPjgzsVM81vdz24IhWeY3.jpg"));
     }
 
     IEnumerator GetRequest(string uri)
@@ -33,14 +38,55 @@ public class LoadImageApi : MonoBehaviour
                     Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
                     break;
                 case UnityWebRequest.Result.Success:
-                    Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
+                    //Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
                     var objects = JsonConvert.DeserializeObject<APIResponse[]>(webRequest.downloadHandler.text);
-                    Debug.Log(objects[0].url);
+                    //Debug.Log(objects[0].url.ToString());
+                    //StartCoroutine(DownloadImage(objects[0].url));
+                    foreach (var item in objects)
+                    {
+                        StartCoroutine(DownloadImage(item.url));
+                    }
+                    //objects.ToList().ForEach(x => StartCoroutine(DownloadImage(x.ToString())));
                     break;
             }
         }
     }
+
+    IEnumerator DownloadImage(string MediaUrl)
+    {
+        Debug.Log("downloading : " + MediaUrl);
+        UnityWebRequest request = UnityWebRequestTexture.GetTexture(MediaUrl);
+        yield return request.SendWebRequest();
+
+        if (request.isNetworkError || request.isHttpError)
+        {
+            Debug.Log(request.error);
+            //StopAllCoroutines();
+        }
+        else
+        {
+            texture2Ds.Add(((DownloadHandlerTexture)request.downloadHandler).texture);
+        }
+    }
+
+    public void OpenSlide()
+    {
+        rawImage.texture = texture2Ds[i];
+    }
+    public void LoadNextImage()
+    {
+        i++;
+        rawImage.texture = texture2Ds[i];
+    }
+
+    public void LoadPrevImage()
+    {
+        i--;
+        rawImage.texture = texture2Ds[i];
+    }
+
 }
+
 
 [SerializeField]
 public class APIResponse
