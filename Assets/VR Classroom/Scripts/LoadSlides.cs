@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 namespace ChiliGames.VRClassroom {
     //Class to handle loading slides in Oculus Quest data folder, more information in the Readme.pdf
-    public class LoadSlides : MonoBehaviour {
+    public class LoadSlides : MonoBehaviourPunCallbacks {
         GameObject[] gameObj;
         Texture2D[] textureList;
 
@@ -18,6 +21,16 @@ namespace ChiliGames.VRClassroom {
         public Dictionary<string, Texture2D> AllTextures = new Dictionary<string, Texture2D>(); //Store all Sprites created into this dictionary container
 
         [SerializeField] MeshRenderer quad;
+
+        public override void OnEnable()
+        {
+            base.OnEnable();
+        }
+
+        public override void OnDisable()
+        {
+            base.OnDisable();
+        }
 
         void Awake() {
             if (PlatformManager.instance.mode == PlatformManager.Mode.Teacher && Application.platform == RuntimePlatform.Android) {
@@ -90,6 +103,34 @@ namespace ChiliGames.VRClassroom {
                 }
             }
             return AllTextures[imageName];
+        }
+
+
+        public void ChangeSlide(int update)
+        {
+            object slide = null;
+            int current = 0;
+            if(PhotonNetwork.CurrentRoom.CustomProperties.TryGetValue(PropertiesKey.Slide,out slide))
+            {
+                current = (int)slide;
+                current += update;
+            }
+
+            Hashtable hash = new Hashtable();
+
+            hash.Add(PropertiesKey.Slide , current);
+
+            PhotonNetwork.CurrentRoom.SetCustomProperties(hash);
+            
+        }
+
+        public override void OnRoomPropertiesUpdate(Hashtable propertiesThatChanged)
+        {
+            if(propertiesThatChanged.ContainsKey(PropertiesKey.Slide))
+            {
+                int slideindex = (int)propertiesThatChanged[PropertiesKey.Slide];
+                Debug.LogError("Slide change " + slideindex);
+            }
         }
     }
 }

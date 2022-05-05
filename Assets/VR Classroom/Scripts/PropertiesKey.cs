@@ -12,6 +12,7 @@ public class SceneKey
 public class PropertiesKey 
 {
     public const string PlayerType = "pt";
+    public const string Slide = "sl";
 }
 
 public class PlayerType
