@@ -4,13 +4,17 @@ using System.IO;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.Networking;
+using System.Linq;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
+using Newtonsoft.Json;
+using UnityEngine.UI;
 
 namespace ChiliGames.VRClassroom {
     //Class to handle loading slides in Oculus Quest data folder, more information in the Readme.pdf
     public class LoadSlides : MonoBehaviourPunCallbacks {
         GameObject[] gameObj;
-        Texture2D[] textureList;
+        List<Texture2D> textureList;
 
         string[] files;
         string pathPreFix;
@@ -18,6 +22,7 @@ namespace ChiliGames.VRClassroom {
         int currentSlide = 1;
         bool ableToNextSlide = true;
 
+        public RawImage slideImg;
         public Dictionary<string, Texture2D> AllTextures = new Dictionary<string, Texture2D>(); //Store all Sprites created into this dictionary container
 
         [SerializeField] MeshRenderer quad;
@@ -33,11 +38,11 @@ namespace ChiliGames.VRClassroom {
         }
 
         void Awake() {
+            StartCoroutine(GetRequest("https://5a48-202-29-32-87.ngrok.io/api/gallery"));
             if (PlatformManager.instance.mode == PlatformManager.Mode.Teacher && Application.platform == RuntimePlatform.Android) {
                 //Change this to change pictures folder
 
                 pathPreFix = Application.persistentDataPath;
-
                 LoadAllSpritesFromPngFilesInFolderAndAllSubFolders();
             }
         }
@@ -130,6 +135,52 @@ namespace ChiliGames.VRClassroom {
             {
                 int slideindex = (int)propertiesThatChanged[PropertiesKey.Slide];
                 Debug.LogError("Slide change " + slideindex);
+            }
+        }
+
+        IEnumerator GetRequest(string uri)
+        {
+            using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
+            {
+                // Request and wait for the desired page.
+                yield return webRequest.SendWebRequest();
+
+                string[] pages = uri.Split('/');
+                int page = pages.Length - 1;
+
+                switch (webRequest.result)
+                {
+                    case UnityWebRequest.Result.ConnectionError:
+                    case UnityWebRequest.Result.DataProcessingError:
+                        Debug.LogError(pages[page] + ": Error: " + webRequest.error);
+                        break;
+                    case UnityWebRequest.Result.ProtocolError:
+                        Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
+                        break;
+                    case UnityWebRequest.Result.Success:
+                        var objects = JsonConvert.DeserializeObject<APIResponse[]>(webRequest.downloadHandler.text);
+                        foreach (var item in objects)
+                        {
+                            StartCoroutine(DownloadImage(item.url));
+                        }
+                        break;
+                }
+            }
+        }
+
+        IEnumerator DownloadImage(string MediaUrl)
+        {
+            Debug.Log("downloading : " + MediaUrl);
+            UnityWebRequest request = UnityWebRequestTexture.GetTexture(MediaUrl);
+            yield return request.SendWebRequest();
+
+            if (request.isNetworkError || request.isHttpError)
+            {
+                Debug.Log(request.error);
+            }
+            else
+            {
+                textureList.Add(((DownloadHandlerTexture)request.downloadHandler).texture);
             }
         }
     }
