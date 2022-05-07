@@ -1109,7 +1109,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3db1b1c6fc426a4bac6d8a425adb8a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textureList: []
+  imgCount: 0
   quad: {fileID: 1881933976}
+  screens:
+  - {fileID: 548024018}
 --- !u!1 &291227178
 GameObject:
   m_ObjectHideFlags: 0
