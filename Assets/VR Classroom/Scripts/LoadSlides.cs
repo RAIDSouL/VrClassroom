@@ -39,6 +39,17 @@ namespace ChiliGames.VRClassroom {
             imgCount = 0;
             StartCoroutine(GetRequest("https://5a48-202-29-32-87.ngrok.io/api/gallery"));
         }
+
+        public override void OnRoomPropertiesUpdate(Hashtable propertiesThatChanged)
+        {
+            if (propertiesThatChanged.ContainsKey(PropertiesKey.Slide))
+            {
+                int slideindex = (int)propertiesThatChanged[PropertiesKey.Slide];
+                currentSlide = slideindex;
+                IndexToImage(currentSlide);
+            }
+        }
+
         public void GetNextSlide()
         {
             if (PlatformManager.instance.mode != PlatformManager.Mode.Teacher) return;
@@ -46,22 +57,23 @@ namespace ChiliGames.VRClassroom {
             ableToNextSlide = false;
             StartCoroutine(NextSlideCooldown());
             currentSlide++;
-            if (GetTexture(currentSlide.ToString()) != null)
-            {
-                quad.material.mainTexture = GetTexture(currentSlide.ToString());
-                foreach (var item in screens)
-                {
-                    item.material.mainTexture = GetTexture(currentSlide.ToString());
-                }
-            }
-            else
+            if (GetTexture(currentSlide.ToString()) == null)
             {
                 currentSlide = 1;
-                quad.material.mainTexture = GetTexture(currentSlide.ToString());
-                foreach (var item in screens)
-                {
-                    item.material.mainTexture = GetTexture(currentSlide.ToString());
-                }
+            }
+            Hashtable hash = new Hashtable();
+
+            hash.Add(PropertiesKey.Slide, currentSlide);
+
+            PhotonNetwork.CurrentRoom.SetCustomProperties(hash);
+        }
+
+        void IndexToImage(int index)
+        {
+            quad.material.mainTexture = GetTexture(index.ToString());
+            foreach (var item in screens)
+            {
+                item.material.mainTexture = GetTexture(index.ToString());
             }
         }
 
