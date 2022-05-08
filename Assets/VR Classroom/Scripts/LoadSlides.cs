@@ -16,7 +16,7 @@ namespace ChiliGames.VRClassroom {
         public List<Texture2D> textureList;
         public int imgCount;
 
-        int currentSlide = 1;
+        int currentSlide = 0;
         bool ableToNextSlide = true;
 
         public Dictionary<string, Texture2D> AllTextures = new Dictionary<string, Texture2D>(); //Store all Sprites created into this dictionary container
@@ -59,7 +59,7 @@ namespace ChiliGames.VRClassroom {
             currentSlide++;
             if (GetTexture(currentSlide.ToString()) == null)
             {
-                currentSlide = 0;
+                currentSlide = 1;
             }
             Hashtable hash = new Hashtable();
 
