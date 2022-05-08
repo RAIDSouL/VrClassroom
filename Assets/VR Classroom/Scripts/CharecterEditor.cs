@@ -32,14 +32,23 @@ public class CharecterEditor : MonoBehaviour {
     public bool IsMaleGender { get { return isMaleGender; } set { isMaleGender = value; } }
     public int BoyPrefIndex { get { return boyPrefIndex; } set { boyPrefIndex = value; } }
     public int GirlPrefIndex { get { return girlPrefIndex; } set { girlPrefIndex = value; } }
+    public GameObject ChildObj { get { return childObj; } set { childObj = value; } }
+
+    GameObject childObj;
 
     private void Start() {
+        childObj = transform.GetChild(0).gameObject;
         //PlayerPrefs.DeleteAll();
         //LoadModel();
     }
 
     public void TogglePanel(bool index) {
-        transform.GetChild(0).gameObject.SetActive(index);
+        //if (PlatformSetting.Instance.platform.Equals(Platform.ANDROID)) {
+        //    androidObj.SetActive(index);
+        //} else if (PlatformSetting.Instance.platform.Equals(Platform.VR)){
+        //    vrObj.SetActive(index);
+        //}
+        childObj.SetActive(index);
     }
 
     public void ChooseBoy(bool index) {

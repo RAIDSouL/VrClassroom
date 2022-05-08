@@ -28,6 +28,8 @@ namespace VRKeys {
 	/// you have finished validating the submitted text.
 	/// </summary>
 	public class Keyboard : MonoBehaviour {
+		public static Keyboard _instance;
+
 		public Vector3 positionRelativeToUser = new Vector3 (0f, 1.35f, 2f);
 
 		public KeyboardLayout keyboardLayout = KeyboardLayout.Qwerty;
