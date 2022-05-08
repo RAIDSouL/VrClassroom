@@ -122,7 +122,7 @@ public class NetworkManager : Scene
     {
         if (!PhotonNetwork.IsConnected)
             return;
-        Debug.Log("ConnectToRoom");
+        Debug.Log("ConnectToRoom " + LobbyCanvas.RoomnameInput.text);
         //PhotonNetwork.CreateRoom("name"); //Create a specific room - Callback OnCreateRoomFailed
         PhotonNetwork.JoinRoom(LobbyCanvas.RoomnameInput.text); //Join a specific room - Callback OnJoinRoomFailed
         
@@ -169,4 +169,3 @@ public class NetworkManager : Scene
         PhotonNetwork.CreateRoom(LobbyCanvas.RoomnameInput.text, new RoomOptions { MaxPlayers = 15 });
     }
 }
-//}
