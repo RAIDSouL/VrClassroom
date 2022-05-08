@@ -59,7 +59,7 @@ namespace ChiliGames.VRClassroom {
             currentSlide++;
             if (GetTexture(currentSlide.ToString()) == null)
             {
-                currentSlide = 1;
+                currentSlide = 0;
             }
             Hashtable hash = new Hashtable();
 
