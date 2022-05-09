@@ -13,31 +13,39 @@ using Hashtable = ExitGames.Client.Photon.Hashtable;
 //namespace Networking.Pun2
 //{
 public class NetworkManager : Scene {
-    LobbyCanvas LobbyCanvas;
-    public Text status;
-    public GameObject Character;
-    public Playfabmanager playfabmanagerAndroid;
-    public Playfabmanager playfabmanagerVR;
-    [SerializeField] GameObject[] androidObjs;
-    [SerializeField] GameObject[] vrObjs;
-
     public static NetworkManager instance;
 
+    public Text status;
+
+    [Header("VR")]
+    public Playfabmanager playfabmanagerVR;
+    [SerializeField] GameObject[] vrObjs;
+
+    [Header("Android")]
+    public Playfabmanager playfabmanagerAndroid;
+    [SerializeField] GameObject[] androidObjs;
+
+    //cache
     Playfabmanager current;
+    LobbyCanvas LobbyCanvas;
+    CharecterEditor charecterEditor;
 
     private void Awake() {
-        instance = this;
+        if (instance.Equals(null)) {
+            instance = this;
+        }
+
+        charecterEditor = FindObjectOfType<CharecterEditor>();
     }
 
     protected override void Start() {
-        //playfabmanager = FindObjectOfType<Playfabmanager>();
         switch (PlatformSetting.Instance.platform) {
         case Platform.VR:
         VrCanvas.SetInstance(true);
         AndroidCanvas.SetInstance(false);
         LobbyCanvas = VrCanvas.GetComponent<LobbyCanvas>();
         current = playfabmanagerVR;
-        FindObjectOfType<CharecterEditor>().ChildObj.GetComponent<OVRRaycaster>().enabled = true;
+        charecterEditor.ChildObj.GetComponent<OVRRaycaster>().enabled = true;
         foreach (GameObject item in vrObjs) {
             item.SetActive(true);
         }
@@ -47,7 +55,7 @@ public class NetworkManager : Scene {
         VrCanvas.SetInstance(false);
         LobbyCanvas = AndroidCanvas.GetComponent<LobbyCanvas>();
         current = playfabmanagerAndroid;
-        FindObjectOfType<CharecterEditor>().ChildObj.GetComponent<GraphicRaycaster>().enabled = true;
+        charecterEditor.ChildObj.GetComponent<GraphicRaycaster>().enabled = true;
         foreach (GameObject item in androidObjs) {
             item.SetActive(true);
         }
@@ -87,17 +95,6 @@ public class NetworkManager : Scene {
     public override void OnConnectedToMaster() {
         base.OnConnectedToMaster();
         current.CheckIfTeacher();
-        //Debug.Log(playfabmanager.GetTeacherValue());
-        //string plyertype = playfabmanager.GetTeacherValue() ? PlayerType.Teacher : PlayerType.Student;
-        /*if (LobbyCanvas.UserType.captionText.text == LobbyCanvas.UserType.options[0].text)
-        {
-            plyertype = PlayerType.Teacher;
-        }
-        else if(LobbyCanvas.UserType.captionText.text == LobbyCanvas.UserType.options[1].text)
-        {
-            plyertype = PlayerType.Student;
-        }*/
-
     }
 
     public void LoadAfterGetUserData(bool plyertype) {
@@ -115,11 +112,6 @@ public class NetworkManager : Scene {
 
         LobbyCanvas.LoginGroup.SetActive(false);
         CharecterEditor._instance.TogglePanel(true);
-
-        //LobbyCanvas.JoinGroup.SetActive(true);
-        //Character.SetActive(true);
-
-        //ConnectToRoom();
     }
 
     public void ConnectToRoom() {
@@ -132,12 +124,6 @@ public class NetworkManager : Scene {
         //PhotonNetwork.JoinRandomRoom(); // Join a random room - Callback OnJoinRandomRoomFailed
         //PhotonNetwork.JoinRoom(RoomInput.text);
     }
-
-    /* public override void OnJoinRandomFailed(short returnCode, string message)
-     {
-         Debug.Log("OnJoinRandomFailed");
-         CreateRoom();
-     }*/
 
     public override void OnCreateRoomFailed(short returnCode, string message) {
         Debug.Log("OnCreateRoomFailed " + message);
@@ -163,7 +149,6 @@ public class NetworkManager : Scene {
 
     void CreateRoom() {
         Debug.Log("CreateRoom");
-        //PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = 15 });
         PhotonNetwork.CreateRoom(LobbyCanvas.RoomnameInput.text, new RoomOptions { MaxPlayers = 15 });
     }
 }

@@ -38,16 +38,9 @@ public class CharecterEditor : MonoBehaviour {
 
     private void Start() {
         childObj = transform.GetChild(0).gameObject;
-        //PlayerPrefs.DeleteAll();
-        //LoadModel();
     }
 
     public void TogglePanel(bool index) {
-        //if (PlatformSetting.Instance.platform.Equals(Platform.ANDROID)) {
-        //    androidObj.SetActive(index);
-        //} else if (PlatformSetting.Instance.platform.Equals(Platform.VR)){
-        //    vrObj.SetActive(index);
-        //}
         childObj.SetActive(index);
     }
 

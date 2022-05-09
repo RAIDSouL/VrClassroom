@@ -1,26 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
 
 public class LobbyCanvas : CanvasManager {
-    public static LobbyCanvas _instance;
+    public static LobbyCanvas instance;
 
+    [Header("VR")]
     [SerializeField] GameObject[] toggleObj;
     [SerializeField] LaserPointer laser;
     [SerializeField] VRKeys.Keyboard vrKey;
     [SerializeField] GameObject initializeVRKeyboard;
 
+    [Header("Android")]
     public GameObject LoginGroup, JoinGroup;
+    public TMP_InputField RoomnameInput;
 
-    public TMP_InputField UsernameInput, RoomnameInput;
-
-    public TMP_Dropdown UserType;
-
-    public static LobbyCanvas instance;
-
-
+    //cache
     bool enableUsername = false;
     bool enablePassword = false;
     bool enableRoomname = false;
@@ -32,8 +26,6 @@ public class LobbyCanvas : CanvasManager {
     }
 
     public void OnLogin() {
-        //LoginGroup.SetActive(false);
-        //JoinGroup.SetActive(true);
         NetworkManager.instance.Connect();
     }
 
@@ -63,8 +55,6 @@ public class LobbyCanvas : CanvasManager {
         enablePassword = false;
         enableRoomname = false;
     }
-
-
 
     public void CallVRPasswordInput() {
         VRKeyBoard(true);
