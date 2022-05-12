@@ -12,50 +12,67 @@ using Hashtable = ExitGames.Client.Photon.Hashtable;
 //
 //namespace Networking.Pun2
 //{
-public class NetworkManager : Scene
-{
-    LobbyCanvas LobbyCanvas;
-    public Text status;
-    public GameObject Character;
-    public Playfabmanager playfabmanager;
-
+public class NetworkManager : Scene {
     public static NetworkManager instance;
 
-    private void Awake()
-    {
-        instance = this;
+    public Text status;
+
+    [Header("VR")]
+    public Playfabmanager playfabmanagerVR;
+    [SerializeField] GameObject[] vrObjs;
+
+    [Header("Android")]
+    public Playfabmanager playfabmanagerAndroid;
+    [SerializeField] GameObject[] androidObjs;
+
+    //cache
+    Playfabmanager current;
+    LobbyCanvas LobbyCanvas;
+    CharecterEditor charecterEditor;
+
+    private void Awake() {
+        if (instance.Equals(null)) {
+            instance = this;
+        }
+
+        charecterEditor = FindObjectOfType<CharecterEditor>();
     }
 
-    protected override void Start()
-    {
-        playfabmanager = FindObjectOfType<Playfabmanager>();
-        switch (PlatformSetting.Instance.platform)
-        {
-            case Platform.VR:
-                VrCanvas.SetInstance(true);
-                AndroidCanvas.SetInstance(false);
-                LobbyCanvas = VrCanvas.GetComponent<LobbyCanvas>();
-                break;
-            case Platform.ANDROID:
-                AndroidCanvas.SetInstance(true);
-                VrCanvas.SetInstance(false);
-                LobbyCanvas = AndroidCanvas.GetComponent<LobbyCanvas>();
-                break;
-            default:
-                break;
+    protected override void Start() {
+        switch (PlatformSetting.Instance.platform) {
+        case Platform.VR:
+        VrCanvas.SetInstance(true);
+        AndroidCanvas.SetInstance(false);
+        LobbyCanvas = VrCanvas.GetComponent<LobbyCanvas>();
+        current = playfabmanagerVR;
+        charecterEditor.ChildObj.GetComponent<OVRRaycaster>().enabled = true;
+        foreach (GameObject item in vrObjs) {
+            item.SetActive(true);
+        }
+        break;
+        case Platform.ANDROID:
+        AndroidCanvas.SetInstance(true);
+        VrCanvas.SetInstance(false);
+        LobbyCanvas = AndroidCanvas.GetComponent<LobbyCanvas>();
+        current = playfabmanagerAndroid;
+        charecterEditor.ChildObj.GetComponent<GraphicRaycaster>().enabled = true;
+        foreach (GameObject item in androidObjs) {
+            item.SetActive(true);
+        }
+        break;
+        default:
+        break;
         }
     }
 
-    public void Connect()
-    {
+    public void Connect() {
         ConnectToMaster();
     }
 
 
-    public void ConnectToMaster()
-    {
+    public void ConnectToMaster() {
         PhotonNetwork.OfflineMode = false; //true would "fake" an online connection
-        PhotonNetwork.NickName = "Test" + Random.Range(0,100);//LobbyCanvas.UsernameInput.text; //we can use a input to change this 
+        PhotonNetwork.NickName = "Test" + Random.Range(0, 100);//LobbyCanvas.UsernameInput.text; //we can use a input to change this 
         PhotonNetwork.AutomaticallySyncScene = true; //To call PhotonNetwork.LoadLevel()
         PhotonNetwork.GameVersion = "v1"; //only people with the same game version can play together
 
@@ -65,37 +82,22 @@ public class NetworkManager : Scene
         setstatus("Connecting...");
     }
 
-    public void setstatus(string des)
-    {
+    public void setstatus(string des) {
         status.gameObject.SetActive(true);
         status.text = des;
     }
 
-    public override void OnDisconnected(DisconnectCause cause)
-    {
+    public override void OnDisconnected(DisconnectCause cause) {
         base.OnDisconnected(cause);
         Debug.Log(cause);
     }
 
-    public override void OnConnectedToMaster()
-    {
+    public override void OnConnectedToMaster() {
         base.OnConnectedToMaster();
-        playfabmanager.CheckIfTeacher();
-        //Debug.Log(playfabmanager.GetTeacherValue());
-        //string plyertype = playfabmanager.GetTeacherValue() ? PlayerType.Teacher : PlayerType.Student;
-        /*if (LobbyCanvas.UserType.captionText.text == LobbyCanvas.UserType.options[0].text)
-        {
-            plyertype = PlayerType.Teacher;
-        }
-        else if(LobbyCanvas.UserType.captionText.text == LobbyCanvas.UserType.options[1].text)
-        {
-            plyertype = PlayerType.Student;
-        }*/
-
+        current.CheckIfTeacher();
     }
 
-    public void LoadAfterGetUserData(bool plyertype)
-    {
+    public void LoadAfterGetUserData(bool plyertype) {
         Hashtable ConnectHash = new Hashtable();
         string plyer = plyertype ? PlayerType.Teacher : PlayerType.Student;
         ConnectHash.Add(PropertiesKey.PlayerType, plyer);
@@ -104,46 +106,31 @@ public class NetworkManager : Scene
         Debug.Log("Connected to master!");
         setstatus("Connected");
     }
-    IEnumerator WaitFrameAndConnect()
-    {
+    IEnumerator WaitFrameAndConnect() {
         yield return new WaitForEndOfFrame();
         Debug.Log("Connecting");
 
         LobbyCanvas.LoginGroup.SetActive(false);
         CharecterEditor._instance.TogglePanel(true);
-
-        //LobbyCanvas.JoinGroup.SetActive(true);
-        //Character.SetActive(true);
-
-        //ConnectToRoom();
     }
 
-    public void ConnectToRoom()
-    {
+    public void ConnectToRoom() {
         if (!PhotonNetwork.IsConnected)
             return;
         Debug.Log("ConnectToRoom " + LobbyCanvas.RoomnameInput.text);
         //PhotonNetwork.CreateRoom("name"); //Create a specific room - Callback OnCreateRoomFailed
         PhotonNetwork.JoinRoom(LobbyCanvas.RoomnameInput.text); //Join a specific room - Callback OnJoinRoomFailed
-        
+
         //PhotonNetwork.JoinRandomRoom(); // Join a random room - Callback OnJoinRandomRoomFailed
-                                        //PhotonNetwork.JoinRoom(RoomInput.text);
+        //PhotonNetwork.JoinRoom(RoomInput.text);
     }
 
-   /* public override void OnJoinRandomFailed(short returnCode, string message)
-    {
-        Debug.Log("OnJoinRandomFailed");
-        CreateRoom();
-    }*/
-
-    public override void OnCreateRoomFailed(short returnCode, string message)
-    {
+    public override void OnCreateRoomFailed(short returnCode, string message) {
         Debug.Log("OnCreateRoomFailed " + message);
         base.OnCreateRoomFailed(returnCode, message);
     }
 
-    public override void OnJoinedRoom()
-    {
+    public override void OnJoinedRoom() {
         //Go to next scene after joining the room
         base.OnJoinedRoom();
         Debug.Log("Master: " + PhotonNetwork.IsMasterClient + " | Players In Room: " + PhotonNetwork.CurrentRoom.PlayerCount + " | RoomName: " + PhotonNetwork.CurrentRoom.Name + " Region: " + PhotonNetwork.CloudRegion);
@@ -151,21 +138,17 @@ public class NetworkManager : Scene
         SceneManager.LoadScene(SceneKey.Classroom); //go to the room scene
     }
 
-    public void ConnectRoom()
-    {
+    public void ConnectRoom() {
         PhotonNetwork.JoinRoom(LobbyCanvas.RoomnameInput.text);
     }
 
-    public override void OnJoinRoomFailed(short returnCode, string message)
-    {
+    public override void OnJoinRoomFailed(short returnCode, string message) {
         Debug.Log("OnJoinRoomFailed");
         CreateRoom();
     }
 
-    void CreateRoom()
-    {
+    void CreateRoom() {
         Debug.Log("CreateRoom");
-        //PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = 15 });
         PhotonNetwork.CreateRoom(LobbyCanvas.RoomnameInput.text, new RoomOptions { MaxPlayers = 15 });
     }
 }

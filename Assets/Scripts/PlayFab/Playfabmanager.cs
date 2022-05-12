@@ -31,6 +31,7 @@ public class Playfabmanager : MonoBehaviour
     public InputField passwordInput2;
     public Toggle toggle;
 
+    //cache
     bool isTeacher;
 
     public void RegisterButton()
@@ -171,10 +172,5 @@ public class Playfabmanager : MonoBehaviour
     void OnDataSave(UpdateUserDataResult result)
     {
         Debug.Log("Done Save avatar to playfab");
-    }
-
-    public void MoveCallbackText()
-    {
-        
     }
 }
