@@ -190,8 +190,8 @@ public class Playfabmanager : MonoBehaviour
             PlayerPrefs.SetInt("Chest", int.Parse(result.Data["Chest"].Value));
             PlayerPrefs.SetInt("Leg", int.Parse(result.Data["Leg"].Value));
             PlayerPrefs.SetInt("Feet", int.Parse(result.Data["Feet"].Value));
+            CharecterEditor._instance.LoadModel();
         }
         LobbyCanvas.instance.OnLogin();
-        CharecterEditor._instance.LoadModel();
     }
 }
