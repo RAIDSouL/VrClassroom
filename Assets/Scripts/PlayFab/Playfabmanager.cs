@@ -192,5 +192,6 @@ public class Playfabmanager : MonoBehaviour
             PlayerPrefs.SetInt("Feet", int.Parse(result.Data["Feet"].Value));
         }
         LobbyCanvas.instance.OnLogin();
+        CharecterEditor._instance.LoadModel();
     }
 }
