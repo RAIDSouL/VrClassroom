@@ -38,15 +38,11 @@ public class LoadImageApi : MonoBehaviour
                     Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
                     break;
                 case UnityWebRequest.Result.Success:
-                    //Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
                     var objects = JsonConvert.DeserializeObject<APIResponse[]>(webRequest.downloadHandler.text);
-                    //Debug.Log(objects[0].url.ToString());
-                    //StartCoroutine(DownloadImage(objects[0].url));
                     foreach (var item in objects)
                     {
                         StartCoroutine(DownloadImage(item.url));
                     }
-                    //objects.ToList().ForEach(x => StartCoroutine(DownloadImage(x.ToString())));
                     break;
             }
         }
@@ -61,7 +57,6 @@ public class LoadImageApi : MonoBehaviour
         if (request.isNetworkError || request.isHttpError)
         {
             Debug.Log(request.error);
-            //StopAllCoroutines();
         }
         else
         {
@@ -75,14 +70,20 @@ public class LoadImageApi : MonoBehaviour
     }
     public void LoadNextImage()
     {
-        i++;
-        rawImage.texture = texture2Ds[i];
+        if (i + 1 <= texture2Ds.Count)
+        {
+            i++;
+            rawImage.texture = texture2Ds[i];
+        }
     }
 
     public void LoadPrevImage()
     {
-        i--;
-        rawImage.texture = texture2Ds[i];
+        if (i - 1 > 0)
+        {
+            i--;
+            rawImage.texture = texture2Ds[i];
+        }
     }
 
 }
