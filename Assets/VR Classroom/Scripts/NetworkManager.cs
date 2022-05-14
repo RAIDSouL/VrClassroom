@@ -31,7 +31,7 @@ public class NetworkManager : Scene {
     CharecterEditor charecterEditor;
 
     private void Awake() {
-        if (instance.Equals(null)) {
+        if (instance == null) {
             instance = this;
         }
 
