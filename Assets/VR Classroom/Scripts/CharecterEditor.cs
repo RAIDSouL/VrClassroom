@@ -37,6 +37,7 @@ public class CharecterEditor : MonoBehaviour {
     GameObject childObj;
 
     private void Start() {
+        LoadModel();
         childObj = transform.GetChild(0).gameObject;
     }
 

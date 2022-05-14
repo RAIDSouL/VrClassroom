@@ -93,7 +93,7 @@ public class Playfabmanager : MonoBehaviour
     {
         messageText.text = "logged in!";
         Debug.Log("Succesfull login!");
-        LobbyCanvas.instance.OnLogin();
+        GetAppearance();
         //getstat
     }
 
@@ -172,5 +172,25 @@ public class Playfabmanager : MonoBehaviour
     void OnDataSave(UpdateUserDataResult result)
     {
         Debug.Log("Done Save avatar to playfab");
+    }
+
+    void GetAppearance()
+    {
+        PlayFabClientAPI.GetUserData(new GetUserDataRequest(), OnDataRecieved, (callback) => LobbyCanvas.instance.OnLogin());
+    }
+
+    void OnDataRecieved(GetUserDataResult result)
+    {
+        Debug.Log("Get Data!");
+        if (result.Data != null && result.Data.ContainsKey("Gender")) {
+            PlayerPrefs.SetInt("Gender", int.Parse(result.Data["Gender"].Value));
+            PlayerPrefs.SetInt("Model", int.Parse(result.Data["Model"].Value));
+            PlayerPrefs.SetInt("Hair", int.Parse(result.Data["Hair"].Value));
+            PlayerPrefs.SetInt("Skintone", int.Parse(result.Data["Skintone"].Value));
+            PlayerPrefs.SetInt("Chest", int.Parse(result.Data["Chest"].Value));
+            PlayerPrefs.SetInt("Leg", int.Parse(result.Data["Leg"].Value));
+            PlayerPrefs.SetInt("Feet", int.Parse(result.Data["Feet"].Value));
+        }
+        LobbyCanvas.instance.OnLogin();
     }
 }
