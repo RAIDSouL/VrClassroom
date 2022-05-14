@@ -32,14 +32,16 @@ public class CharecterEditor : MonoBehaviour {
     public bool IsMaleGender { get { return isMaleGender; } set { isMaleGender = value; } }
     public int BoyPrefIndex { get { return boyPrefIndex; } set { boyPrefIndex = value; } }
     public int GirlPrefIndex { get { return girlPrefIndex; } set { girlPrefIndex = value; } }
+    public GameObject ChildObj { get { return childObj; } set { childObj = value; } }
+
+    GameObject childObj;
 
     private void Start() {
-        //PlayerPrefs.DeleteAll();
-        //LoadModel();
+        childObj = transform.GetChild(0).gameObject;
     }
 
     public void TogglePanel(bool index) {
-        transform.GetChild(0).gameObject.SetActive(index);
+        childObj.SetActive(index);
     }
 
     public void ChooseBoy(bool index) {
