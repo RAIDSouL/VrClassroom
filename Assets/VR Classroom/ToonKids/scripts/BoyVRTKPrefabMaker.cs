@@ -33,6 +33,11 @@ public class BoyVRTKPrefabMaker : MonoBehaviour
     public Object[] MATTeeth;
     Material headskin;
 
+    public int Hair { get { return hair; } set { hair = value; } }
+    public int Chest { get { return chest; } set { chest = value; } }
+    public int Skintone { get { return skintone; } set { skintone = value; } }
+
+
     void Start()
     {
         allOptions = false;
@@ -49,18 +54,32 @@ public class BoyVRTKPrefabMaker : MonoBehaviour
         for (int forAUX = 0; forAUX < 6; forAUX++) GOhair[forAUX] = (GetComponent<Transform>().GetChild(forAUX + 3).gameObject);
         GOhair[6] = (GetComponent<Transform>().GetChild(0).gameObject);
         for (int forAUX = 0; forAUX < 4; forAUX++) GOchest[forAUX] = (GetComponent<Transform>().GetChild(forAUX + 10).gameObject);
-        GOglasses = transform.Find("ROOT/TK/TK Pelvis/TK Spine/TK Spine1/TK Spine2/TK Neck/TK Head/Glasses").gameObject as GameObject;  
-        if (GOhair[0].activeSelf && GOhair[1].activeSelf && GOhair[2].activeSelf)
-        {
+        GOglasses = transform.Find("ROOT/TK/TK Pelvis/TK Spine/TK Spine1/TK Spine2/TK Neck/TK Head/Glasses").gameObject as GameObject;
+        if (GOhair[0].activeSelf && GOhair[1].activeSelf && GOhair[2].activeSelf) {
             ResetSkin();
             Randomize();
-        }
-        else
-        {
+        } else {
             for (int forAUX = 0; forAUX < GOhair.Length; forAUX++) { if (GOhair[forAUX].activeSelf) hair = forAUX; }
             while (!GOchest[chest].activeSelf) chest++;
-            if (hair > 6) hatactive = true;            
+            if (hair > 6) hatactive = true;
         }
+
+        //for (int forAUX = 0; forAUX < 2; forAUX++) GOhair[forAUX + 5] = (GetComponent<Transform>().GetChild(forAUX).gameObject);
+        //for (int forAUX = 0; forAUX < 6; forAUX++) GOhair[forAUX] = (GetComponent<Transform>().GetChild(forAUX + 4).gameObject);
+        //for (int forAUX = 0; forAUX < 4; forAUX++) GOchest[forAUX] = (GetComponent<Transform>().GetChild(forAUX + 10).gameObject);
+        //GOglasses = transform.Find("ROOT/TK/TK Pelvis/TK Spine/TK Spine1/TK Spine2/TK Neck/TK Head/Glasses").gameObject as GameObject;
+
+        //if (GOhair[0].activeSelf && GOhair[1].activeSelf && GOhair[2].activeSelf) {
+        //    ResetSkin();
+        //    Randomize();
+        //} else {
+        //    for (int forAUX = 0; forAUX < GOhair.Length; forAUX++) { if (GOhair[forAUX].activeSelf) hair = forAUX; }
+        //    while (!GOchest[chest].activeSelf) chest++;
+
+        //    if (hair > 6) hatactive = true;
+
+
+        //}
     }
     void ResetSkin()
     {
@@ -172,6 +191,20 @@ public class BoyVRTKPrefabMaker : MonoBehaviour
         if (chest < 0) chest = GOchest.Length - 1;
         GOchest[chest].SetActive(true);
     }
+
+    public void LoadOldModel(int skinIndex, int hairIndex, int chestIndex/*, int legIndex, int feetIndex*/) {
+        //GOlegs[legs].SetActive(false);
+        GOchest[chest].SetActive(false);
+        GOhair[hair].SetActive(false);
+        //GOfeet[feet].SetActive(false);
+
+        GOhair[hairIndex].SetActive(true);
+        GOchest[chestIndex].SetActive(true);
+        //GOlegs[legIndex].SetActive(true);
+        //GOfeet[feetIndex].SetActive(true);
+        Nextskincolor(skinIndex);
+    }
+
 
 
     //materials

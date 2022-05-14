@@ -136,7 +136,7 @@ public class Playfabmanager : MonoBehaviour
         return isTeacher;
     }
 
-    public void PlayFabSaveAvatar(int boyPrefIndex, BoyTKPrefabMaker boy)
+    public void PlayFabSaveAvatar(int boyPrefIndex, BoyVRTKPrefabMaker boy)
     {
         var request = new UpdateUserDataRequest
         {
@@ -145,15 +145,16 @@ public class Playfabmanager : MonoBehaviour
                 {"Model" , boyPrefIndex.ToString()},
                 {"Hair", boy.Hair.ToString() },
                 {"Skintone", boy.Skintone.ToString() },
-                {"Chest", boy.Chest.ToString() },
-                { "Leg", boy.Legs.ToString() },
-                { "Feet", boy.Feet.ToString() }
+                {"Chest", boy.Chest.ToString() }
+                //,
+                //{ "Leg", boy.Legs.ToString() },
+                //{ "Feet", boy.Feet.ToString() }
             }
         };
         PlayFabClientAPI.UpdateUserData(request, OnDataSave, OnError);
     }
 
-    public void PlayFabSaveAvatar(int GirlPrefIndex, GirlTKPrefabMaker girl)
+    public void PlayFabSaveAvatar(int GirlPrefIndex, GirlVRTKPrefabMaker girl)
     {
         var request = new UpdateUserDataRequest
         {
@@ -162,9 +163,10 @@ public class Playfabmanager : MonoBehaviour
                 {"Model" , GirlPrefIndex.ToString()},
                 {"Hair", girl.Hair.ToString() },
                 {"Skintone", girl.Skintone.ToString() },
-                {"Chest", girl.Chest.ToString() },
-                { "Leg", girl.Legs.ToString() },
-                { "Feet", girl.Feet.ToString() }
+                {"Chest", girl.Chest.ToString() }
+                //,
+                //{ "Leg", girl.Legs.ToString() },
+                //{ "Feet", girl.Feet.ToString() }
             }
         };
         PlayFabClientAPI.UpdateUserData(request, OnDataSave, OnError);

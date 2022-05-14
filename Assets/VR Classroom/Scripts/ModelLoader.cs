@@ -9,16 +9,16 @@ public class ModelLoader : MonoBehaviour
         //LoadModel();
     }
 
-    public GameObject Load(int Gender, int Model, int Hair, int Skintone, int Chest, int Leg, int Feet)
+    public GameObject Load(int Gender, int Model, int Hair, int Skintone, int Chest/*, int Leg, int Feet*/)
     {
         GameObject character = null;
         if (Gender == 0)
         {
-            character = LoadBoy(Model, Hair, Skintone, Chest, Leg, Feet);
+            character = LoadBoy(Model, Hair, Skintone, Chest/*, Leg, Feet*/);
         }
         else if (Gender == 1)
         {
-            character = LoadGirl(Model, Hair, Skintone, Chest, Leg, Feet);
+            character = LoadGirl(Model, Hair, Skintone, Chest/*, Leg, Feet*/);
         }
         return character;
     }
@@ -38,18 +38,18 @@ public class ModelLoader : MonoBehaviour
             //var buffer = Instantiate(boyPrefs[PlayerPrefs.GetInt("BoyModel")], spawnPos.position, spawnPos.rotation) as GameObject;
             var buffer = boyPrefs[PlayerPrefs.GetInt("Model")];
             buffer.SetActive(true);
-            buffer.GetComponent<BoyTKPrefabMaker>().Getready();
+            buffer.GetComponent<BoyVRTKPrefabMaker>().Getready();
             if (PlayerPrefs.HasKey("Skintone")) {
-                buffer.GetComponent<BoyTKPrefabMaker>().LoadOldModel(PlayerPrefs.GetInt("Skintone"), PlayerPrefs.GetInt("Hair"), PlayerPrefs.GetInt("Chest"), PlayerPrefs.GetInt("Leg"), PlayerPrefs.GetInt("Feet"));
+                buffer.GetComponent<BoyVRTKPrefabMaker>().LoadOldModel(PlayerPrefs.GetInt("Skintone"), PlayerPrefs.GetInt("Hair"), PlayerPrefs.GetInt("Chest")/*, PlayerPrefs.GetInt("Leg"), PlayerPrefs.GetInt("Feet")*/);
             }
         }
     }
-    GameObject LoadBoy(int Model, int Hair, int Skintone, int Chest, int Leg, int Feet)
+    GameObject LoadBoy(int Model, int Hair, int Skintone, int Chest/*, int Leg, int Feet*/)
     {
         GameObject buffer = boyPrefs[Model];
         buffer.SetActive(true);
-        buffer.GetComponent<BoyTKPrefabMaker>().Getready();
-        buffer.GetComponent<BoyTKPrefabMaker>().LoadOldModel(Skintone, Hair, Chest, Leg, Feet);
+        buffer.GetComponent<BoyVRTKPrefabMaker>().Getready();
+        buffer.GetComponent<BoyVRTKPrefabMaker>().LoadOldModel(Skintone, Hair, Chest/*, Leg, Feet*/);
         GameObject character = Instantiate(buffer);
         buffer.SetActive(false);
         return character;
@@ -60,20 +60,20 @@ public class ModelLoader : MonoBehaviour
             //var buffer = Instantiate(girlPrefs[PlayerPrefs.GetInt("GirlModel")], spawnPos.position, spawnPos.rotation) as GameObject;
             var buffer = girlPrefs[PlayerPrefs.GetInt("Model")];
             buffer.SetActive(true);
-            buffer.GetComponent<GirlTKPrefabMaker>().Getready();
+            buffer.GetComponent<GirlVRTKPrefabMaker>().Getready();
             if (PlayerPrefs.HasKey("Skintone")) {
-                buffer.GetComponent<GirlTKPrefabMaker>().LoadOldModel(PlayerPrefs.GetInt("Skintone"), PlayerPrefs.GetInt("Hair"), PlayerPrefs.GetInt("Chest"), PlayerPrefs.GetInt("Leg"), PlayerPrefs.GetInt("Feet"));
+                buffer.GetComponent<GirlVRTKPrefabMaker>().LoadOldModel(PlayerPrefs.GetInt("Skintone"), PlayerPrefs.GetInt("Hair"), PlayerPrefs.GetInt("Chest")/*, PlayerPrefs.GetInt("Leg"), PlayerPrefs.GetInt("Feet")*/);
             }
         }
     }
 
-    GameObject LoadGirl(int Model, int Hair, int Skintone, int Chest, int Leg, int Feet)
+    GameObject LoadGirl(int Model, int Hair, int Skintone, int Chest/*, int Leg, int Feet*/)
     {
         //var buffer = Instantiate(girlPrefs[PlayerPrefs.GetInt("GirlModel")], spawnPos.position, spawnPos.rotation) as GameObject;
         GameObject buffer = girlPrefs[Model];
         buffer.SetActive(true);
-        buffer.GetComponent<GirlTKPrefabMaker>().Getready();
-        buffer.GetComponent<GirlTKPrefabMaker>().LoadOldModel(Skintone, Hair, Chest, Leg, Feet);
+        buffer.GetComponent<GirlVRTKPrefabMaker>().Getready();
+        buffer.GetComponent<GirlVRTKPrefabMaker>().LoadOldModel(Skintone, Hair, Chest/*, Leg, Feet*/);
         GameObject character = Instantiate(buffer);
         buffer.SetActive(false);
         return character;

@@ -24,8 +24,8 @@ public class CharecterEditor : MonoBehaviour {
     int boyPrefIndex = 0;
     int girlPrefIndex = 0;
     bool isMaleGender = false;
-    GirlTKPrefabMaker? girlTemp = null;
-    BoyTKPrefabMaker? boyTemp = null;
+    GirlVRTKPrefabMaker? girlTemp = null;
+    BoyVRTKPrefabMaker? boyTemp = null;
     GameObject? avatar = null;
 
     //Access
@@ -37,6 +37,10 @@ public class CharecterEditor : MonoBehaviour {
     GameObject childObj;
 
     private void Start() {
+<<<<<<< Updated upstream
+=======
+        //PlayerPrefs.DeleteAll();
+>>>>>>> Stashed changes
         //LoadModel();
         childObj = transform.GetChild(0).gameObject;
     }
@@ -61,7 +65,7 @@ public class CharecterEditor : MonoBehaviour {
         if (isMaleGender) {
             boyPrefIndex = boyPrefIndex + 1 < boyPrefs.Length ? boyPrefIndex + 1 : 0;
             avatar = Instantiate(boyPrefs[boyPrefIndex], spawnPos.position, spawnPos.rotation) as GameObject;
-            boyTemp = avatar.GetComponent<BoyTKPrefabMaker>();
+            boyTemp = avatar.GetComponent<BoyVRTKPrefabMaker>();
             boyTemp.Getready();
             if (boyTemp.hatactive) {
                 boyTemp.HatOn();
@@ -69,7 +73,7 @@ public class CharecterEditor : MonoBehaviour {
         } else {
             girlPrefIndex = girlPrefIndex + 1 < girlPrefs.Length ? girlPrefIndex + 1 : 0;
             avatar = Instantiate(girlPrefs[girlPrefIndex], spawnPos.position, spawnPos.rotation) as GameObject;
-            girlTemp = avatar.GetComponent<GirlTKPrefabMaker>();
+            girlTemp = avatar.GetComponent<GirlVRTKPrefabMaker>();
             girlTemp.Getready();
             if (girlTemp.hatactive) {
                 girlTemp.Prevhair();
@@ -115,37 +119,37 @@ public class CharecterEditor : MonoBehaviour {
         }
     }
 
-    public void CallPrevLeg() {
-        if (isMaleGender) {
-            boyTemp.Prevlegs();
-        } else {
-            girlTemp.Prevlegs();
-        }
-    }
+    //public void CallPrevLeg() {
+    //    if (isMaleGender) {
+    //        boyTemp.Prevlegs();
+    //    } else {
+    //        girlTemp.Prevlegs();
+    //    }
+    //}
 
-    public void CallNextLeg() {
-        if (isMaleGender) {
-            boyTemp.Nextlegs();
-        } else {
-            girlTemp.Nextlegs();
-        }
-    }
+    //public void CallNextLeg() {
+    //    if (isMaleGender) {
+    //        boyTemp.Nextlegs();
+    //    } else {
+    //        girlTemp.Nextlegs();
+    //    }
+    //}
 
-    public void CallPrevFeet() {
-        if (isMaleGender) {
-            boyTemp.Prevfeet();
-        } else {
-            girlTemp.Prevfeet();
-        }
-    }
+    //public void CallPrevFeet() {
+    //    if (isMaleGender) {
+    //        boyTemp.Prevfeet();
+    //    } else {
+    //        girlTemp.Prevfeet();
+    //    }
+    //}
 
-    public void CallNextFeet() {
-        if (isMaleGender) {
-            boyTemp.Nextfeet();
-        } else {
-            girlTemp.Nextfeet();
-        }
-    }
+    //public void CallNextFeet() {
+    //    if (isMaleGender) {
+    //        boyTemp.Nextfeet();
+    //    } else {
+    //        girlTemp.Nextfeet();
+    //    }
+    //}
 
     public void CallNextSkinColor(int index) {
         if (isMaleGender) {
@@ -174,27 +178,27 @@ public class CharecterEditor : MonoBehaviour {
         LobbyCanvas.instance.JoinGroup.SetActive(true);
     }
 
-    void SaveModelBoy(BoyTKPrefabMaker boy) {
-        Debug.Log("Hair : " + boy.Hair + " Skintone : " + boy.Skintone + " Chest : " + boy.Chest + " Leg : " + boy.Legs + " Feet : " + boy.Feet);
+    void SaveModelBoy(BoyVRTKPrefabMaker boy) {
+        Debug.Log("Hair : " + boy.Hair + " Skintone : " + boy.Skintone + " Chest : " + boy.Chest /*+ " Leg : " + boy.Legs + " Feet : " + boy.Feet*/);
         PlayerPrefs.SetInt("Gender", 0);
         PlayerPrefs.SetInt("Model", BoyPrefIndex);
         PlayerPrefs.SetInt("Hair", boy.Hair);
         PlayerPrefs.SetInt("Skintone", boy.Skintone);
         PlayerPrefs.SetInt("Chest", boy.Chest);
-        PlayerPrefs.SetInt("Leg", boy.Legs);
-        PlayerPrefs.SetInt("Feet", boy.Feet);
+        //PlayerPrefs.SetInt("Leg", boy.Legs);
+        //PlayerPrefs.SetInt("Feet", boy.Feet);
         Playfabmanager._instance.PlayFabSaveAvatar(BoyPrefIndex, boy);
     }
 
-    void SaveModelGirl(GirlTKPrefabMaker girl) {
-        Debug.Log("Hair : " + girl.Hair + " Skintone : " + girl.Skintone + " Chest : " + girl.Chest + " Leg : " + girl.Legs + " Feet : " + girl.Feet);
+    void SaveModelGirl(GirlVRTKPrefabMaker girl) {
+        Debug.Log("Hair : " + girl.Hair + " Skintone : " + girl.Skintone + " Chest : " + girl.Chest/* + " Leg : " + girl.Legs + " Feet : " + girl.Feet*/);
         PlayerPrefs.SetInt("Gender", 1);
         PlayerPrefs.SetInt("Model", GirlPrefIndex);
         PlayerPrefs.SetInt("Hair", girl.Hair);
         PlayerPrefs.SetInt("Skintone", girl.Skintone);
         PlayerPrefs.SetInt("Chest", girl.Chest);
-        PlayerPrefs.SetInt("Leg", girl.Legs);
-        PlayerPrefs.SetInt("Feet", girl.Feet);
+        //PlayerPrefs.SetInt("Leg", girl.Legs);
+        //PlayerPrefs.SetInt("Feet", girl.Feet);
         Playfabmanager._instance.PlayFabSaveAvatar(GirlPrefIndex, girl);
     }
 
@@ -211,9 +215,9 @@ public class CharecterEditor : MonoBehaviour {
     void LoadBoy() {
         if (PlayerPrefs.HasKey("Model")) {
             var buffer = Instantiate(boyPrefs[PlayerPrefs.GetInt("Model")], spawnPos.position, spawnPos.rotation) as GameObject;
-            buffer.GetComponent<BoyTKPrefabMaker>().Getready();
+            buffer.GetComponent<BoyVRTKPrefabMaker>().Getready();
             if (PlayerPrefs.HasKey("Skintone")) {
-                buffer.GetComponent<BoyTKPrefabMaker>().LoadOldModel(PlayerPrefs.GetInt("Skintone"), PlayerPrefs.GetInt("Hair"), PlayerPrefs.GetInt("Chest"), PlayerPrefs.GetInt("Leg"), PlayerPrefs.GetInt("Feet"));
+                buffer.GetComponent<BoyVRTKPrefabMaker>().LoadOldModel(PlayerPrefs.GetInt("Skintone"), PlayerPrefs.GetInt("Hair"), PlayerPrefs.GetInt("Chest")/*, PlayerPrefs.GetInt("Leg"), PlayerPrefs.GetInt("Feet")*/);
             }
         }
     }
@@ -221,9 +225,9 @@ public class CharecterEditor : MonoBehaviour {
     void LoadGirl() {
         if (PlayerPrefs.HasKey("Model")) {
             var buffer = Instantiate(girlPrefs[PlayerPrefs.GetInt("Model")], spawnPos.position, spawnPos.rotation) as GameObject;
-            buffer.GetComponent<GirlTKPrefabMaker>().Getready();
+            buffer.GetComponent<GirlVRTKPrefabMaker>().Getready();
             if (PlayerPrefs.HasKey("Skintone")) {
-                buffer.GetComponent<GirlTKPrefabMaker>().LoadOldModel(PlayerPrefs.GetInt("Skintone"), PlayerPrefs.GetInt("Hair"), PlayerPrefs.GetInt("Chest"), PlayerPrefs.GetInt("Leg"), PlayerPrefs.GetInt("Feet"));
+                buffer.GetComponent<GirlVRTKPrefabMaker>().LoadOldModel(PlayerPrefs.GetInt("Skintone"), PlayerPrefs.GetInt("Hair"), PlayerPrefs.GetInt("Chest")/*, PlayerPrefs.GetInt("Leg"), PlayerPrefs.GetInt("Feet")*/);
             }
         }
     }

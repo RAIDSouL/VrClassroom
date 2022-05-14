@@ -34,6 +34,11 @@ public class GirlVRTKPrefabMaker : MonoBehaviour
     public Object[] MATTeeth;
     Material headskin;
 
+    public int Hair { get { return hair; } set { hair = value; } }
+    public int Chest { get { return chest; } set { chest = value; } }
+    public int Skintone { get { return skintone; } set { skintone = value; } }
+
+
     void Start()
     {
         allOptions = false;
@@ -195,7 +200,19 @@ public class GirlVRTKPrefabMaker : MonoBehaviour
         if (chest < 0) chest = GOchest.Length - 1;
         GOchest[chest].SetActive(true);
     }
-    
+
+    public void LoadOldModel(int skinIndex, int hairIndex, int chestIndex/*, int legIndex, int feetIndex*/) {
+        //GOlegs[legs].SetActive(false);
+        GOchest[chest].SetActive(false);
+        GOhair[hair].SetActive(false);
+        //GOfeet[feet].SetActive(false);
+
+        GOhair[hairIndex].SetActive(true);
+        GOchest[chestIndex].SetActive(true);
+        //GOlegs[legIndex].SetActive(true);
+        //GOfeet[feetIndex].SetActive(true);
+        Nextskincolor(skinIndex);
+    }
 
     //materials
     public void Nextskincolor(int todo)
