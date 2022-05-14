@@ -37,10 +37,7 @@ public class CharecterEditor : MonoBehaviour {
     GameObject childObj;
 
     private void Start() {
-<<<<<<< Updated upstream
-=======
         //PlayerPrefs.DeleteAll();
->>>>>>> Stashed changes
         //LoadModel();
         childObj = transform.GetChild(0).gameObject;
     }
