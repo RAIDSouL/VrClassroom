@@ -198,7 +198,7 @@ public class CharecterEditor : MonoBehaviour {
         Playfabmanager._instance.PlayFabSaveAvatar(GirlPrefIndex, girl);
     }
 
-    void LoadModel() {
+    public void LoadModel() {
         if (PlayerPrefs.HasKey("Gender")) {
             if (PlayerPrefs.GetInt("Gender") == 0) {
                 LoadBoy();
