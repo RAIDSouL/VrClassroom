@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 5c8d5031ce45e4962818ca2b5426a8cf, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.18641064, g: 0.52327114, b: 0.83382845, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1187,6 +1187,10 @@ PrefabInstance:
       propertyPath: pointer
       value: 
       objectReference: {fileID: 1603417046}
+    - target: {fileID: 3386662407264509584, guid: 2a23707516f9ef34aba53f2b6fc94fd0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3386662407507883138, guid: 2a23707516f9ef34aba53f2b6fc94fd0, type: 3}
       propertyPath: m_Name
       value: CharecterEditor
@@ -1243,10 +1247,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3386662407542630695, guid: 2a23707516f9ef34aba53f2b6fc94fd0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.375
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386662407542630695, guid: 2a23707516f9ef34aba53f2b6fc94fd0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386662407914283971, guid: 2a23707516f9ef34aba53f2b6fc94fd0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3386662407914283983, guid: 2a23707516f9ef34aba53f2b6fc94fd0, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1671771315}
+    - target: {fileID: 3386662408060760804, guid: 2a23707516f9ef34aba53f2b6fc94fd0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -501
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386662408509087936, guid: 2a23707516f9ef34aba53f2b6fc94fd0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -701.0001
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386662408543124569, guid: 2a23707516f9ef34aba53f2b6fc94fd0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -301.0001
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a23707516f9ef34aba53f2b6fc94fd0, type: 3}
 --- !u!114 &1234534832 stripped
@@ -1524,7 +1552,7 @@ Camera:
   m_GameObject: {fileID: 1671771314}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.11320752, g: 0.11320752, b: 0.11320752, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2

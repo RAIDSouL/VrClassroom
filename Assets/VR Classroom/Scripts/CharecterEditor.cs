@@ -26,7 +26,7 @@ public class CharecterEditor : MonoBehaviour {
     bool isMaleGender = false;
     GirlVRTKPrefabMaker? girlTemp = null;
     BoyVRTKPrefabMaker? boyTemp = null;
-    GameObject? avatar = null;
+    [SerializeField] GameObject? avatar = null;
 
     //Access
     public bool IsMaleGender { get { return isMaleGender; } set { isMaleGender = value; } }
@@ -171,6 +171,7 @@ public class CharecterEditor : MonoBehaviour {
             SaveModelGirl(girlTemp);
         }
 
+        FindObjectOfType<Animator>().gameObject.SetActive(false);
         TogglePanel(false);
         LobbyCanvas.instance.JoinGroup.SetActive(true);
     }
