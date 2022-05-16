@@ -52,12 +52,19 @@ namespace ChiliGames.VRClassroom {
             int sit = (int)instantiationData[2];
             Debug.LogErrorFormat("{0} Gender {1} Model {2} Hair {3} Skintone {4} Chest {5} Leg {6} Feet {7} sit {8}", type, Gender == 0 ? "Boy" : "Girl", Model, Hair, Skintone, Chest, Leg, Feet, sit);
             GameObject mychar = PlatformManager.instance.ModelLoader.Load(Gender, Model, Hair, Skintone, Chest/*, Leg, Feet*/);
-            mychar.transform.parent = this.transform;
+            
             if (sit > -1)
             {
+                transform.position = PlatformManager.instance.studentdesk[sit].Charpos.position;
+                transform.rotation = PlatformManager.instance.studentdesk[sit].Charpos.rotation;
                 mychar.transform.position = PlatformManager.instance.studentdesk[sit].Charpos.position;
                 mychar.transform.rotation = PlatformManager.instance.studentdesk[sit].Charpos.rotation;
             }
+            
+            mychar.transform.parent = this.transform;
+
+            if (pv.IsMine)
+                PlatformManager.instance.studentRig.transform.parent = this.transform;
         }
     }
 }
