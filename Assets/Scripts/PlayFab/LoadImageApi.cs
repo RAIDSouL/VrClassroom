@@ -14,7 +14,8 @@ public class LoadImageApi : MonoBehaviour
     int i = 0;
     void Start()
     {
-        StartCoroutine(GetRequest("https://5a48-202-29-32-87.ngrok.io/api/gallery"));
+        texture2Ds.Clear();
+        StartCoroutine(GetRequest("http://d33b-202-29-32-87.ngrok.io/api/gallery"));
         //StartCoroutine(DownloadImage("https://5a48-202-29-32-87.ngrok.io/storage/files/evAjLpSQxgjidws5NWzCPjgzsVM81vdz24IhWeY3.jpg"));
     }
 
@@ -27,6 +28,7 @@ public class LoadImageApi : MonoBehaviour
 
             string[] pages = uri.Split('/');
             int page = pages.Length - 1;
+            int i = 0;
 
             switch (webRequest.result)
             {
@@ -41,14 +43,16 @@ public class LoadImageApi : MonoBehaviour
                     var objects = JsonConvert.DeserializeObject<APIResponse[]>(webRequest.downloadHandler.text);
                     foreach (var item in objects)
                     {
-                        StartCoroutine(DownloadImage(item.url));
+                        texture2Ds.Add(null);
+                        StartCoroutine(DownloadImage(item.url, i));
+                        i++;
                     }
                     break;
             }
         }
     }
 
-    IEnumerator DownloadImage(string MediaUrl)
+    IEnumerator DownloadImage(string MediaUrl,int i)
     {
         Debug.Log("downloading : " + MediaUrl);
         UnityWebRequest request = UnityWebRequestTexture.GetTexture(MediaUrl);
@@ -60,7 +64,7 @@ public class LoadImageApi : MonoBehaviour
         }
         else
         {
-            texture2Ds.Add(((DownloadHandlerTexture)request.downloadHandler).texture);
+            texture2Ds[i] = ((DownloadHandlerTexture)request.downloadHandler).texture;
         }
     }
 

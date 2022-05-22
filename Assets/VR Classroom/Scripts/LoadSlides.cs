@@ -10,12 +10,15 @@ using Hashtable = ExitGames.Client.Photon.Hashtable;
 using Newtonsoft.Json;
 using UnityEngine.UI;
 
-namespace ChiliGames.VRClassroom {
+namespace ChiliGames.VRClassroom
+{
     //Class to handle loading slides in Oculus Quest data folder, more information in the Readme.pdf
-    public class LoadSlides : MonoBehaviourPunCallbacks {
+    public class LoadSlides : MonoBehaviourPunCallbacks
+    {
         public List<Texture2D> textureList;
         public int imgCount;
 
+        int imgDownloaded;
         int currentSlide = 0;
         bool ableToNextSlide = true;
 
@@ -37,7 +40,9 @@ namespace ChiliGames.VRClassroom {
         void Awake()
         {
             imgCount = 0;
-            StartCoroutine(GetRequest("https://5a48-202-29-32-87.ngrok.io/api/gallery"));
+            imgDownloaded = 0;
+            textureList.Clear();
+            StartCoroutine(GetRequest("http://d33b-202-29-32-87.ngrok.io/api/gallery"));
         }
 
         public override void OnRoomPropertiesUpdate(Hashtable propertiesThatChanged)
@@ -123,7 +128,7 @@ namespace ChiliGames.VRClassroom {
 
                 string[] pages = uri.Split('/');
                 int page = pages.Length - 1;
-
+                int i = 0;
                 switch (webRequest.result)
                 {
                     case UnityWebRequest.Result.ConnectionError:
@@ -134,17 +139,20 @@ namespace ChiliGames.VRClassroom {
                         Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
                         break;
                     case UnityWebRequest.Result.Success:
+                        //Debug.Log(webRequest.downloadHandler.text);
                         var objects = JsonConvert.DeserializeObject<APIResponse[]>(webRequest.downloadHandler.text);
                         foreach (var item in objects)
                         {
+                            textureList.Add(null);
                             imgCount++;
-                            StartCoroutine(DownloadImage(item.url));
+                            StartCoroutine(DownloadImage(item.url, i));
+                            i++;
                         }
                         break;
                 }
             }
         }
-        IEnumerator DownloadImage(string MediaUrl)
+        IEnumerator DownloadImage(string MediaUrl, int i)
         {
             Debug.Log("downloading : " + MediaUrl);
             UnityWebRequest request = UnityWebRequestTexture.GetTexture(MediaUrl);
@@ -156,8 +164,9 @@ namespace ChiliGames.VRClassroom {
             }
             else
             {
-                textureList.Add(((DownloadHandlerTexture)request.downloadHandler).texture);
-                if (textureList.Count == imgCount)
+                textureList[i] = (((DownloadHandlerTexture)request.downloadHandler).texture);
+                imgDownloaded++;
+                if (imgDownloaded == imgCount)
                 {
                     LoadAllSpritesFromPngFilesInFolderAndAllSubFolders();
                 }

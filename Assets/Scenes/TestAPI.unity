@@ -358,7 +358,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rawImage: {fileID: 606645888}
-  texture2Ds: []
+  texture2Ds:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &665419801
 Transform:
   m_ObjectHideFlags: 0
