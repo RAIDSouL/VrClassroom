@@ -26,6 +26,7 @@ namespace ChiliGames.VRClassroom
 
         [SerializeField] MeshRenderer quad;
         [SerializeField] MeshRenderer[] screens;
+        [SerializeField] GameObject ImgScreen;
 
         public override void OnEnable()
         {
@@ -39,6 +40,8 @@ namespace ChiliGames.VRClassroom
 
         void Awake()
         {
+            ImgScreen = GameObject.Find("TeacherScreen");
+            ImgScreen.SetActive(false);
             imgCount = 0;
             imgDownloaded = 0;
             textureList.Clear();
@@ -168,6 +171,7 @@ namespace ChiliGames.VRClassroom
                 imgDownloaded++;
                 if (imgDownloaded == imgCount)
                 {
+                    ImgScreen.SetActive(true);
                     LoadAllSpritesFromPngFilesInFolderAndAllSubFolders();
                 }
             }
