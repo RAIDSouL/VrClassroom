@@ -11,6 +11,7 @@ namespace ChiliGames.VRClassroom {
     {
 
         public Transform[] body;
+        public JointManager JointManager;
         PhotonView pv;
 
         private void Awake() {
@@ -52,6 +53,7 @@ namespace ChiliGames.VRClassroom {
             int sit = (int)instantiationData[2];
             Debug.LogErrorFormat("{0} Gender {1} Model {2} Hair {3} Skintone {4} Chest {5} Leg {6} Feet {7} sit {8}", type, Gender == 0 ? "Boy" : "Girl", Model, Hair, Skintone, Chest, Leg, Feet, sit);
             GameObject mychar = PlatformManager.instance.ModelLoader.Load(Gender, Model, Hair, Skintone, Chest/*, Leg, Feet*/);
+            JointManager = mychar.GetComponent<JointManager>();
             
             if (sit > -1)
             {
@@ -64,7 +66,13 @@ namespace ChiliGames.VRClassroom {
             mychar.transform.parent = this.transform;
 
             if (pv.IsMine)
+            {
+                PhotonTransformView ptv = JointManager.Controller.GetComponent<PhotonTransformView>();
+                ptv.enabled = true;
                 PlatformManager.instance.studentRig.transform.parent = this.transform;
+                PlatformManager.instance.SetStudentAndroid(this);
+            }
+                
         }
     }
 }

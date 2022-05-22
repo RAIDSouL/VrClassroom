@@ -52,6 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body:
   - {fileID: 8884593231392065098}
+  JointManager: {fileID: 0}
   Gender: 0
   Model: 0
   Hair: 0

@@ -1,5 +1,65 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2192564920231882221
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2589968561244909048}
+  m_Layer: 0
+  m_Name: Handup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2589968561244909048
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2192564920231882221}
+  m_LocalRotation: {x: 0.52258545, y: -0.47294748, z: -0.4784177, w: 0.5237763}
+  m_LocalPosition: {x: 0.1914623, y: 0.84089744, z: 0.006380181}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7364109174107887390}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5486249296761077056
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4044488133448945558}
+  m_Layer: 0
+  m_Name: Normal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4044488133448945558
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5486249296761077056}
+  m_LocalRotation: {x: 0.4345003, y: 0.55786115, z: -0.70037234, w: 0.09736064}
+  m_LocalPosition: {x: 0.14191929, y: 0.52424616, z: -0.010620045}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7364109174107887390}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7364109174107720352
 GameObject:
   m_ObjectHideFlags: 0
@@ -2198,6 +2258,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7364109174107887344}
+  - component: {fileID: 6543287037817525289}
   m_Layer: 0
   m_Name: TK R Forearm
   m_TagString: Untagged
@@ -2220,6 +2281,22 @@ Transform:
   m_Father: {fileID: 7364109174107887352}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6543287037817525289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7364109174107720464}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &7364109174107720466
 GameObject:
   m_ObjectHideFlags: 0
@@ -2940,6 +3017,7 @@ GameObject:
   - component: {fileID: 7479736542790987150}
   - component: {fileID: 1656462894947135243}
   - component: {fileID: 708771583848689769}
+  - component: {fileID: 1043934132350368693}
   m_Layer: 0
   m_Name: TKVRBoyA
   m_TagString: Untagged
@@ -2972,6 +3050,8 @@ Transform:
   - {fileID: 7364109174107887386}
   - {fileID: 7364109174107887378}
   - {fileID: 7364109174107887388}
+  - {fileID: 4044488133448945558}
+  - {fileID: 2589968561244909048}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2983,7 +3063,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7364109174107720510}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 46ed376abb7e55e44bcb3e6409ec1e1c, type: 3}
   m_Controller: {fileID: 9100000, guid: d63579a9cd9b0b7459bdc0166c01dcb5, type: 2}
   m_CullingMode: 0
@@ -3025,7 +3105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a29c115c24972b147a83929e221f641b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allOptions: 1
+  allOptions: 0
   glassesactive: 0
   hatactive: 0
   MATSkins:
@@ -3130,3 +3210,18 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 19fc86b9a97ea3840ac8cf91feca420d, type: 2}
   - {fileID: 2100000, guid: 8fc8aed55a6a6af4f954d0c55f42e8f6, type: 2}
   - {fileID: 2100000, guid: 716b1a016990d384f8a1a97f4198ae55, type: 2}
+--- !u!114 &1043934132350368693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7364109174107720510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c79b5e6321a9f08478e5de3a57e6a937, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Normal: {fileID: 4044488133448945558}
+  Handup: {fileID: 2589968561244909048}
+  Controller: {fileID: 7364109174107887344}

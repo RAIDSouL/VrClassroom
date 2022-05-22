@@ -74,6 +74,13 @@ namespace ChiliGames.VRClassroom {
                 mychar.transform.position = PlatformManager.instance.studentdesk[sit].Charpos.position;
                 mychar.transform.rotation = PlatformManager.instance.studentdesk[sit].Charpos.rotation;
             }
+            if (pv.IsMine)
+            {
+                if(PlatformManager.instance.mode == PlatformManager.Mode.Teacher)
+                    PlatformManager.instance.teacherRig.transform.parent = this.transform;
+                else
+                    PlatformManager.instance.studentRig.transform.parent = this.transform;
+            }
         }
     }
 }

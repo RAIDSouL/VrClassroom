@@ -4,11 +4,12 @@ using UnityEngine.SceneManagement;
 using Photon.Realtime;
 using System.Collections;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
+using UnityEngine.UI;
 
 namespace ChiliGames.VRClassroom {
     //This script handles the different modes: Teacher, StudentVR, StudentPhone
     public class PlatformManager : MonoBehaviourPunCallbacks {
-        [SerializeField] GameObject teacherRig;
+        public GameObject teacherRig;
         public GameObject studentRig;
         public ModelLoader ModelLoader;
         public Desk[] studentdesk;
@@ -39,6 +40,8 @@ namespace ChiliGames.VRClassroom {
 
         //Whiteboards
         public Whiteboard smallWhiteboard;
+
+        public StudentBodyFollow MyChar;
 
         public static PlatformManager instance;
 
@@ -267,6 +270,12 @@ namespace ChiliGames.VRClassroom {
                 PlayerPrefs.GetInt("Feet"), 
             };
             return Data;
+        }
+
+        public void SetStudentAndroid(StudentBodyFollow studentBodyFollow)
+        {
+            MyChar = studentBodyFollow;
+            // genCanvas
         }
     }
 }
