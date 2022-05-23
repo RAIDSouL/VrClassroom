@@ -131,7 +131,20 @@ public class GirlVRTKPrefabMaker : MonoBehaviour
         glassesactive = !glassesactive;
         GOglasses.SetActive(glassesactive);
     }
-    
+
+    public void HatOn() {
+        if (!hatactive) {
+            GOhair[hair].SetActive(false);
+            hair = 6;
+            GOhair[hair].SetActive(true);
+            hatactive = true;
+        } else {
+            GOhair[hair].SetActive(false);
+            //hair = 0;
+            GOhair[hair].SetActive(true);
+            hatactive = false;
+        }
+    }
 
     //models
     public void NextHat()
@@ -208,7 +221,9 @@ public class GirlVRTKPrefabMaker : MonoBehaviour
         //GOfeet[feet].SetActive(false);
 
         GOhair[hairIndex].SetActive(true);
+        hair = hairIndex;
         GOchest[chestIndex].SetActive(true);
+        chest = chestIndex;
         //GOlegs[legIndex].SetActive(true);
         //GOfeet[feetIndex].SetActive(true);
         Nextskincolor(skinIndex);

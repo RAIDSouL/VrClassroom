@@ -48,8 +48,15 @@ public class ModelLoader : MonoBehaviour
     {
         GameObject buffer = boyPrefs[Model];
         buffer.SetActive(true);
-        buffer.GetComponent<BoyVRTKPrefabMaker>().Getready();
-        buffer.GetComponent<BoyVRTKPrefabMaker>().LoadOldModel(Skintone, Hair, Chest/*, Leg, Feet*/);
+        BoyVRTKPrefabMaker boyTemp = buffer.GetComponent<BoyVRTKPrefabMaker>();
+        boyTemp.Getready();
+        boyTemp.LoadOldModel(Skintone, Hair, Chest/*, Leg, Feet*/);
+        if (boyTemp.hatactive) {
+            boyTemp.HatOn();
+        }
+        if (boyTemp.glassesactive) {
+            boyTemp.Glasseson();
+        }
         GameObject character = Instantiate(buffer);
         buffer.SetActive(false);
         return character;
@@ -72,8 +79,15 @@ public class ModelLoader : MonoBehaviour
         //var buffer = Instantiate(girlPrefs[PlayerPrefs.GetInt("GirlModel")], spawnPos.position, spawnPos.rotation) as GameObject;
         GameObject buffer = girlPrefs[Model];
         buffer.SetActive(true);
-        buffer.GetComponent<GirlVRTKPrefabMaker>().Getready();
-        buffer.GetComponent<GirlVRTKPrefabMaker>().LoadOldModel(Skintone, Hair, Chest/*, Leg, Feet*/);
+        GirlVRTKPrefabMaker girlTemp = buffer.GetComponent<GirlVRTKPrefabMaker>();
+        girlTemp.Getready();
+        girlTemp.LoadOldModel(Skintone, Hair, Chest/*, Leg, Feet*/);
+        if (girlTemp.hatactive) {
+            girlTemp.HatOn();
+        }
+        if (girlTemp.glassesactive) {
+            girlTemp.Glasseson();
+        }
         GameObject character = Instantiate(buffer);
         buffer.SetActive(false);
         return character;

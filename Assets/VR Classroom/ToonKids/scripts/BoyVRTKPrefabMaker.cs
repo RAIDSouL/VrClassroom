@@ -120,7 +120,7 @@ public class BoyVRTKPrefabMaker : MonoBehaviour {
             hatactive = true;
         } else {
             GOhair[hair].SetActive(false);
-            hair = 0;
+            //hair = 0;
             GOhair[hair].SetActive(true);
             hatactive = false;
         }
@@ -163,13 +163,13 @@ public class BoyVRTKPrefabMaker : MonoBehaviour {
         //GOfeet[feet].SetActive(false);
 
         GOhair[hairIndex].SetActive(true);
+        hair = hairIndex;
         GOchest[chestIndex].SetActive(true);
+        chest = chestIndex;
         //GOlegs[legIndex].SetActive(true);
         //GOfeet[feetIndex].SetActive(true);
         Nextskincolor(skinIndex);
     }
-
-
 
     //materials
     public void Nextskincolor(int todo) {

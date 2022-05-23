@@ -1,5 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharecterEditor : MonoBehaviour {
     public static CharecterEditor _instance;
@@ -16,6 +17,7 @@ public class CharecterEditor : MonoBehaviour {
     [SerializeField] GameObject[] girlPrefs;
     [SerializeField] Transform spawnPos;
     [SerializeField] GameObject confirmPanel;
+    [SerializeField] Button oldSaveBtn;
 
     [Header("Customize")]
     [SerializeField] GameObject customizePanel;
@@ -49,6 +51,10 @@ public class CharecterEditor : MonoBehaviour {
     public void ChooseBoy(bool index) {
         isMaleGender = index;
         ReloadAvatar();
+        HideGenderPanel();
+    }
+
+    private void HideGenderPanel() {
         sexPanel.transform.DOScaleY(0f, .25f).SetEase(Ease.InBack);
         confirmPanel.SetActive(true);
         confirmPanel.transform.DOScaleY(1f, 0.5f).SetEase(Ease.OutBack).SetDelay(.5f);
@@ -67,6 +73,9 @@ public class CharecterEditor : MonoBehaviour {
             if (boyTemp.hatactive) {
                 boyTemp.HatOn();
             }
+            if (boyTemp.glassesactive) {
+                boyTemp.Glasseson();
+            }
         } else {
             girlPrefIndex = girlPrefIndex + 1 < girlPrefs.Length ? girlPrefIndex + 1 : 0;
             avatar = Instantiate(girlPrefs[girlPrefIndex], spawnPos.position, spawnPos.rotation) as GameObject;
@@ -74,6 +83,9 @@ public class CharecterEditor : MonoBehaviour {
             girlTemp.Getready();
             if (girlTemp.hatactive) {
                 girlTemp.Prevhair();
+            }
+            if (girlTemp.glassesactive) {
+                girlTemp.Glasseson();
             }
         }
         Debug.Log("Boy: " + boyTemp + " Girl: " + girlTemp);
@@ -208,25 +220,44 @@ public class CharecterEditor : MonoBehaviour {
                 LoadGirl();
             }
         }
+        HideGenderPanel();
     }
 
     void LoadBoy() {
         if (PlayerPrefs.HasKey("Model")) {
-            var buffer = Instantiate(boyPrefs[PlayerPrefs.GetInt("Model")], spawnPos.position, spawnPos.rotation) as GameObject;
-            buffer.GetComponent<BoyVRTKPrefabMaker>().Getready();
+            avatar = Instantiate(boyPrefs[PlayerPrefs.GetInt("Model")], spawnPos.position, spawnPos.rotation) as GameObject;
+            boyTemp = avatar.GetComponent<BoyVRTKPrefabMaker>();
+            boyTemp.Getready();
             if (PlayerPrefs.HasKey("Skintone")) {
-                buffer.GetComponent<BoyVRTKPrefabMaker>().LoadOldModel(PlayerPrefs.GetInt("Skintone"), PlayerPrefs.GetInt("Hair"), PlayerPrefs.GetInt("Chest")/*, PlayerPrefs.GetInt("Leg"), PlayerPrefs.GetInt("Feet")*/);
+                boyTemp.LoadOldModel(PlayerPrefs.GetInt("Skintone"), PlayerPrefs.GetInt("Hair"), PlayerPrefs.GetInt("Chest")/*, PlayerPrefs.GetInt("Leg"), PlayerPrefs.GetInt("Feet")*/);
+            }
+            if (boyTemp.hatactive) {
+                boyTemp.HatOn();
+            }
+            if (boyTemp.glassesactive) {
+                boyTemp.Glasseson();
             }
         }
     }
 
     void LoadGirl() {
         if (PlayerPrefs.HasKey("Model")) {
-            var buffer = Instantiate(girlPrefs[PlayerPrefs.GetInt("Model")], spawnPos.position, spawnPos.rotation) as GameObject;
-            buffer.GetComponent<GirlVRTKPrefabMaker>().Getready();
+            avatar = Instantiate(girlPrefs[PlayerPrefs.GetInt("Model")], spawnPos.position, spawnPos.rotation) as GameObject;
+            girlTemp = avatar.GetComponent<GirlVRTKPrefabMaker>();
+            girlTemp.Getready();
             if (PlayerPrefs.HasKey("Skintone")) {
-                buffer.GetComponent<GirlVRTKPrefabMaker>().LoadOldModel(PlayerPrefs.GetInt("Skintone"), PlayerPrefs.GetInt("Hair"), PlayerPrefs.GetInt("Chest")/*, PlayerPrefs.GetInt("Leg"), PlayerPrefs.GetInt("Feet")*/);
+                girlTemp.LoadOldModel(PlayerPrefs.GetInt("Skintone"), PlayerPrefs.GetInt("Hair"), PlayerPrefs.GetInt("Chest")/*, PlayerPrefs.GetInt("Leg"), PlayerPrefs.GetInt("Feet")*/);
+            }
+            if (girlTemp.hatactive) {
+                girlTemp.HatOn();
+            }
+            if (girlTemp.glassesactive) {
+                girlTemp.Glasseson();
             }
         }
+    }
+
+    public void CallOldSaveModel() {
+        oldSaveBtn.interactable = true;
     }
 }
