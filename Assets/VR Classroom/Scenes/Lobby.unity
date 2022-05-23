@@ -747,6 +747,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &517827148 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1145621558, guid: 2a23707516f9ef34aba53f2b6fc94fd0, type: 3}
+  m_PrefabInstance: {fileID: 1145621556}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7aaf960227867044282d921171d2d7ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &517827149 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3386662407914283981, guid: 2a23707516f9ef34aba53f2b6fc94fd0, type: 3}
+  m_PrefabInstance: {fileID: 1145621556}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &627484381 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 477154, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
@@ -1174,6 +1196,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09f7788c05d7b9949bd73d72ecc84b35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1013404904 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3386662407507883148, guid: 2a23707516f9ef34aba53f2b6fc94fd0, type: 3}
+  m_PrefabInstance: {fileID: 1145621556}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b95c2480b4866a4f90803af52703186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1145621556
@@ -1647,6 +1680,11 @@ MonoBehaviour:
   playfabmanagerAndroid: {fileID: 253392196}
   androidObjs:
   - {fileID: 272497467}
+  current: {fileID: 0}
+  LobbyCanvas: {fileID: 0}
+  OVRRaycaster: {fileID: 517827148}
+  GraphicRaycaster: {fileID: 517827149}
+  charecterEditor: {fileID: 1013404904}
 --- !u!4 &1677589529
 Transform:
   m_ObjectHideFlags: 0
@@ -1668,7 +1706,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1677589527}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cbbff1301aa8fdb4db344f0b0d6dd79f, type: 3}
   m_Name: 

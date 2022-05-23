@@ -26,16 +26,18 @@ public class NetworkManager : Scene {
     [SerializeField] GameObject[] androidObjs;
 
     //cache
-    Playfabmanager current;
-    LobbyCanvas LobbyCanvas;
-    CharecterEditor charecterEditor;
+    public Playfabmanager current;
+    public LobbyCanvas LobbyCanvas;
+    public OVRRaycaster OVRRaycaster;
+    public GraphicRaycaster GraphicRaycaster;
+    public CharecterEditor charecterEditor;
 
     private void Awake() {
         if (instance == null) {
             instance = this;
         }
 
-        charecterEditor = FindObjectOfType<CharecterEditor>();
+        //charecterEditor = FindObjectOfType<CharecterEditor>();
     }
 
     protected override void Start() {
@@ -45,7 +47,7 @@ public class NetworkManager : Scene {
         AndroidCanvas.SetInstance(false);
         LobbyCanvas = VrCanvas.GetComponent<LobbyCanvas>();
         current = playfabmanagerVR;
-        charecterEditor.ChildObj.GetComponent<OVRRaycaster>().enabled = true;
+        OVRRaycaster.enabled = true;
         foreach (GameObject item in vrObjs) {
             item.SetActive(true);
         }
@@ -55,10 +57,10 @@ public class NetworkManager : Scene {
         VrCanvas.SetInstance(false);
         LobbyCanvas = AndroidCanvas.GetComponent<LobbyCanvas>();
         current = playfabmanagerAndroid;
-        charecterEditor.ChildObj.GetComponent<GraphicRaycaster>().enabled = true;
         foreach (GameObject item in androidObjs) {
             item.SetActive(true);
         }
+        GraphicRaycaster.enabled = true;
         break;
         default:
         break;
