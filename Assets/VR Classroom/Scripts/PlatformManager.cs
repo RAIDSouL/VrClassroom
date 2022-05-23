@@ -42,6 +42,7 @@ namespace ChiliGames.VRClassroom {
         public Whiteboard smallWhiteboard;
 
         public StudentBodyFollow MyChar;
+        public GameObject AndroidCanvas;
 
         public static PlatformManager instance;
 
@@ -274,6 +275,7 @@ namespace ChiliGames.VRClassroom {
 
         public void SetStudentAndroid(StudentBodyFollow studentBodyFollow)
         {
+            AndroidCanvas.SetActive(true);
             MyChar = studentBodyFollow;
             // genCanvas
         }
