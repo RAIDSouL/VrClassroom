@@ -142,10 +142,15 @@ namespace ChiliGames.VRClassroom {
         void CreateStudentBody() {
             int sit = GetFreeSeat();
             object[] d = new object[] { GetAvatarData(), "student" , sit };
-            if (mode == Mode.StudentVR) {
-                PhotonNetwork.Instantiate(studentBody.name, transform.position, transform.rotation,0, d);
-            } else if (mode == Mode.StudentPhone) {
-                PhotonNetwork.Instantiate(studentBodyNonVR.name, transform.position, transform.rotation,0, d);
+            if (mode == Mode.StudentVR)
+            {
+                GameObject ob = PhotonNetwork.Instantiate(studentBody.name, transform.position, transform.rotation, 0, d);
+                ob.GetComponentInChildren<Animator>().enabled = false;
+            }
+            else if (mode == Mode.StudentPhone)
+            {
+                GameObject ob = PhotonNetwork.Instantiate(studentBodyNonVR.name, transform.position, transform.rotation, 0, d);
+                ob.GetComponentInChildren<Animator>().enabled = false;
             }
             Sit(sit);
         }

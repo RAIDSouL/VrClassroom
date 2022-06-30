@@ -174,6 +174,7 @@ public class BoyVRTKPrefabMaker : MonoBehaviour {
     //materials
     public void Nextskincolor(int todo) {
         ChangeMaterials(MATSkins, todo);
+        skintone = TempIndex;
     }
     public void Nextglasses(int todo) {
         ChangeMaterials(MATGlasses, todo);
@@ -261,7 +262,7 @@ public class BoyVRTKPrefabMaker : MonoBehaviour {
         DestroyImmediate(gameObject);
     }
 
-
+    int TempIndex;
     void ChangeMaterial(GameObject GO, Object[] MAT, int todo) {
         bool found = false;
         int MATindex = 0;
@@ -308,7 +309,9 @@ public class BoyVRTKPrefabMaker : MonoBehaviour {
             AUXmaterials[subMAT] = MAT[MATindex] as Material;
             GO.GetComponent<Renderer>().sharedMaterials = AUXmaterials;
         }
+        TempIndex = MATindex;
     }
+    
     void ChangeMaterials(Object[] MAT, int todo) {
         for (int forAUX = 0; forAUX < GOhair.Length; forAUX++) ChangeMaterial(GOhair[forAUX], MAT, todo);
         ChangeMaterial(GOhead, MAT, todo);

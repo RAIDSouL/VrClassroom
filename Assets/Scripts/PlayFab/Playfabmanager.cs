@@ -33,7 +33,8 @@ public class Playfabmanager : MonoBehaviour
 
     //cache
     bool isTeacher;
-
+    // hasSave
+    public bool hasCharacterSave;
     public void RegisterButton()
     {
         if (passwordInput2.text.Length < 6)
@@ -57,6 +58,13 @@ public class Playfabmanager : MonoBehaviour
             Username = usernameInput.text,
             Password = passwordInput.text
         };
+#if UNITY_STANDALONE_WIN
+        request = new LoginWithPlayFabRequest
+        {
+            Username ="Student2",
+            Password = "Student2"
+        };
+#endif////???????????????????????????????????????
         PlayFabClientAPI.LoginWithPlayFab(request, OnLoginSuccess, OnError);
     }
 
@@ -193,7 +201,10 @@ public class Playfabmanager : MonoBehaviour
             PlayerPrefs.SetInt("Leg", int.Parse(result.Data["Leg"].Value));
             PlayerPrefs.SetInt("Feet", int.Parse(result.Data["Feet"].Value));
             CharecterEditor._instance.CallOldSaveModel();
+            hasCharacterSave = true;
         }
+        else // create first model ????????
+            hasCharacterSave = true;
         LobbyCanvas.instance.OnLogin();
     }
 }

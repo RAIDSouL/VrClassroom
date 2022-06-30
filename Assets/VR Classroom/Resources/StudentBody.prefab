@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3492754367852093237}
   - component: {fileID: 5025729626090345787}
   - component: {fileID: 8563241152604661489}
+  - component: {fileID: 3503897199373235303}
   m_Layer: 0
   m_Name: StudentBody
   m_TagString: Untagged
@@ -58,6 +59,7 @@ MonoBehaviour:
   - {fileID: 5225490922369759675}
   - {fileID: 5225490921772162543}
   JointManager: {fileID: 0}
+  sit: 0
   Gender: 0
   Model: 0
   Hair: 0
@@ -285,6 +287,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f805e4ad9a11f64cb451a95f1dbc453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3503897199373235303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2176608843384903841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec2f54d003cd83e43a7ca974791bbd62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VR_body: {fileID: 3690933276017129148}
+  j_manager: {fileID: 0}
 --- !u!1 &5225490920835750925
 GameObject:
   m_ObjectHideFlags: 0

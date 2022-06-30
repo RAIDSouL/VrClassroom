@@ -45,7 +45,21 @@ public class CharecterEditor : MonoBehaviour {
     }
 
     public void TogglePanel(bool index) {
-        childObj.SetActive(index);
+        childObj.SetActive(index);//base  
+        if (Playfabmanager._instance.hasCharacterSave)
+        {
+            if (PlayerPrefs.GetInt("Gender") == 0)
+            {
+                isMaleGender = true; LoadBoy();
+            }
+            else
+            {
+                isMaleGender = false; LoadGirl();
+            }
+
+            LobbyCanvas.instance.JoinGroup.SetActive(true);
+            sexPanel.transform.localScale = Vector3.zero;
+        }
     }
 
     public void ChooseBoy(bool index) {
@@ -183,7 +197,7 @@ public class CharecterEditor : MonoBehaviour {
             SaveModelGirl(girlTemp);
         }
 
-        FindObjectOfType<Animator>().gameObject.SetActive(false);
+     //   FindObjectOfType<Animator>().gameObject.SetActive(false);
         TogglePanel(false);
         LobbyCanvas.instance.JoinGroup.SetActive(true);
     }
