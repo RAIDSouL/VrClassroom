@@ -108,7 +108,7 @@ MonoBehaviour:
   voiceDetectionThreshold: 0.01
   voiceDetectionDelayMs: 500
   unityMicrophoneDevice: Headset Microphone (Oculus Virtual Audio Device)
-  photonMicrophoneDeviceId: -1
+  photonMicrophoneDeviceId: 0
   interestGroup: 0
   debugEchoMode: 0
   reliableMode: 0
@@ -301,6 +301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VR_body: {fileID: 3690933276017129148}
   j_manager: {fileID: 0}
+  PV: {fileID: 0}
 --- !u!1 &5225490920835750925
 GameObject:
   m_ObjectHideFlags: 0

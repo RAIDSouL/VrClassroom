@@ -12,14 +12,14 @@ public class ModelLoader : MonoBehaviour
     public GameObject Load(int Gender, int Model, int Hair, int Skintone, int Chest/*, int Leg, int Feet*/)
     {
         GameObject character = null;
-        if (Gender == 0)
-        {
-            character = LoadBoy(Model, Hair, Skintone, Chest/*, Leg, Feet*/);
-        }
-        else if (Gender == 1)
-        {
-            character = LoadGirl(Model, Hair, Skintone, Chest/*, Leg, Feet*/);
-        }
+     if (Gender == 0)
+     {
+         character = LoadBoy(Model, Hair, Skintone, Chest/*, Leg, Feet*/);
+     }
+     else if (Gender == 1)
+     {
+         character = LoadGirl(Model, Hair, Skintone, Chest/*, Leg, Feet*/);
+     }
         return character;
     }
 

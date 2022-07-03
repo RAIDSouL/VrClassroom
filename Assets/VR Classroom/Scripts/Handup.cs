@@ -20,6 +20,6 @@ public class Handup : MonoBehaviour
 
         PhotonNetwork.LocalPlayer.SetCustomProperties(propertiesToSet);
 
-        //PlatformManager.instance.MyChar.JointManager.OnHandup(toggle.isOn);
+        PlatformManager.instance.MyChar.JointManager.OnHandup(toggle.isOn);
     }
 }
