@@ -56,7 +56,8 @@ MonoBehaviour:
   leftHand: {fileID: 5225490921384930792}
   RightHand: {fileID: 5225490921624961568}
   skinMat: {fileID: 2100000, guid: cd39d2860fdf5e24d88fb7f425474552, type: 2}
-  skinRef: {fileID: 0}
+  ObSkinRef: {fileID: 0}
+  hidehand: {fileID: 0}
 --- !u!114 &2176608843384903854
 MonoBehaviour:
   m_ObjectHideFlags: 0
