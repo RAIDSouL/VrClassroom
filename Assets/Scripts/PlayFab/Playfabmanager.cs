@@ -59,11 +59,14 @@ public class Playfabmanager : MonoBehaviour
             Password = passwordInput.text
         };
 #if UNITY_STANDALONE_WIN
-        request = new LoginWithPlayFabRequest
+       if(usernameInput.text==""|| usernameInput.text==null)
         {
-            Username ="Student2",
-            Password = "Student2"
-        };
+            request = new LoginWithPlayFabRequest
+            {
+                Username = "Student2",
+                Password = "Student2"
+            };
+        }
 #endif////???????????????????????????????????????
         PlayFabClientAPI.LoginWithPlayFab(request, OnLoginSuccess, OnError);
     }

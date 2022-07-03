@@ -226,13 +226,65 @@ public class GirlVRTKPrefabMaker : MonoBehaviour
         chest = chestIndex;
         //GOlegs[legIndex].SetActive(true);
         //GOfeet[feetIndex].SetActive(true);
-        Nextskincolor(skinIndex);
+        // Nextskincolor(skinIndex);
+        SetSkinColor(skinIndex);
     }
 
     //materials
     public void Nextskincolor(int todo)
     {
         ChangeMaterials(MATSkins, todo);
+        Material[] MAA = GOhead.GetComponent<Renderer>().sharedMaterials;
+        skintone = int.Parse(MAA[0].name.Substring(8, 1)) - 1;
+      
+    }
+    public void SetSkinColor(int skinIndex)// test
+    {
+        bool found = false;
+        GameObject GO = GOhead;
+        GameObject GO2 = GOhands;
+        int subMAT = 0;
+        int MATindex = 0;
+        Material[] AUXmaterials;
+        {
+            AUXmaterials = GO.GetComponent<Renderer>().sharedMaterials;
+            AUXmaterials[subMAT] = MATSkins[MATindex] as Material;
+            GO.GetComponent<Renderer>().sharedMaterials = AUXmaterials;
+            int materialcount = GO.GetComponent<Renderer>().sharedMaterials.Length;
+
+            for (int forAUX = 0; forAUX < materialcount; forAUX++)
+                for (int forAUX2 = 0; forAUX2 < MATSkins.Length; forAUX2++)
+                {
+                    if (AUXmaterials[forAUX].name == MATSkins[forAUX2].name)
+                    {
+                        subMAT = forAUX;
+                        MATindex = forAUX2;
+                        found = true;
+                    }
+                }
+            AUXmaterials[subMAT] = MATSkins[skinIndex] as Material;
+            GO.GetComponent<Renderer>().sharedMaterials = AUXmaterials;
+        }
+        {
+            AUXmaterials = GO2.GetComponent<Renderer>().sharedMaterials;
+            AUXmaterials[subMAT] = MATSkins[MATindex] as Material;
+            GO2.GetComponent<Renderer>().sharedMaterials = AUXmaterials;
+            int materialcount = GO2.GetComponent<Renderer>().sharedMaterials.Length;
+
+            for (int forAUX = 0; forAUX < materialcount; forAUX++)
+                for (int forAUX2 = 0; forAUX2 < MATSkins.Length; forAUX2++)
+                {
+                    if (AUXmaterials[forAUX].name == MATSkins[forAUX2].name)
+                    {
+                        subMAT = forAUX;
+                        MATindex = forAUX2;
+                        found = true;
+                    }
+                }
+            AUXmaterials[subMAT] = MATSkins[skinIndex] as Material;
+            GO2.GetComponent<Renderer>().sharedMaterials = AUXmaterials;
+        }
+
     }
     public void Nextglasses(int todo)
     {

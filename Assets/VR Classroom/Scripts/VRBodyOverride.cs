@@ -10,7 +10,7 @@ public class VRBodyOverride : MonoBehaviour
     [SerializeField] JointManager j_manager;
     [SerializeField] PhotonView PV;
     bool handUp = false;
-    Transform r_hand, l_hand,, head;
+    Transform r_hand, l_hand, head;
     void Start()
     {
         handUp = false;

@@ -43,22 +43,22 @@ public class CharecterEditor : MonoBehaviour {
         //LoadModel();
         childObj = transform.GetChild(0).gameObject;
     }
-
-    public void TogglePanel(bool index) {
-        childObj.SetActive(index);//base  
+    
+    public void TogglePanel(bool isOn) {
+        childObj.SetActive(isOn);//base  
         if (Playfabmanager._instance.hasCharacterSave)
         {
             if (PlayerPrefs.GetInt("Gender") == 0)
             {
-                isMaleGender = true; LoadBoy();
+                isMaleGender = true; if(isOn)LoadBoy();
             }
             else
             {
-                isMaleGender = false; LoadGirl();
+                isMaleGender = false; if(isOn) LoadGirl();
             }
 
             LobbyCanvas.instance.JoinGroup.SetActive(true);
-            sexPanel.transform.localScale = Vector3.zero;
+            sexPanel.transform.localScale = new Vector3(1,0,1);
         }
     }
 
@@ -225,7 +225,7 @@ public class CharecterEditor : MonoBehaviour {
         //PlayerPrefs.SetInt("Feet", girl.Feet);
         Playfabmanager._instance.PlayFabSaveAvatar(GirlPrefIndex, girl);
     }
-
+    
     public void LoadModel() {
         if (PlayerPrefs.HasKey("Gender")) {
             if (PlayerPrefs.GetInt("Gender") == 0) {
@@ -251,7 +251,9 @@ public class CharecterEditor : MonoBehaviour {
             if (boyTemp.glassesactive) {
                 boyTemp.Glasseson();
             }
+            Debug.Log("Hair : " + boyTemp.Hair + " Skintone : " + boyTemp.Skintone + " Chest : " + boyTemp.Chest /*+ " Leg : " + boy.Legs + " Feet : " + boy.Feet*/);
         }
+       
     }
 
     void LoadGirl() {
@@ -270,8 +272,18 @@ public class CharecterEditor : MonoBehaviour {
             }
         }
     }
-
+    public void Re_EditChar() {
+        if (!childObj.activeSelf) { childObj.SetActive(true); }
+        PlayerPrefs.SetInt("Gender", 0);
+        PlayerPrefs.SetInt("Model", 0);
+        PlayerPrefs.SetInt("Hair", 0);
+        PlayerPrefs.SetInt("Skintone", 0);
+        PlayerPrefs.SetInt("Chest", 0);
+        LobbyCanvas.instance.JoinGroup.SetActive(false);
+        sexPanel.transform.DOScaleY(1f, 0.5f).SetEase(Ease.OutBack).SetDelay(.5f);
+    }
     public void CallOldSaveModel() {
+        
         oldSaveBtn.interactable = true;
     }
 }

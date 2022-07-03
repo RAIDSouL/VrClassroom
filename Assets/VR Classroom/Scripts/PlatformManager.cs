@@ -94,6 +94,7 @@ namespace ChiliGames.VRClassroom {
             //if this is the teacher, activate its rig and create the body
             if (mode == Mode.Teacher) {
                 teacherRig.SetActive(true);
+                teacherRig.transform.localPosition=new Vector3(0, 0.75f, 0.1f);
                 CreateTeacherBody();
                 smallWhiteboard.GetComponent<PhotonView>().RequestOwnership();
                 teacherSpecificTools.SetActive(true);
@@ -111,6 +112,9 @@ namespace ChiliGames.VRClassroom {
         void CreateTeacherBody() {
             object[] d = new object[] { GetAvatarData(),"teacher", -1 };
             teacherBodyFollow = PhotonNetwork.Instantiate(teacherBody.name, transform.position, transform.rotation,0, d).GetComponent<FollowVRRig>();
+           // print(teacherBodyFollow.gameObject.name);
+            teacherBodyFollow.GetComponentInChildren<JointManager>().GetComponent<Animator>().enabled = false;
+            teacherBodyFollow.transform.position = new Vector3(0, .2f, 0);
             foreach (var item in teacherAvatars) {
                 item.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
             }
@@ -142,6 +146,7 @@ namespace ChiliGames.VRClassroom {
         void CreateStudentBody() {
             int sit = GetFreeSeat();
             object[] d = new object[] { GetAvatarData(), "student" , sit };
+            Vector3 positionOffset = new Vector3(0, -0.25f, .2f);
             if (mode == Mode.StudentVR)
             {
                 GameObject ob = PhotonNetwork.Instantiate(studentBody.name, transform.position, transform.rotation, 0, d);
@@ -192,6 +197,7 @@ namespace ChiliGames.VRClassroom {
                 studentRig.transform.position = studentdesk[n].transform.position + (studentdesk[n].transform.forward * 0.4f) - (studentdesk[n].transform.up * 0.3f);
             } else if (mode == Mode.StudentPhone) {
                 studentRig.transform.position = studentdesk[n].transform.position + (studentdesk[n].transform.forward * 0.4f) + (studentdesk[n].transform.up * 0.5f);
+               
             }
             studentRig.transform.forward = -studentdesk[n].transform.forward;
             seated = true;

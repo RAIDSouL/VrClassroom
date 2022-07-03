@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2176608843384903855}
+  - component: {fileID: 8073290838866860450}
   - component: {fileID: 2176608843384903854}
   - component: {fileID: 2176608843384903852}
   - component: {fileID: 5065350461348823238}
@@ -40,6 +41,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8073290838866860450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2176608843384903841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd38d91b13b4a2b40a95c4b65af30c71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftHand: {fileID: 5225490921384930792}
+  RightHand: {fileID: 5225490921624961568}
+  skinMat: {fileID: 2100000, guid: cd39d2860fdf5e24d88fb7f425474552, type: 2}
+  skinRef: {fileID: 0}
 --- !u!114 &2176608843384903854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,8 +122,8 @@ MonoBehaviour:
   voiceDetection: 1
   voiceDetectionThreshold: 0.01
   voiceDetectionDelayMs: 500
-  unityMicrophoneDevice: Microphone (Realtek(R) Audio)
-  photonMicrophoneDeviceId: -1
+  unityMicrophoneDevice: Headset Microphone (Oculus Virtual Audio Device)
+  photonMicrophoneDeviceId: 0
   interestGroup: 0
   debugEchoMode: 0
   reliableMode: 0
