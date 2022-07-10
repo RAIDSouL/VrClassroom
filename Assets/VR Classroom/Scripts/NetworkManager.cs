@@ -149,8 +149,17 @@ public class NetworkManager : Scene {
         CreateRoom();
     }
 
-    void CreateRoom() {
+    void CreateRoom() 
+    {
+        Hashtable roomproperties = new Hashtable();
+        roomproperties[PropertiesKey.bg] = PlayerPrefs.GetInt("classRoom", 0); ;
+        RoomOptions options = new RoomOptions
+        {
+            MaxPlayers = 15,
+            CustomRoomProperties = roomproperties,
+        };
+
         Debug.Log("CreateRoom");
-        PhotonNetwork.CreateRoom(LobbyCanvas.RoomnameInput.text, new RoomOptions { MaxPlayers = 15 });
+        PhotonNetwork.CreateRoom(LobbyCanvas.RoomnameInput.text, options );
     }
 }

@@ -27,6 +27,7 @@ namespace ChiliGames.VRClassroom {
         private void Start() {
             pv = GetComponent<PhotonView>();
             markerTip.material.color = color;
+            Pointer.GetComponent<Renderer>().material.color = color;
         }
 
         void Update() {

@@ -80,6 +80,8 @@ namespace ChiliGames.VRClassroom {
                     PlatformManager.instance.teacherRig.transform.parent = this.transform;
                 else
                     PlatformManager.instance.studentRig.transform.parent = this.transform;
+
+                mychar.gameObject.SetActive(false);
             }
         }
     }

@@ -4,20 +4,32 @@ using UnityEngine;
 
 public class EnviromentSetting : MonoBehaviour
 {
-   [SerializeField] GameObject roomWall;
-   [SerializeField] GameObject roomRoof;
-   [SerializeField] GameObject roomlight;
+    [SerializeField] GameObject roomWall;
+    [SerializeField] GameObject roomRoof;
+    [SerializeField] GameObject roomfloor;
 
-   [SerializeField] GameObject SeaRoom;
+    [SerializeField] GameObject SeaRoom;
 
-   [SerializeField] GameObject SpaceRoom;
+    [SerializeField] GameObject SpaceRoom;
 
-    void Start()
+    public void SetClass(int cc)
     {
-        if (PlayerPrefs.GetString("classRoom") == "Room") { }
-        else if (PlayerPrefs.GetString("classRoom") == "Searoom") { }
-        else if (PlayerPrefs.GetString("classRoom") == "Spaceroom") { }
-        else if (PlayerPrefs.GetString("classRoom") == "Student"){/**/}
+        if (cc==1) { }
+        else if (cc==2)
+        {
+            roomWall.SetActive(false);
+            roomRoof.SetActive(false);
+            roomfloor.SetActive(false);
+            SeaRoom.SetActive(true);
+        }
+        else if (cc==3)
+        {
+            roomWall.SetActive(false);
+            roomRoof.SetActive(false);
+            roomfloor.SetActive(false);
+            SpaceRoom.SetActive(true);
+        }
+        else if (cc==0) {/**/}
     }
 
 }

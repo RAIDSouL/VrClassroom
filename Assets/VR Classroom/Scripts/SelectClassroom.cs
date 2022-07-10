@@ -21,28 +21,28 @@ public class SelectClassroom : MonoBehaviour
     {
         if (roomID == 1)
         {
-            classBtn.GetComponent<Image>().color = new Color(0, .5f, 0, 1);
+            classBtn.GetComponent<Image>().color = new Color(0, .8f, 0, 1);
             SeaclassBtn.GetComponent<Image>().color = new Color(1, 1, 1, 1);
             SpaceclassBtn.GetComponent<Image>().color = new Color(1, 1, 1, 1);
-            PlayerPrefs.SetString("classRoom", "Room");
+            PlayerPrefs.SetInt("classRoom", 1);
         }
         else if (roomID == 2)
         {
             classBtn.GetComponent<Image>().color = new Color(1, 1, 1, 1);
-            SeaclassBtn.GetComponent<Image>().color = new Color(0, .5f, 0, 1);
+            SeaclassBtn.GetComponent<Image>().color = new Color(0, .8f, 0, 1);
             SpaceclassBtn.GetComponent<Image>().color = new Color(1, 1, 1, 1);
-            PlayerPrefs.SetString("classRoom", "Searoom");
+            PlayerPrefs.SetInt("classRoom", 2);
         }
-        else if (roomID == 2)
+        else if (roomID == 3)
         {
             classBtn.GetComponent<Image>().color = new Color(1, 1, 1, 1);
             SeaclassBtn.GetComponent<Image>().color = new Color(1, 1, 1, 1);
-            SpaceclassBtn.GetComponent<Image>().color = new Color(0, .5f, 0, 1);
-            PlayerPrefs.SetString("classRoom", "Spaceroom");
+            SpaceclassBtn.GetComponent<Image>().color = new Color(0, .8f, 0, 1);
+            PlayerPrefs.SetInt("classRoom", 3);
         }
         else if (roomID == 0)
         {
-            PlayerPrefs.SetString("classRoom", "Student");
+            PlayerPrefs.SetInt("classRoom", 0);
         }
 
 

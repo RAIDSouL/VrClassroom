@@ -28,6 +28,7 @@ namespace ChiliGames.VRClassroom
         [SerializeField] GameObject studentBodyNonVR;
 
         [SerializeField] GameObject teacherSpecificTools;
+        [SerializeField] EnviromentSetting EnviromentSet;
 
         //Seats
         Hashtable h = new Hashtable();
@@ -88,8 +89,9 @@ namespace ChiliGames.VRClassroom
 
         private IEnumerator Start()
         {
-
-
+            yield return new WaitUntil(() => PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey(PropertiesKey.bg));
+            int bgindex = (int)PhotonNetwork.CurrentRoom.CustomProperties[PropertiesKey.bg];
+            EnviromentSet.SetClass(bgindex);
 
 
             //if this is the first player to connect, initialize the students list

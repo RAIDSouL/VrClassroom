@@ -14,6 +14,7 @@ public class PropertiesKey
     public const string PlayerType = "pt";
     public const string Slide = "sl";
     public const string Handup = "hu";
+    public const string bg = "bg";
 }
 
 public class PlayerType
