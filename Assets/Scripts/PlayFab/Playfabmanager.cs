@@ -19,7 +19,7 @@ public class Playfabmanager : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    public GameObject Login, Register;
+    public GameObject Login, Register,RegisterType;
     public Text messageText;
     public Text registerMessageText;
     [Header("Login UI")]
@@ -50,7 +50,8 @@ public class Playfabmanager : MonoBehaviour
         };
         PlayFabClientAPI.RegisterPlayFabUser(request, OnRegisterSuccess, OnError);
     }
-
+    public void setTeacher(bool input) { isTeacher = input; }
+    public bool getTeacher() { return isTeacher; }
     public void LoginButtonn()
     {
         var request = new LoginWithPlayFabRequest
@@ -87,7 +88,8 @@ public class Playfabmanager : MonoBehaviour
         var request2 = new UpdateUserDataRequest
         {
             Data = new Dictionary<string, string>{
-                {"IsTeacher", toggle.isOn.ToString() },
+                {"IsTeacher",isTeacher.ToString() },
+             //   {"IsTeacher", toggle.isOn.ToString() },
                 {"Model" , "0"},
                 {"Hair", "0" },
                 {"Skintone", "0" },
@@ -210,4 +212,6 @@ public class Playfabmanager : MonoBehaviour
             hasCharacterSave = true;
         LobbyCanvas.instance.OnLogin();
     }
+    
+
 }

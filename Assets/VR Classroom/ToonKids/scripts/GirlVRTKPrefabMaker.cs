@@ -100,7 +100,8 @@ public class GirlVRTKPrefabMaker : MonoBehaviour
                 for (int forAUX3 = 0; forAUX3 < allskins.Length; forAUX3++)
                     for (int forAUX4 = 1; forAUX4 < 5; forAUX4++)
                     {
-                        if (AUXmaterials[forAUX2].name == allskins[forAUX3] + forAUX4)
+                        //if (AUXmaterials[forAUX2].name == allskins[forAUX3] + forAUX4)
+                        if (AUXmaterials[forAUX2].name == allskins[forAUX3] + 1)
                         {
                             AUXmaterials[forAUX2] = headskin;
                             GOchest[forAUX].GetComponent<Renderer>().sharedMaterials = AUXmaterials;
@@ -362,7 +363,8 @@ public class GirlVRTKPrefabMaker : MonoBehaviour
         ChangeMaterials(MATTeeth, 2);
         for (int forAUX = 0; forAUX < (Random.Range(0, 4)); forAUX++) Nexthaircolor(0);        
         for (int forAUX = 0; forAUX < (Random.Range(0, 12)); forAUX++) Nexthatcolor(0);
-        for (int forAUX = 0; forAUX < (Random.Range(0, 17)); forAUX++) Nextchestcolor(0);
+        for (int forAUX = 0; forAUX < (Random.Range(0, 0)); forAUX++) Nextchestcolor(0);
+    //    for (int forAUX = 0; forAUX < (Random.Range(0, 17)); forAUX++) Nextchestcolor(0);
         for (int forAUX = 0; forAUX < (Random.Range(0, 4)); forAUX++) Nextskincolor(0);
 
     }
@@ -376,9 +378,11 @@ public class GirlVRTKPrefabMaker : MonoBehaviour
         if (!GOglasses.activeSelf) DestroyImmediate(newcharacter.transform.Find("ROOT/TK/TK Pelvis/TK Spine/TK Spine1/TK Spine2/TK Neck/TK Head/Glasses").gameObject as GameObject);
         DestroyImmediate(newcharacter.GetComponent<GirlVRTKPrefabMaker>());
     }
+
     public void FIX()
     {
         GameObject newcharacter = Instantiate(gameObject, transform.position, transform.rotation);
+        CharecterEditor._instance.confirmAvatar(newcharacter);
         for (int forAUX = 14; forAUX > 0; forAUX--)
         {
             if (!newcharacter.transform.GetChild(forAUX).gameObject.activeSelf) DestroyImmediate(newcharacter.transform.GetChild(forAUX).gameObject);
@@ -387,7 +391,7 @@ public class GirlVRTKPrefabMaker : MonoBehaviour
         DestroyImmediate(newcharacter.GetComponent<GirlVRTKPrefabMaker>());
         DestroyImmediate(gameObject);
     }
-
+  
 
     void ChangeMaterial(GameObject GO, Object[] MAT, int todo)
     {
@@ -437,6 +441,7 @@ public class GirlVRTKPrefabMaker : MonoBehaviour
                 MATindex = MAT.Length - 1;
             }
             AUXmaterials[subMAT] = MAT[MATindex] as Material;
+            
             GO.GetComponent<Renderer>().sharedMaterials = AUXmaterials;
         }
     }

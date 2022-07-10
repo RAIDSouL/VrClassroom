@@ -1256,6 +1256,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: CharecterEditor
       objectReference: {fileID: 0}
+    - target: {fileID: 3386662407507883148, guid: 2a23707516f9ef34aba53f2b6fc94fd0, type: 3}
+      propertyPath: girlPrefs.Array.data[1]
+      value: 
+      objectReference: {fileID: 6359826246456548063, guid: 28580a716f9ce6f42984fb83e9ac4a2c, type: 3}
+    - target: {fileID: 3386662407507883148, guid: 2a23707516f9ef34aba53f2b6fc94fd0, type: 3}
+      propertyPath: girlPrefs.Array.data[2]
+      value: 
+      objectReference: {fileID: 6359826246456548063, guid: 28580a716f9ce6f42984fb83e9ac4a2c, type: 3}
     - target: {fileID: 3386662407507883149, guid: 2a23707516f9ef34aba53f2b6fc94fd0, type: 3}
       propertyPath: m_RootOrder
       value: 2

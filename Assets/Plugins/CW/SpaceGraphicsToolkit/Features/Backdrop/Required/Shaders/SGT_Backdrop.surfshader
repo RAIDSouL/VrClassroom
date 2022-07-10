@@ -1,0 +1,72 @@
+﻿BEGIN_OPTIONS
+	Workflow "Unlit"
+	Alpha "Add"
+END_OPTIONS
+
+BEGIN_PROPERTIES
+	[Header(POWER RGB)]
+	[Toggle(_SGT_POWER_RGB)] _SGT_PowerRgb ("	Enable", Float) = 0
+	_SGT_ColorInfluence("	Color Influence", Float) = 10
+END_PROPERTIES
+
+BEGIN_DEFINES
+	#pragma shader_feature_local _SGT_POWER_RGB
+	#pragma multi_compile_local _ _SGT_CLAMP_SIZE_MIN
+END_DEFINES
+
+BEGIN_CBUFFER
+	sampler2D _SGT_MainTex; // Auto
+	float4    _SGT_Color; // Auto
+	float     _SGT_Brightness; // Auto
+
+	// Power RGB
+	float _SGT_ColorInfluence;
+
+	// Clamp Size Min
+	float _SGT_ClampSizeMin; // Auto
+	float _SGT_ClampSizeScale; // Auto
+	float _SGT_Radius; // Auto
+END_CBUFFER
+
+BEGIN_CODE
+	void ModifyVertex(inout VertexData v, inout ExtraV2F e)
+	{
+		float3 wcam = _WorldSpaceCameraPos;
+
+		#if _SGT_CLAMP_SIZE_MIN
+			float3 center    = v.texcoord1;
+			float3 direction = v.vertex.xyz - center.xyz;
+			float  size      = length(direction);
+
+			// Normalize
+			direction /= size;
+
+			float sizeMin = (_SGT_ClampSizeMin * _SGT_Radius) / _ScreenParams.y * _SGT_ClampSizeScale;
+			float scale   = saturate(size / sizeMin);
+			size /= scale; // Scale up to min size
+			v.vertexColor.a *= scale; // Darken by shrunk amount
+			v.vertex.xyz = center.xyz + direction * size;
+		#endif
+
+		v.vertexColor *= _SGT_Color;
+	}
+
+	void SurfaceFunction(inout Surface o, inout ShaderData d)
+	{
+		float4 finalColor = tex2D(_SGT_MainTex, d.texcoord0.xy);
+
+		#if _SGT_POWER_RGB
+			finalColor.rgb = pow(finalColor.rgb, float3(1.0f, 1.0f, 1.0f) + (1.0f - d.vertexColor.rgb) * _SGT_ColorInfluence);
+		#else
+			finalColor *= d.vertexColor;
+		#endif
+
+		finalColor.xyz *= _SGT_Brightness;
+
+		finalColor *= saturate(d.vertexColor.a);
+
+		#if __SGT_OUTPUT
+			SGT_OutputWithoutAlpha(o, SGT_ModifyUnlitOutput(finalColor));
+		#endif
+	}
+END_CODE

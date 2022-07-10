@@ -17,10 +17,11 @@ namespace ChiliGames.VRClassroom {
         [SerializeField] Color32 color = Color.blue;
         private bool grabbed;
         private int currentFrame = 0;
-
+        [SerializeField] GameObject Pointer;
         public void ToggleGrab(bool b) {
             if (b) grabbed = true;
             else grabbed = false;
+            Pointer.SetActive(grabbed);/////
         }
 
         private void Start() {

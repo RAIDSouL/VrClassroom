@@ -181,27 +181,26 @@ public class CharecterEditor : MonoBehaviour {
             girlTemp.Nextskincolor(index);
         }
     }
-
+    public void confirmAvatar(GameObject at) { avatar = at; }
     public void SaveAvatar() {
         if (IsMaleGender) {
             PlayerPrefs.SetInt("Gender", 0);
         } else {
             PlayerPrefs.SetInt("Gender", 1);
         }
+        customizePanel.transform.localScale = new Vector3(1, 0, 1);
+         if (isMaleGender) {
+             boyTemp.FIX();          
+             SaveModelBoy(boyTemp);
+         } else {
+             girlTemp.FIX(); 
+             SaveModelGirl(girlTemp);
+         }
 
-        if (isMaleGender) {
-            boyTemp.FIX();
-            SaveModelBoy(boyTemp);
-        } else {
-            girlTemp.FIX();
-            SaveModelGirl(girlTemp);
-        }
-
-     //   FindObjectOfType<Animator>().gameObject.SetActive(false);
+        //   FindObjectOfType<Animator>().gameObject.SetActive(false);
         TogglePanel(false);
         LobbyCanvas.instance.JoinGroup.SetActive(true);
-    }
-
+    } 
     void SaveModelBoy(BoyVRTKPrefabMaker boy) {
         Debug.Log("Hair : " + boy.Hair + " Skintone : " + boy.Skintone + " Chest : " + boy.Chest /*+ " Leg : " + boy.Legs + " Feet : " + boy.Feet*/);
         PlayerPrefs.SetInt("Gender", 0);
@@ -212,9 +211,11 @@ public class CharecterEditor : MonoBehaviour {
         //PlayerPrefs.SetInt("Leg", boy.Legs);
         //PlayerPrefs.SetInt("Feet", boy.Feet);
         Playfabmanager._instance.PlayFabSaveAvatar(BoyPrefIndex, boy);
+       
     }
 
-    void SaveModelGirl(GirlVRTKPrefabMaker girl) {
+    void SaveModelGirl(GirlVRTKPrefabMaker girl)
+    {
         Debug.Log("Hair : " + girl.Hair + " Skintone : " + girl.Skintone + " Chest : " + girl.Chest/* + " Leg : " + girl.Legs + " Feet : " + girl.Feet*/);
         PlayerPrefs.SetInt("Gender", 1);
         PlayerPrefs.SetInt("Model", GirlPrefIndex);
@@ -223,7 +224,7 @@ public class CharecterEditor : MonoBehaviour {
         PlayerPrefs.SetInt("Chest", girl.Chest);
         //PlayerPrefs.SetInt("Leg", girl.Legs);
         //PlayerPrefs.SetInt("Feet", girl.Feet);
-        Playfabmanager._instance.PlayFabSaveAvatar(GirlPrefIndex, girl);
+        // Playfabmanager._instance.PlayFabSaveAvatar(GirlPrefIndex, girl);
     }
     
     public void LoadModel() {
@@ -236,7 +237,7 @@ public class CharecterEditor : MonoBehaviour {
         }
         HideGenderPanel();
     }
-
+   
     void LoadBoy() {
         if (PlayerPrefs.HasKey("Model")) {
             avatar = Instantiate(boyPrefs[PlayerPrefs.GetInt("Model")], spawnPos.position, spawnPos.rotation) as GameObject;

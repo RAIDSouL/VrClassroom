@@ -327,7 +327,8 @@ public class BoyVRTKPrefabMaker : MonoBehaviour
         ChangeMaterials(MATTeeth, 2);
         for (int forAUX = 0; forAUX < (Random.Range(0, 4)); forAUX++) Nexthaircolor(0);
         for (int forAUX = 0; forAUX < (Random.Range(0, 12)); forAUX++) Nexthatcolor(0);
-        for (int forAUX = 0; forAUX < (Random.Range(0, 17)); forAUX++) Nextchestcolor(0);
+        for (int forAUX = 0; forAUX < (Random.Range(0, 0)); forAUX++) Nextchestcolor(0);
+      //  for (int forAUX = 0; forAUX < (Random.Range(0, 17)); forAUX++) Nextchestcolor(0);
         for (int forAUX = 0; forAUX < (Random.Range(0, 4)); forAUX++) Nextskincolor(0);
 
     }
@@ -352,7 +353,7 @@ public class BoyVRTKPrefabMaker : MonoBehaviour
         DestroyImmediate(newcharacter.GetComponent<BoyVRTKPrefabMaker>());
         DestroyImmediate(gameObject);
     }
-
+  
     void ChangeMaterial(GameObject GO, Object[] MAT, int todo)
     {
         bool found = false;
