@@ -155,7 +155,7 @@ public class NetworkManager : Scene {
         roomproperties[PropertiesKey.bg] = PlayerPrefs.GetInt("classRoom", 0); ;
         RoomOptions options = new RoomOptions
         {
-            MaxPlayers = 15,
+            MaxPlayers = 16,
             CustomRoomProperties = roomproperties,
         };
 

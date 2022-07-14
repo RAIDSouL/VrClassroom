@@ -74,7 +74,7 @@ namespace ChiliGames.VRClassroom {
                 ptv.enabled = true;
                 PlatformManager.instance.studentRig.transform.parent = this.transform;
                 PlatformManager.instance.SetStudentAndroid(this);
-                mychar.gameObject.SetActive(false);
+                mychar.gameObject.transform.localScale = Vector3.zero;
             }
                 
         }

@@ -331,7 +331,8 @@ namespace ChiliGames.VRClassroom
 
         public void SetStudentAndroid(StudentBodyFollow studentBodyFollow)
         {
-            AndroidCanvas.SetActive(true);
+            if(PlatformSetting.Instance.platform == Platform.ANDROID)
+              AndroidCanvas.SetActive(true);
             MyChar = studentBodyFollow;
             // genCanvas
         }

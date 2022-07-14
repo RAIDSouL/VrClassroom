@@ -831,6 +831,7 @@ MonoBehaviour:
   Normal: {fileID: 7332329038504453546}
   Handup: {fileID: 8415237554349026686}
   Controller: {fileID: 6359826246456051477}
+  handFx: {fileID: 4792916362925100005, guid: 5ab447a39fb697644bcc9f90a167e811, type: 3}
 --- !u!1 &6359826246456548065
 GameObject:
   m_ObjectHideFlags: 0
