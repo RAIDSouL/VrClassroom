@@ -41,7 +41,7 @@ namespace ChiliGames.VRClassroom
         void Awake()
         {
             ImgScreen = GameObject.Find("TeacherScreen");
-            ImgScreen.SetActive(false);
+           // ImgScreen.SetActive(false);
             imgCount = 0;
             imgDownloaded = 0;
             textureList.Clear();

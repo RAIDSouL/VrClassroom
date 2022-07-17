@@ -19,14 +19,14 @@ public class EnviromentSetting : MonoBehaviour
         {
             roomWall.SetActive(false);
             roomRoof.SetActive(false);
-            roomfloor.SetActive(false);
+           // roomfloor.SetActive(false);
             SeaRoom.SetActive(true);
         }
         else if (cc==3)
         {
             roomWall.SetActive(false);
             roomRoof.SetActive(false);
-            roomfloor.SetActive(false);
+           // roomfloor.SetActive(false);
             SpaceRoom.SetActive(true);
         }
         else if (cc==0) {/**/}

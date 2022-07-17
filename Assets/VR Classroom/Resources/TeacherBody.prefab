@@ -76,6 +76,7 @@ MonoBehaviour:
   - {fileID: 5225490921772162543}
   lHand: {fileID: 5225490921384930792}
   rHand: {fileID: 5225490921624961568}
+  JointManager: {fileID: 0}
   Gender: 0
   Model: 0
   Hair: 0

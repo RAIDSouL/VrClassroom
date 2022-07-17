@@ -13,13 +13,14 @@ public class JointManager : MonoBehaviour
         if (up)
         {
             targetTranform = Handup;
-            FxOn = Instantiate(handFx, Handup);
-            FxOn.transform.position = Handup.transform.position;
+
+            handFx.SetActive(true);
+
         }
         else
         {
             targetTranform = Normal;
-            if (FxOn != null) { Destroy(FxOn); }
+            { handFx.SetActive(false); }
         }
 
         Controller.position = targetTranform.position;

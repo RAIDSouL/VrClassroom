@@ -108,7 +108,7 @@ MonoBehaviour:
   voiceDetectionThreshold: 0.01
   voiceDetectionDelayMs: 500
   unityMicrophoneDevice: Headset Microphone (Oculus Virtual Audio Device)
-  photonMicrophoneDeviceId: 0
+  photonMicrophoneDeviceId: -1
   interestGroup: 0
   debugEchoMode: 0
   reliableMode: 0
@@ -2723,6 +2723,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2176608843384903855}
     m_Modifications:
+    - target: {fileID: 546680178971774189, guid: 94c7c4013d812a2449cf52b9585287c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4381014582981564311, guid: 94c7c4013d812a2449cf52b9585287c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976432466061852636, guid: 94c7c4013d812a2449cf52b9585287c2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976432466061852636, guid: 94c7c4013d812a2449cf52b9585287c2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7904147602521498764, guid: 94c7c4013d812a2449cf52b9585287c2, type: 3}
       propertyPath: m_RootOrder
       value: 3
