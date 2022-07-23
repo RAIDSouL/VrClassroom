@@ -4,7 +4,8 @@ using Photon.Realtime;
 using ExitGames.Client.Photon;
 using Photon.Pun.UtilityScripts;
 
-namespace ChiliGames.VRClassroom {
+namespace ChiliGames.VRClassroom
+{
     //This script is attached to the VR body, to ensure each part is following the correct tracker. This is done only if the body is owned by the player
     //and replicated around the network with the Photon Transform View component
     public class StudentBodyFollow : MonoBehaviourPunCallbacks, IPunInstantiateMagicCallback
@@ -15,14 +16,17 @@ namespace ChiliGames.VRClassroom {
         public int sit;
         PhotonView pv;
 
-        private void Awake() {
+        private void Awake()
+        {
             pv = GetComponent<PhotonView>();
         }
 
         // Update is called once per frame
-        void Update() {
+        void Update()
+        {
             if (!pv.IsMine) return;
-            for (int i = 0; i < body.Length; i++) {
+            for (int i = 0; i < body.Length; i++)
+            {
                 body[i].position = PlatformManager.instance.studentRigParts[i].position;
                 body[i].rotation = PlatformManager.instance.studentRigParts[i].rotation;
             }
@@ -52,12 +56,13 @@ namespace ChiliGames.VRClassroom {
             Leg = AvatarData[5];
             Feet = AvatarData[6];
             sit = (int)instantiationData[2];
-            Debug.LogErrorFormat("{0} Gender {1} Model {2} Hair {3} Skintone {4} Chest {5} Leg {6} Feet {7} sit {8}", type, Gender == 0 ? "Boy" : "Girl", Model, Hair, Skintone, Chest, Leg, Feet, sit);
+            //  Debug.LogErrorFormat("{0} Gender {1} Model {2} Hair {3} Skintone {4} Chest {5} Leg {6} Feet {7} sit {8}", type, Gender == 0 ? "Boy" : "Girl", Model, Hair, Skintone, Chest, Leg, Feet, sit);
 
             GameObject mychar = PlatformManager.instance.ModelLoader.Load(Gender, Model, Hair, Skintone, Chest/*, Leg, Feet*/);
             mychar.GetComponentInChildren<Animator>().enabled = false;
+
             JointManager = mychar.GetComponent<JointManager>();
-            
+
             if (sit > -1)
             {
                 transform.position = PlatformManager.instance.studentdesk[sit].Charpos.position;
@@ -65,7 +70,7 @@ namespace ChiliGames.VRClassroom {
                 mychar.transform.position = PlatformManager.instance.studentdesk[sit].Charpos.position;
                 mychar.transform.rotation = PlatformManager.instance.studentdesk[sit].Charpos.rotation;
             }
-            
+
             mychar.transform.parent = this.transform;
 
             if (pv.IsMine)
@@ -76,17 +81,17 @@ namespace ChiliGames.VRClassroom {
                 PlatformManager.instance.SetStudentAndroid(this);
                 mychar.gameObject.transform.localScale = Vector3.zero;
             }
-                
+
         }
 
         public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
         {
-            if(changedProps.ContainsKey(PropertiesKey.Handup))
+            if (changedProps.ContainsKey(PropertiesKey.Handup))
             {
                 object changevalue = changedProps[PropertiesKey.Handup];
                 object[] data = (object[])changevalue;
                 int target = (int)data[0];
-                if(sit == target)
+                if (sit == target)
                 {
                     bool up = (bool)data[1];
                     JointManager.OnHandup(up);
