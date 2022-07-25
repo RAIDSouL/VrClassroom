@@ -29,7 +29,9 @@ public class Playfabmanager : MonoBehaviour
     public InputField username2;
     public InputField emailInput2;
     public InputField passwordInput2;
+    public InputField cfpasswordInput2;
     public Toggle toggle;
+    public Button registerbtn;
 
     //cache
     bool isTeacher;
@@ -72,6 +74,21 @@ public class Playfabmanager : MonoBehaviour
         }
 ////???????????????????????????????????????
         PlayFabClientAPI.LoginWithPlayFab(request, OnLoginSuccess, OnError);
+    }
+
+    public void ShowHideRegister(bool show)
+    {
+        if(show)
+        {
+            Register.SetActive(true);
+            Login.SetActive(false);
+            registerbtn.interactable = false;
+        }
+        else
+        {
+            Register.SetActive(false);
+            Login.SetActive(true);
+        }
     }
 
     private void OnError(PlayFabError error)
@@ -117,20 +134,33 @@ public class Playfabmanager : MonoBehaviour
         LobbyCanvas.instance.OnLogin();
     }
 
-    public void ToggleInputType()
+    public void ToggleInputType(InputField field)
     {
-        if (this.passwordInput2 != null)
+        if (field != null)
         {
-            if (this.passwordInput2.contentType == InputField.ContentType.Password)
+            if (field.contentType == InputField.ContentType.Password)
             {
-                this.passwordInput2.contentType = InputField.ContentType.Standard;
+                field.contentType = InputField.ContentType.Standard;
             }
             else
             {
-                this.passwordInput2.contentType = InputField.ContentType.Password;
+                field.contentType = InputField.ContentType.Password;
             }
 
-            this.passwordInput2.ForceLabelUpdate();
+            field.ForceLabelUpdate();
+        }
+    }
+
+    public void ReCheckPassword()
+    {
+        registerbtn.interactable = passwordInput2.text == cfpasswordInput2.text;
+        if(passwordInput2.text != cfpasswordInput2.text)
+        {
+            registerMessageText.text = "password incorrect";
+        }
+        else
+        {
+            registerMessageText.text = "";
         }
     }
 
