@@ -30,6 +30,8 @@ namespace ChiliGames.VRClassroom
                 body[i].position = PlatformManager.instance.studentRigParts[i].position;
                 body[i].rotation = PlatformManager.instance.studentRigParts[i].rotation;
             }
+            if(PlatformManager.instance.studentRig!=null)
+            print(PlatformManager.instance.studentRig.transform.eulerAngles);
         }
 
         public override void OnEnable()
@@ -78,11 +80,13 @@ namespace ChiliGames.VRClassroom
                 PhotonTransformView ptv = JointManager.Controller.GetComponent<PhotonTransformView>();
                 ptv.enabled = true;
                 PlatformManager.instance.studentRig.transform.parent = this.transform;
+                          
                 PlatformManager.instance.SetStudentAndroid(this);
                 mychar.gameObject.transform.localScale = Vector3.zero;
             }
 
         }
+       
 
         public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
         {

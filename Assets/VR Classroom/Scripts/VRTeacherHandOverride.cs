@@ -10,14 +10,14 @@ public class VRTeacherHandOverride : MonoBehaviour
     void Start()
     {
 
-        Material skinMatU = new Material(skinMat);
-        ObSkinRef = gameObject.GetComponentInChildren<JointManager>().transform.GetChild(1).gameObject;
-        hidehand = gameObject.GetComponentInChildren<JointManager>().transform.GetChild(9).gameObject; 
-        Material[] skinRef = ObSkinRef.GetComponent<Renderer>().materials;
-        skinMatU.color = skinRef[0].color;
-        leftHand.material = skinMatU;
-        RightHand.material = skinMatU;
-        hidehand.SetActive(false);
+      //  Material skinMatU = new Material(skinMat);
+      //  ObSkinRef = gameObject.GetComponentInChildren<JointManager>().transform.GetChild(1).gameObject;
+      //  hidehand = gameObject.GetComponentInChildren<JointManager>().transform.GetChild(9).gameObject; 
+      //  Material[] skinRef = ObSkinRef.GetComponent<Renderer>().materials;
+      //  skinMatU.color = skinRef[0].color;
+      //  leftHand.material = skinMatU;
+      //  RightHand.material = skinMatU;
+      //  hidehand.SetActive(false);
     }
 
 }

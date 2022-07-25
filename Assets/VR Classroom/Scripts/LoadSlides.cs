@@ -45,7 +45,8 @@ namespace ChiliGames.VRClassroom
             imgCount = 0;
             imgDownloaded = 0;
             textureList.Clear();
-            StartCoroutine(GetRequest("http://d33b-202-29-32-87.ngrok.io/api/gallery"));
+           // StartCoroutine(GetRequest("http://d33b-202-29-32-87.ngrok.io/api/gallery"));
+            StartCoroutine(GetRequest("http://183.88.227.207:81/vr-api/public/api/gallery"));
         }
 
         public override void OnRoomPropertiesUpdate(Hashtable propertiesThatChanged)

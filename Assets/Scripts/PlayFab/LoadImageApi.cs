@@ -15,7 +15,8 @@ public class LoadImageApi : MonoBehaviour
     void Start()
     {
         texture2Ds.Clear();
-        StartCoroutine(GetRequest("http://d33b-202-29-32-87.ngrok.io/api/gallery"));
+        StartCoroutine(GetRequest("http://183.88.227.207:81/vr-api/public/api/gallery"));
+       // StartCoroutine(GetRequest("http://d33b-202-29-32-87.ngrok.io/api/gallery"));
         //StartCoroutine(DownloadImage("https://5a48-202-29-32-87.ngrok.io/storage/files/evAjLpSQxgjidws5NWzCPjgzsVM81vdz24IhWeY3.jpg"));
     }
 
@@ -74,11 +75,12 @@ public class LoadImageApi : MonoBehaviour
     }
     public void LoadNextImage()
     {
-        if (i + 1 <= texture2Ds.Count)
+        if (i + 1 < texture2Ds.Count)
         {
             i++;
             rawImage.texture = texture2Ds[i];
         }
+       
     }
 
     public void LoadPrevImage()
