@@ -33,7 +33,7 @@ public class JointManager : MonoBehaviour
     {
         if (isOn) 
         {
-            rotateValue += Time.deltaTime;
+            rotateValue += Time.deltaTime*72;
             if (rotateValue > 360) rotateValue = 0;
             handFx.transform.localEulerAngles = new Vector3(0, rotateValue, 0);
         }
