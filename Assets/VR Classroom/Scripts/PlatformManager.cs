@@ -336,5 +336,10 @@ namespace ChiliGames.VRClassroom
             MyChar = studentBodyFollow;
             // genCanvas
         }
+
+        public void ExitRoom()
+        {
+            PhotonNetwork.Disconnect();
+        }
     }
 }

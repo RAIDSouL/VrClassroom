@@ -123,6 +123,7 @@ public class Playfabmanager : MonoBehaviour
 
     void OnLoginSuccess(LoginResult result)
     {
+        UserData.Username = usernameInput.text;
         messageText.text = "logged in!";
         Debug.Log("Succesfull login!");
         GetAppearance();

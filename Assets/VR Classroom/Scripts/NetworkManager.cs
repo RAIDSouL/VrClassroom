@@ -40,30 +40,36 @@ public class NetworkManager : Scene {
         //charecterEditor = FindObjectOfType<CharecterEditor>();
     }
 
-    protected override void Start() {
-        switch (PlatformSetting.Instance.platform) {
-        case Platform.VR:
-        VrCanvas.SetInstance(true);
-        AndroidCanvas.SetInstance(false);
-        LobbyCanvas = VrCanvas.GetComponent<LobbyCanvas>();
-        current = playfabmanagerVR;
-        OVRRaycaster.enabled = true;
-        foreach (GameObject item in vrObjs) {
-            item.SetActive(true);
-        }
-        break;
-        case Platform.ANDROID:
-        AndroidCanvas.SetInstance(true);
-        VrCanvas.SetInstance(false);
-        LobbyCanvas = AndroidCanvas.GetComponent<LobbyCanvas>();
-        current = playfabmanagerAndroid;
-        foreach (GameObject item in androidObjs) {
-            item.SetActive(true);
-        }
-        GraphicRaycaster.enabled = true;
-        break;
-        default:
-        break;
+    protected override void Start() 
+    {
+        Debug.LogError("IsConnected  " + PhotonNetwork.IsConnected);
+
+        switch (PlatformSetting.Instance.platform)
+        {
+            case Platform.VR:
+                VrCanvas.SetInstance(true);
+                AndroidCanvas.SetInstance(false);
+                LobbyCanvas = VrCanvas.GetComponent<LobbyCanvas>();
+                current = playfabmanagerVR;
+                OVRRaycaster.enabled = true;
+                foreach (GameObject item in vrObjs)
+                {
+                    item.SetActive(true);
+                }
+                break;
+            case Platform.ANDROID:
+                AndroidCanvas.SetInstance(true);
+                VrCanvas.SetInstance(false);
+                LobbyCanvas = AndroidCanvas.GetComponent<LobbyCanvas>();
+                current = playfabmanagerAndroid;
+                foreach (GameObject item in androidObjs)
+                {
+                    item.SetActive(true);
+                }
+                GraphicRaycaster.enabled = true;
+                break;
+            default:
+                break;
         }
     }
 
@@ -74,7 +80,7 @@ public class NetworkManager : Scene {
 
     public void ConnectToMaster() {
         PhotonNetwork.OfflineMode = false; //true would "fake" an online connection
-        PhotonNetwork.NickName = "Test" + Random.Range(0, 100);//LobbyCanvas.UsernameInput.text; //we can use a input to change this 
+        PhotonNetwork.NickName = UserData.Username; //we can use a input to change this 
         PhotonNetwork.AutomaticallySyncScene = true; //To call PhotonNetwork.LoadLevel()
         PhotonNetwork.GameVersion = "v1"; //only people with the same game version can play together
 

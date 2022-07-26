@@ -20,9 +20,23 @@ public class LobbyCanvas : CanvasManager {
     bool enableRoomname = false;
 
     public override void SetInstance(bool t) {
-        gameObject.SetActive(t);
+        
         if (t)
+        {
             instance = this;
+            if (UserData.Username != null)
+            {
+                LoginGroup.SetActive(false);
+                LoginGroup.GetComponent<Playfabmanager>().hasCharacterSave = true;
+                OnLogin();
+            }
+            gameObject.SetActive(true);
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
+            
     }
 
     public void OnLogin() {

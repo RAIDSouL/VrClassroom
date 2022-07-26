@@ -1255,6 +1255,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9365a9bda0f081f4b8f181cc5c7609d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &660291386 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7047349171160547507, guid: b922bdb30f609b24a8cf255a15575920, type: 3}
+  m_PrefabInstance: {fileID: 660291384}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09f7788c05d7b9949bd73d72ecc84b35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &705016065 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3386662407507883149, guid: 2a23707516f9ef34aba53f2b6fc94fd0, type: 3}
@@ -1721,10 +1732,10 @@ MonoBehaviour:
   VrCanvas: {fileID: 4801129111480781220}
   AndroidCanvas: {fileID: 660291385}
   status: {fileID: 1234534832}
-  playfabmanagerVR: {fileID: 0}
+  playfabmanagerVR: {fileID: 4801129111480781221}
   vrObjs:
   - {fileID: 1409100786}
-  playfabmanagerAndroid: {fileID: 0}
+  playfabmanagerAndroid: {fileID: 660291386}
   androidObjs:
   - {fileID: 272497467}
   current: {fileID: 0}
@@ -2618,5 +2629,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9365a9bda0f081f4b8f181cc5c7609d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4801129111480781221 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8816911478463666058, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
+  m_PrefabInstance: {fileID: 4801129111480781219}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09f7788c05d7b9949bd73d72ecc84b35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
