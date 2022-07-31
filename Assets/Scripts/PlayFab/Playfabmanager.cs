@@ -80,7 +80,8 @@ public class Playfabmanager : MonoBehaviour
     {
         if(show)
         {
-            Register.SetActive(true);
+            RegisterType.SetActive(true);
+            // Register.SetActive(true);
             Login.SetActive(false);
             registerbtn.interactable = false;
         }

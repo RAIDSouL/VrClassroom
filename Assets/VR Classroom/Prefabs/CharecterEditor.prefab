@@ -1922,8 +1922,8 @@ MonoBehaviour:
   - {fileID: 7364109174107720510, guid: 92b673f9b5a7d7441b9fae486f2dadea, type: 3}
   girlPrefs:
   - {fileID: 6359826246456548063, guid: 28580a716f9ce6f42984fb83e9ac4a2c, type: 3}
-  - {fileID: 7242074238936592499, guid: 41fa09208021bba438a6f49afd2c19f4, type: 3}
-  - {fileID: 2656915300202172174, guid: 0a027d4895747b446b9e14bcebf62c07, type: 3}
+  - {fileID: 6359826246456548063, guid: 28580a716f9ce6f42984fb83e9ac4a2c, type: 3}
+  - {fileID: 6359826246456548063, guid: 28580a716f9ce6f42984fb83e9ac4a2c, type: 3}
   spawnPos: {fileID: 3386662407542630695}
   confirmPanel: {fileID: 3386662408833865054}
   oldSaveBtn: {fileID: 596642082}
@@ -2399,7 +2399,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3386662407701673511}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

@@ -30,8 +30,7 @@ namespace ChiliGames.VRClassroom
                 body[i].position = PlatformManager.instance.studentRigParts[i].position;
                 body[i].rotation = PlatformManager.instance.studentRigParts[i].rotation;
             }
-            if(PlatformManager.instance.studentRig!=null)
-            print(PlatformManager.instance.studentRig.transform.eulerAngles);
+           
         }
 
         public override void OnEnable()

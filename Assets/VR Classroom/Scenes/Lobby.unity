@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1863494, g: 0.5226209, b: 0.83286655, a: 1}
+  m_IndirectSpecularColor: {r: 0.18641064, g: 0.523271, b: 0.8338287, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -133,10 +133,6 @@ PrefabInstance:
     - target: {fileID: 3141329701757116971, guid: 6b078dacbbd8aca4fb6b677912760949, type: 3}
       propertyPath: m_Name
       value: InitializeVRKeyboard
-      objectReference: {fileID: 0}
-    - target: {fileID: 3141329701757116971, guid: 6b078dacbbd8aca4fb6b677912760949, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3141329701757116972, guid: 6b078dacbbd8aca4fb6b677912760949, type: 3}
       propertyPath: keyboard
@@ -287,6 +283,40 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 95848721263463846, guid: 0242aa8515b4bc947a945a5c6df83ee9, type: 3}
   m_PrefabInstance: {fileID: 107942394}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &181812682 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8816911478443093528, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
+  m_PrefabInstance: {fileID: 4801129111480781219}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &181812683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181812682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4801129111480781220}
+          m_TargetAssemblyTypeName: LobbyCanvas, Assembly-CSharp
+          m_MethodName: CallVRUsernameInput
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!4 &215900851 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 462066, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
@@ -573,6 +603,40 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
   m_PrefabInstance: {fileID: 318368669}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &441381657 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8816911478697724998, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
+  m_PrefabInstance: {fileID: 4801129111480781219}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &441381658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441381657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4801129111480781220}
+          m_TargetAssemblyTypeName: LobbyCanvas, Assembly-CSharp
+          m_MethodName: CallVRPasswordInput
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &517827148 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1145621558, guid: 2a23707516f9ef34aba53f2b6fc94fd0, type: 3}
@@ -786,6 +850,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4460566861808968136, guid: b922bdb30f609b24a8cf255a15575920, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5087024381780631374, guid: b922bdb30f609b24a8cf255a15575920, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -866,6 +934,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5418910446913541786, guid: b922bdb30f609b24a8cf255a15575920, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1013404904}
     - target: {fileID: 5950698769859909607, guid: b922bdb30f609b24a8cf255a15575920, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1202,6 +1274,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7047349171156899255, guid: b922bdb30f609b24a8cf255a15575920, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8391163601969456612, guid: b922bdb30f609b24a8cf255a15575920, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1306,14 +1382,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CharecterEditor
       objectReference: {fileID: 0}
-    - target: {fileID: 3386662407507883148, guid: 2a23707516f9ef34aba53f2b6fc94fd0, type: 3}
-      propertyPath: girlPrefs.Array.data[1]
-      value: 
-      objectReference: {fileID: 6359826246456548063, guid: 28580a716f9ce6f42984fb83e9ac4a2c, type: 3}
-    - target: {fileID: 3386662407507883148, guid: 2a23707516f9ef34aba53f2b6fc94fd0, type: 3}
-      propertyPath: girlPrefs.Array.data[2]
-      value: 
-      objectReference: {fileID: 6359826246456548063, guid: 28580a716f9ce6f42984fb83e9ac4a2c, type: 3}
+    - target: {fileID: 3386662407507883138, guid: 2a23707516f9ef34aba53f2b6fc94fd0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3386662407507883149, guid: 2a23707516f9ef34aba53f2b6fc94fd0, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1357,6 +1429,30 @@ PrefabInstance:
     - target: {fileID: 3386662407507883149, guid: 2a23707516f9ef34aba53f2b6fc94fd0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386662407701673504, guid: 2a23707516f9ef34aba53f2b6fc94fd0, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386662407701673504, guid: 2a23707516f9ef34aba53f2b6fc94fd0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4282686005434553579, guid: 64f884351318b694f942625580e64a8b, type: 3}
+    - target: {fileID: 3386662407701673504, guid: 2a23707516f9ef34aba53f2b6fc94fd0, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386662407701673504, guid: 2a23707516f9ef34aba53f2b6fc94fd0, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386662407701673504, guid: 2a23707516f9ef34aba53f2b6fc94fd0, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386662407701673510, guid: 2a23707516f9ef34aba53f2b6fc94fd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 3386662407745402148, guid: 2a23707516f9ef34aba53f2b6fc94fd0, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1859,10 +1955,6 @@ PrefabInstance:
     - target: {fileID: 1000010614386324, guid: f28287b1c722ebd4aa4f4d8547ed7fa8, type: 3}
       propertyPath: m_Name
       value: VRKeys
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000010614386324, guid: f28287b1c722ebd4aa4f4d8547ed7fa8, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4000013025176432, guid: f28287b1c722ebd4aa4f4d8547ed7fa8, type: 3}
       propertyPath: m_RootOrder
@@ -2530,6 +2622,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -39.6875
       objectReference: {fileID: 0}
+    - target: {fileID: 5811075814717931939, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1013404904}
     - target: {fileID: 7085308966594183303, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
       propertyPath: m_Color.b
       value: 1

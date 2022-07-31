@@ -45,6 +45,7 @@ public class CharecterEditor : MonoBehaviour {
     }
     
     public void TogglePanel(bool isOn) {
+       
         childObj.SetActive(isOn);//base  
         if (Playfabmanager._instance.hasCharacterSave)
         {
@@ -70,8 +71,9 @@ public class CharecterEditor : MonoBehaviour {
 
     private void HideGenderPanel() {
         sexPanel.transform.DOScaleY(0f, .25f).SetEase(Ease.InBack);
-        confirmPanel.SetActive(true);
-        confirmPanel.transform.DOScaleY(1f, 0.5f).SetEase(Ease.OutBack).SetDelay(.5f);
+        //  confirmPanel.SetActive(true);
+        //   confirmPanel.transform.DOScaleY(1f, 0.5f).SetEase(Ease.OutBack).SetDelay(.5f);
+        SetAvatar();
     }
 
     public void ReloadAvatar() {
@@ -106,7 +108,7 @@ public class CharecterEditor : MonoBehaviour {
     }
 
     public void SetAvatar() {
-        confirmPanel.transform.DOScaleY(0f, .5f).SetEase(Ease.InBack);
+       // confirmPanel.transform.DOScaleY(0f, .5f).SetEase(Ease.InBack);
         customizePanel.transform.DOScaleY(1f, .5f).SetEase(Ease.OutBack).SetDelay(.5f);
     }
 
