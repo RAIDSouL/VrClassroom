@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,14 +6,22 @@ using UnityEngine;
 public class StudentScreen : MonoBehaviour
 {
     bool isActive = false;
-    Material teacherScreen,selfMat;
+    Material teacherScreen, selfMat;
+    PhotonView pv;
     private void Start()
     {
-        if (PlatformSetting.Instance.platform == Platform.ANDROID) 
+        pv = gameObject.transform.parent.transform.parent.GetComponentInChildren<PhotonView>();
+        if (PlatformSetting.Instance.platform == Platform.ANDROID || (!pv.IsMine && pv != null))
         {
             Destroy(gameObject);
+            return;
         }
-            selfMat =gameObject.GetComponent<MeshRenderer>().material;
+        else
+        {
+            print(gameObject.transform.parent.GetComponentInChildren<PhotonView>());
+
+        }
+        selfMat = gameObject.GetComponent<MeshRenderer>().material;
     }
     public void SetObject()
     {
@@ -20,7 +29,7 @@ public class StudentScreen : MonoBehaviour
         if (isActive) //85 88
         {
             gameObject.transform.localPosition = new Vector3(.31f, .88f, .5f);
-            gameObject.transform.localScale = new Vector3(.5f, .32f, .8f); 
+            gameObject.transform.localScale = new Vector3(.5f, .32f, .8f);
         }
         else
         {
@@ -30,6 +39,6 @@ public class StudentScreen : MonoBehaviour
     }
     private void Update()
     {
-        gameObject.GetComponent<MeshRenderer>().material = GameObject.Find("TeacherScreen").GetComponent<MeshRenderer>().material; 
+        gameObject.GetComponent<MeshRenderer>().material = GameObject.Find("TeacherScreen").GetComponent<MeshRenderer>().material;
     }
 }

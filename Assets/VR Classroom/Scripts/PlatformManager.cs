@@ -170,12 +170,10 @@ namespace ChiliGames.VRClassroom
             if (mode == Mode.StudentVR)
             {
                PhotonNetwork.Instantiate(studentBody.name, transform.position, transform.rotation, 0, d);
-              //  ob.GetComponentInChildren<Animator>().enabled = false;
             }
             else if (mode == Mode.StudentPhone)
             {
                PhotonNetwork.Instantiate(studentBodyNonVR.name, transform.position, transform.rotation, 0, d);
-              //  ob.GetComponentInChildren<Animator>().enabled = false;
             }
             Sit(sit);
         }
