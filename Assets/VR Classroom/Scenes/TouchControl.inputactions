@@ -1,0 +1,54 @@
+{
+    "name": "TouchControl",
+    "maps": [
+        {
+            "name": "Touch",
+            "id": "a96f2a7d-577c-47fe-a983-dcc706fbef4f",
+            "actions": [
+                {
+                    "name": "TouchInput",
+                    "type": "PassThrough",
+                    "id": "d37b20e2-40c7-4b41-b2fa-eebcc12ef65e",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TouchDrag",
+                    "type": "Button",
+                    "id": "fe50f605-29b8-470c-b5cc-e00169108478",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "4eb3e573-91e2-4db6-96e6-baf4902a5f7c",
+                    "path": "<Touchscreen>/primaryTouch/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TouchInput",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "05c4c9cd-acf9-4bed-896d-29071ba8a670",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "Press(pressPoint=1.401298E-45,behavior=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TouchDrag",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

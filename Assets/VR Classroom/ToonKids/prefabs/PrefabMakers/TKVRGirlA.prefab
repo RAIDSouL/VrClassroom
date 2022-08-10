@@ -617,6 +617,7 @@ GameObject:
   - component: {fileID: 1457829513445296448}
   - component: {fileID: 4856183678689841187}
   - component: {fileID: 3937017294675685147}
+  - component: {fileID: 1935178181614138965}
   m_Layer: 0
   m_Name: TKVRGirlA
   m_TagString: Untagged
@@ -833,6 +834,32 @@ MonoBehaviour:
   Handup: {fileID: 8415237554349026686}
   Controller: {fileID: 6359826246456051477}
   handFx: {fileID: 2510750441597671183}
+--- !u!114 &1935178181614138965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6359826246456548063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 745f66edbf25f194883c42ae3d0adcbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skin:
+  - {fileID: 2100000, guid: 977c9d156461cfb4ba4eb9ac585fb83a, type: 2}
+  - {fileID: 2100000, guid: e7e8d9600c9a9da479f4ed1cecdea092, type: 2}
+  - {fileID: 2100000, guid: 79b7560b8bb1fe648b731fbd2ba43ccb, type: 2}
+  - {fileID: 2100000, guid: d9f3290329465474185a6036eea00d62, type: 2}
+  - {fileID: 2100000, guid: 638eaafc517eb4647b9d32dda2380df2, type: 2}
+  Head: {fileID: 6359826246468048471}
+  hand: {fileID: 6359826246468048455}
+  Body:
+  - {fileID: 6359826246468048453}
+  - {fileID: 6359826246468048435}
+  - {fileID: 6359826246468048457}
+  - {fileID: 6359826246468048463}
+  Isboy: 1
 --- !u!1 &6359826246456548065
 GameObject:
   m_ObjectHideFlags: 0

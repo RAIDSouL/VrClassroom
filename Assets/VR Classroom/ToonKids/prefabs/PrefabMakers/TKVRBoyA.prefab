@@ -359,7 +359,7 @@ SkinnedMeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: ccc1bfbda8aa3d748baa538e5c70cf8a, type: 2}
   - {fileID: 2100000, guid: a5288ede92b42cd44b29a92d459c45d7, type: 2}
-  - {fileID: 2100000, guid: 8fc8aed55a6a6af4f954d0c55f42e8f6, type: 2}
+  - {fileID: 2100000, guid: 0b2166dd8496fbc4cb471b1492cb21d9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3018,6 +3018,7 @@ GameObject:
   - component: {fileID: 1656462894947135243}
   - component: {fileID: 708771583848689769}
   - component: {fileID: 1043934132350368693}
+  - component: {fileID: 2545140080229161429}
   m_Layer: 0
   m_Name: TKVRBoyA
   m_TagString: Untagged
@@ -3227,6 +3228,32 @@ MonoBehaviour:
   Handup: {fileID: 2589968561244909048}
   Controller: {fileID: 7364109174107887344}
   handFx: {fileID: 6730873125721002052}
+--- !u!114 &2545140080229161429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7364109174107720510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 745f66edbf25f194883c42ae3d0adcbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skin:
+  - {fileID: 2100000, guid: f1310073d2167a646b3dc07c10bdd46d, type: 2}
+  - {fileID: 2100000, guid: ccc1bfbda8aa3d748baa538e5c70cf8a, type: 2}
+  - {fileID: 2100000, guid: 2c1dc57575889c24cbda33283062390e, type: 2}
+  - {fileID: 2100000, guid: 8b6dfe80564c2024b8a622b1f38df32d, type: 2}
+  - {fileID: 2100000, guid: bde96281f5cb80c419b1ecd6c5229a7e, type: 2}
+  Head: {fileID: 7364109174096152502}
+  hand: {fileID: 7364109174096152486}
+  Body:
+  - {fileID: 7364109174096152480}
+  - {fileID: 7364109174096152490}
+  - {fileID: 7364109174096152492}
+  - {fileID: 7364109174096152494}
+  Isboy: 1
 --- !u!1001 &5187127470144816066
 PrefabInstance:
   m_ObjectHideFlags: 0

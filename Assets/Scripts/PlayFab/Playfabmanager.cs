@@ -19,7 +19,7 @@ public class Playfabmanager : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    public GameObject Login, Register,RegisterType;
+    public GameObject Login, Register, RegisterType;
     public Text messageText;
     public Text registerMessageText;
     [Header("Login UI")]
@@ -62,23 +62,23 @@ public class Playfabmanager : MonoBehaviour
             Password = passwordInput.text
         };
 
-       if(usernameInput.text==""|| usernameInput.text==null)
+        if (usernameInput.text == "" || usernameInput.text == null)
         {
             request = new LoginWithPlayFabRequest
             {
-                //Username = "Student2",
-                //Password = "Student2"
-                Username = "teacher02",
-                Password = "teacher02"
+                Username = "Student2",
+                Password = "Student2"
+                //  Username = "teacher02",
+                //  Password = "teacher02"
             };
         }
-////???????????????????????????????????????
+        ////???????????????????????????????????????
         PlayFabClientAPI.LoginWithPlayFab(request, OnLoginSuccess, OnError);
     }
 
     public void ShowHideRegister(bool show)
     {
-        if(show)
+        if (show)
         {
             RegisterType.SetActive(true);
             // Register.SetActive(true);
@@ -156,7 +156,7 @@ public class Playfabmanager : MonoBehaviour
     public void ReCheckPassword()
     {
         registerbtn.interactable = passwordInput2.text == cfpasswordInput2.text;
-        if(passwordInput2.text != cfpasswordInput2.text)
+        if (passwordInput2.text != cfpasswordInput2.text)
         {
             registerMessageText.text = "password incorrect";
         }
@@ -193,6 +193,7 @@ public class Playfabmanager : MonoBehaviour
                 {"Hair", boy.Hair.ToString() },
                 {"Skintone", boy.Skintone.ToString() },
                 {"Chest", boy.Chest.ToString() }
+               
                 //,
                 //{ "Leg", boy.Legs.ToString() },
                 //{ "Feet", boy.Feet.ToString() }
@@ -231,7 +232,8 @@ public class Playfabmanager : MonoBehaviour
     void OnDataRecieved(GetUserDataResult result)
     {
         Debug.Log("Get Data!");
-        if (result.Data != null && result.Data.ContainsKey("Gender")) {
+        if (result.Data != null && result.Data.ContainsKey("Gender"))
+        {
             PlayerPrefs.SetInt("Gender", int.Parse(result.Data["Gender"].Value));
             PlayerPrefs.SetInt("Model", int.Parse(result.Data["Model"].Value));
             PlayerPrefs.SetInt("Hair", int.Parse(result.Data["Hair"].Value));
@@ -246,6 +248,6 @@ public class Playfabmanager : MonoBehaviour
             hasCharacterSave = true;
         LobbyCanvas.instance.OnLogin();
     }
-    
+
 
 }

@@ -191,6 +191,7 @@ public class BoyVRTKPrefabMaker : MonoBehaviour
         hair = hairIndex;
         GOchest[chestIndex].SetActive(true);
         chest = chestIndex;
+        skintone = skinIndex;
         //GOlegs[legIndex].SetActive(true);
         //GOfeet[feetIndex].SetActive(true);
        // Nextskincolor(skinIndex);
@@ -202,10 +203,14 @@ public class BoyVRTKPrefabMaker : MonoBehaviour
     {
         ChangeMaterials(MATSkins, todo);
         Material[] MAA = GOhead.GetComponent<Renderer>().sharedMaterials;
-        skintone = int.Parse(MAA[0].name.Substring(7,1))-1;
+        skintone = int.Parse(MAA[0].name.Substring(7,1));
         print(skintone);
     }
-    public void SetSkinColor(int skinIndex)// test
+    public void SetSkinColor(int skinIndex) 
+    {
+        gameObject.GetComponent<VRcalssSkin>().setSkin(skinIndex);
+    }
+  /*  public void SetSkinColor(int skinIndex)// test
     {
         bool found = false;
         GameObject GO = GOhead;
@@ -252,7 +257,7 @@ public class BoyVRTKPrefabMaker : MonoBehaviour
             GO2.GetComponent<Renderer>().sharedMaterials = AUXmaterials;
         }
 
-    }
+    }*/
     public void Nextglasses(int todo)
     {
         ChangeMaterials(MATGlasses, todo);

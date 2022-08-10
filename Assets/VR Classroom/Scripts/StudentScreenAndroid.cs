@@ -19,7 +19,6 @@ public class StudentScreenAndroid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         gameObject.GetComponent<RawImage>().material = GameObject.Find("TeacherScreen").GetComponent<MeshRenderer>().material;
     }
     public void SetObject()
@@ -27,12 +26,12 @@ public class StudentScreenAndroid : MonoBehaviour
         isActive = !isActive;
         if (isActive) 
         {
-            gameObject.GetComponent<RectTransform>().localPosition = new Vector3(-423, 423, 0);
+            gameObject.GetComponent<RectTransform>().localPosition = new Vector3(387, -81, 0);
             gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(940, 700);
         }
         else
         {
-            gameObject.GetComponent<RectTransform>().localPosition = new Vector3(-160,160, 0);
+            gameObject.GetComponent<RectTransform>().localPosition = new Vector3(800,-380, 0);
             gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(235, 175);
         }
     }

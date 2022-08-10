@@ -245,6 +245,7 @@ public class CharecterEditor : MonoBehaviour {
             avatar = Instantiate(boyPrefs[PlayerPrefs.GetInt("Model")], spawnPos.position, spawnPos.rotation) as GameObject;
             boyTemp = avatar.GetComponent<BoyVRTKPrefabMaker>();
             boyTemp.Getready();
+            
             if (PlayerPrefs.HasKey("Skintone")) {
                 boyTemp.LoadOldModel(PlayerPrefs.GetInt("Skintone"), PlayerPrefs.GetInt("Hair"), PlayerPrefs.GetInt("Chest")/*, PlayerPrefs.GetInt("Leg"), PlayerPrefs.GetInt("Feet")*/);
             }

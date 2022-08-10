@@ -239,7 +239,11 @@ public class GirlVRTKPrefabMaker : MonoBehaviour
         skintone = int.Parse(MAA[0].name.Substring(8, 1)) - 1;
       
     }
-    public void SetSkinColor(int skinIndex)// test
+    public void SetSkinColor(int skinIndex) 
+    {
+        gameObject.GetComponent<VRcalssSkin>().setSkin(skinIndex);
+    }
+   /* public void SetSkinColor(int skinIndex)// test
     {
         bool found = false;
         GameObject GO = GOhead;
@@ -285,8 +289,8 @@ public class GirlVRTKPrefabMaker : MonoBehaviour
             AUXmaterials[subMAT] = MATSkins[skinIndex] as Material;
             GO2.GetComponent<Renderer>().sharedMaterials = AUXmaterials;
         }
-
-    }
+       
+    } */
     public void Nextglasses(int todo)
     {
         ChangeMaterials(MATGlasses, todo);
