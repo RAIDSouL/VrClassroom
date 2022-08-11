@@ -32,6 +32,7 @@ public class NetworkManager : Scene {
     public GraphicRaycaster GraphicRaycaster;
     public CharecterEditor charecterEditor;
 
+    [SerializeField] Text[] errorStatus;
     private void Awake() {
         if (instance == null) {
             instance = this;
@@ -128,7 +129,6 @@ public class NetworkManager : Scene {
         Debug.Log("ConnectToRoom " + LobbyCanvas.RoomnameInput.text);
         //PhotonNetwork.CreateRoom("name"); //Create a specific room - Callback OnCreateRoomFailed
         PhotonNetwork.JoinRoom(LobbyCanvas.RoomnameInput.text); //Join a specific room - Callback OnJoinRoomFailed
-
         //PhotonNetwork.JoinRandomRoom(); // Join a random room - Callback OnJoinRandomRoomFailed
         //PhotonNetwork.JoinRoom(RoomInput.text);
     }
@@ -152,7 +152,21 @@ public class NetworkManager : Scene {
 
     public override void OnJoinRoomFailed(short returnCode, string message) {
         Debug.Log("OnJoinRoomFailed");
+        Debug.Log(returnCode);
+        if (returnCode == -2)
+        {
+            setErrorStatus("Room name require.."); return;
+        }
+        if (Playfabmanager._instance.getTeacher())
         CreateRoom();
+        else 
+        {
+            setErrorStatus("Room not exist..");
+        }
+    }
+    public void setErrorStatus(string st) { 
+        errorStatus[0].text =st ; 
+        errorStatus[1].text =st ; 
     }
 
     void CreateRoom() 

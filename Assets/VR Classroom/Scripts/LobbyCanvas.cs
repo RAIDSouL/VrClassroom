@@ -1,3 +1,5 @@
+using Photon.Pun;
+using Photon.Realtime;
 using TMPro;
 using UnityEngine;
 
@@ -43,8 +45,8 @@ public class LobbyCanvas : CanvasManager {
         NetworkManager.instance.Connect();
     }
 
-    public void JoinRoomClick() {
-        NetworkManager.instance.ConnectToRoom();
+    public void JoinRoomClick() {     
+        NetworkManager.instance.ConnectToRoom();     
     }
 
     private void Update() {
