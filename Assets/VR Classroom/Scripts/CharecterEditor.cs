@@ -192,10 +192,10 @@ public class CharecterEditor : MonoBehaviour {
         }
         customizePanel.transform.localScale = new Vector3(1, 0, 1);
          if (isMaleGender) {
-             boyTemp.FIX();          
+             //boyTemp.FIX();          
              SaveModelBoy(boyTemp);
          } else {
-             girlTemp.FIX(); 
+             //girlTemp.FIX(); 
              SaveModelGirl(girlTemp);
          }
 

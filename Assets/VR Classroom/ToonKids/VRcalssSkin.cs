@@ -9,8 +9,8 @@ public class VRcalssSkin : MonoBehaviour
     [SerializeField] SkinnedMeshRenderer[] Body;
     public void setSkin(int a)
     {
-
-        a--;
+        if (a > 0)
+            a--;
 
         Material[] tempMat = Head.materials;
         tempMat[0] = skin[a];

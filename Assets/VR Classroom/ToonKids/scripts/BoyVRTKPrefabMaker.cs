@@ -355,8 +355,8 @@ public class BoyVRTKPrefabMaker : MonoBehaviour
             if (!newcharacter.transform.GetChild(forAUX).gameObject.activeSelf) DestroyImmediate(newcharacter.transform.GetChild(forAUX).gameObject);
         }
         if (!GOglasses.activeSelf) DestroyImmediate(newcharacter.transform.Find("ROOT/TK/TK Pelvis/TK Spine/TK Spine1/TK Spine2/TK Neck/TK Head/Glasses").gameObject as GameObject);
-        DestroyImmediate(newcharacter.GetComponent<BoyVRTKPrefabMaker>());
-        DestroyImmediate(gameObject);
+        Destroy(newcharacter.GetComponent<BoyVRTKPrefabMaker>());
+        Destroy(gameObject);
     }
   
     void ChangeMaterial(GameObject GO, Object[] MAT, int todo)

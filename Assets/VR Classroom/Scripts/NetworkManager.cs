@@ -182,4 +182,5 @@ public class NetworkManager : Scene {
         Debug.Log("CreateRoom");
         PhotonNetwork.CreateRoom(LobbyCanvas.RoomnameInput.text, options );
     }
+    public void _closeApp() { Application.Quit(); }
 }
