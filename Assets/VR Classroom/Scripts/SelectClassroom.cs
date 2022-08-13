@@ -22,21 +22,21 @@ public class SelectClassroom : MonoBehaviour
         if (roomID == 1)
         {
             classBtn.GetComponent<Image>().color = new Color(0, .9f, 0, 1);
-            SeaclassBtn.GetComponent<Image>().color = new Color(1, 1, 1, 1);
-            SpaceclassBtn.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+            SeaclassBtn.GetComponent<Image>().color = new Color(.85f, .63f, .30f, 1);
+            SpaceclassBtn.GetComponent<Image>().color = new Color(.85f, .63f, .30f, 1);
             PlayerPrefs.SetInt("classRoom", 1);
         }
         else if (roomID == 2)
         {
-            classBtn.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+            classBtn.GetComponent<Image>().color = new Color(.85f, .63f, .30f, 1);
             SeaclassBtn.GetComponent<Image>().color = new Color(0, .9f, 0, 1);
-            SpaceclassBtn.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+            SpaceclassBtn.GetComponent<Image>().color = new Color(.85f, .63f, .30f, 1);
             PlayerPrefs.SetInt("classRoom", 2);
         }
         else if (roomID == 3)
         {
-            classBtn.GetComponent<Image>().color = new Color(1, 1, 1, 1);
-            SeaclassBtn.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+            classBtn.GetComponent<Image>().color = new Color(.85f, .63f, .30f, 1);
+            SeaclassBtn.GetComponent<Image>().color = new Color(.85f, .63f, .30f, 1);
             SpaceclassBtn.GetComponent<Image>().color = new Color(0, .9f, 0, 1);
             PlayerPrefs.SetInt("classRoom", 3);
         }

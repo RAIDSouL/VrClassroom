@@ -1477,6 +1477,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -50.215
       objectReference: {fileID: 0}
+    - target: {fileID: 6618572538878662407, guid: b922bdb30f609b24a8cf255a15575920, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1677589528}
+    - target: {fileID: 6618572538878662407, guid: b922bdb30f609b24a8cf255a15575920, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: _closeApp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6618572538878662407, guid: b922bdb30f609b24a8cf255a15575920, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: NetworkManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6890219851776125446, guid: b922bdb30f609b24a8cf255a15575920, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -7226,7 +7238,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 52390882441961767}
   m_LocalRotation: {x: -0, y: -0.8720596, z: -0, w: 0.48939973}
-  m_LocalPosition: {x: 0, y: 0.751, z: 0}
+  m_LocalPosition: {x: 0, y: 0.66, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children:
   - {fileID: 7316615527966236849}
@@ -9443,6 +9455,18 @@ PrefabInstance:
     - target: {fileID: 4587097363673046894, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4633962490400309310, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1677589528}
+    - target: {fileID: 4633962490400309310, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: _closeApp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4633962490400309310, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: NetworkManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4801129110312172188, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
       propertyPath: m_PresetInfoIsWorld
