@@ -22,14 +22,11 @@ public class EnviromentSetting : MonoBehaviour
         }
         else if (cc == 2)
         {
-            camT.clearFlags = CameraClearFlags.SolidColor;
-            camS.clearFlags = CameraClearFlags.SolidColor;
+
             SeaRoom.SetActive(true);
         }
         else if (cc == 3)
         {
-            camT.clearFlags = CameraClearFlags.SolidColor;
-            camS.clearFlags = CameraClearFlags.SolidColor;
             SpaceRoom.SetActive(true);
         }
 

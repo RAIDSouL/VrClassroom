@@ -94,18 +94,13 @@ public class NetworkManager : Scene {
     public void setstatus(string des) {
         status.gameObject.SetActive(true);
         status.text = des;
-        StartCoroutine(removeStatus());
-    }   
+    }
+
     public override void OnDisconnected(DisconnectCause cause) {
         base.OnDisconnected(cause);
         Debug.Log(cause);
-        StartCoroutine(removeStatus());
     }
-    IEnumerator removeStatus()
-    {
-        yield return new WaitForSeconds(3);
-        status.text = "";
-    }
+
     public override void OnConnectedToMaster() {
         base.OnConnectedToMaster();
         current.CheckIfTeacher();
@@ -162,14 +157,12 @@ public class NetworkManager : Scene {
         {
             setErrorStatus("Room name require.."); return;
         }
+        if (Playfabmanager._instance.getTeacher())
         CreateRoom();
-        //  use
-        //  if (Playfabmanager._instance.getTeacher())
-        //  CreateRoom();
-        //  else 
-        //  {
-        //      setErrorStatus("Room not exist..");
-        //  }
+        else 
+        {
+            setErrorStatus("Room not exist..");
+        }
     }
     public void setErrorStatus(string st) { 
         errorStatus[0].text =st ; 

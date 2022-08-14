@@ -3,7 +3,6 @@ using Photon.Realtime;
 using TMPro;
 using UnityEngine;
 
-
 public class LobbyCanvas : CanvasManager {
     public static LobbyCanvas instance;
 
@@ -110,25 +109,5 @@ public class LobbyCanvas : CanvasManager {
             enablePassword = false;
             enableRoomname = false;
         }
-    }
-
-    public void _reloadScene() 
-    {
-        if (PlatformSetting.Instance.platform == Platform.ANDROID) 
-        {
-            gameObject.transform.Find("PlayFab").gameObject.SetActive(true);
-            gameObject.transform.Find("Join").gameObject.SetActive(false);
-            GameObject.Find("TKVRBoyA(Clone)").gameObject.SetActive(false);
-            GameObject.Find("TKVRGirlA(Clone)").gameObject.SetActive(false);
-            
-        }
-        else if (PlatformSetting.Instance.platform == Platform.VR)
-        {
-            gameObject.transform.Find("PlayFab").gameObject.SetActive(true);
-            gameObject.transform.Find("Join").gameObject.SetActive(false);
-            GameObject.Find("TKVRBoyA(Clone)").gameObject.SetActive(false);
-            GameObject.Find("TKVRGirlA(Clone)").gameObject.SetActive(false);
-        }
-
     }
 }

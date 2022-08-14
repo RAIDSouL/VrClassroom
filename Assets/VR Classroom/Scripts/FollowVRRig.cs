@@ -79,11 +79,8 @@ namespace ChiliGames.VRClassroom {
             }
             if (pv.IsMine)
             {
-                if (PlatformManager.instance.mode == PlatformManager.Mode.Teacher)
-                {
+                if(PlatformManager.instance.mode == PlatformManager.Mode.Teacher)
                     PlatformManager.instance.teacherRig.transform.parent = this.transform;
-                    gameObject.GetComponentInChildren<Animator>().gameObject.transform.position = this.transform.position+ new Vector3(0, .33f, 0);                
-                }
                 else
                     PlatformManager.instance.studentRig.transform.parent = this.transform;
 
