@@ -39,6 +39,7 @@ public class StudentScreen : MonoBehaviour
     }
     private void Update()
     {
-        gameObject.GetComponent<MeshRenderer>().material = GameObject.Find("TeacherScreen").GetComponent<MeshRenderer>().material;
+        // gameObject.GetComponent<MeshRenderer>().material = GameObject.Find("TeacherScreen").GetComponent<MeshRenderer>().material;
+        gameObject.GetComponent<MeshRenderer>().material.mainTexture = GameObject.Find("TeacherScreen").GetComponent<MeshRenderer>().material.mainTexture;
     }
 }

@@ -19,7 +19,7 @@ public class StudentScreenAndroid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.GetComponent<RawImage>().material = GameObject.Find("TeacherScreen").GetComponent<MeshRenderer>().material;
+        gameObject.GetComponent<RawImage>().texture = GameObject.Find("TeacherScreen").GetComponent<MeshRenderer>().material.mainTexture;
     }
     public void SetObject()
     {

@@ -12,6 +12,7 @@ namespace ChiliGames.VRClassroom
     {
 
         public Transform[] body;
+        public SkinnedMeshRenderer[] handMesh;
         public JointManager JointManager;
         public int sit;
         PhotonView pv;
@@ -24,7 +25,12 @@ namespace ChiliGames.VRClassroom
         // Update is called once per frame
         void Update()
         {
-            if (!pv.IsMine) return;
+            if (!pv.IsMine)
+            {
+                handMesh[0].enabled = false;
+                handMesh[1].enabled = false;               
+                return;
+            }
             for (int i = 0; i < body.Length; i++)
             {
                 body[i].position = PlatformManager.instance.studentRigParts[i].position;

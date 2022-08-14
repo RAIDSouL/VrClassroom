@@ -58,6 +58,9 @@ MonoBehaviour:
   - {fileID: 8884593231392065098}
   - {fileID: 5225490922369759675}
   - {fileID: 5225490921772162543}
+  handMesh:
+  - {fileID: 5225490921384930792}
+  - {fileID: 5225490921624961568}
   JointManager: {fileID: 0}
   sit: 0
   Gender: 0
@@ -108,7 +111,7 @@ MonoBehaviour:
   voiceDetectionThreshold: 0.01
   voiceDetectionDelayMs: 500
   unityMicrophoneDevice: Headset Microphone (Oculus Virtual Audio Device)
-  photonMicrophoneDeviceId: 0
+  photonMicrophoneDeviceId: -1
   interestGroup: 0
   debugEchoMode: 0
   reliableMode: 0
