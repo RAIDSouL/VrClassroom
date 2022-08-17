@@ -16,6 +16,7 @@ public class XRGrabbablePun : XRGrabInteractable
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
+        print("SCCC");
         pv.TransferOwnership(PhotonNetwork.LocalPlayer.ActorNumber);
         base.OnSelectEntered(args);
         pv.RPC("SetKinematic", RpcTarget.OthersBuffered, true);

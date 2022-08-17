@@ -1164,6 +1164,7 @@ GameObject:
   - component: {fileID: 5225490921772162527}
   - component: {fileID: 5225490921772162526}
   - component: {fileID: 1733138872520289116}
+  - component: {fileID: 9129361768342482444}
   m_Layer: 9
   m_Name: Hand_Right
   m_TagString: Untagged
@@ -1332,6 +1333,18 @@ MonoBehaviour:
     LayerIndex: 4
   - SynchronizeType: 1
     LayerIndex: 5
+--- !u!114 &9129361768342482444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5225490921772162515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99c9069f208be5b4b822db945865d306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5225490921782695257
 GameObject:
   m_ObjectHideFlags: 0

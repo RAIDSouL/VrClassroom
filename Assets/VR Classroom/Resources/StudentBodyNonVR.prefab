@@ -52,6 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body:
   - {fileID: 8884593231392065098}
+  handMesh: []
   JointManager: {fileID: 0}
   sit: 0
   Gender: 0

@@ -123,9 +123,9 @@ namespace ChiliGames.VRClassroom
         void CreateTeacherBody()
         {
             object[] d = new object[] { GetAvatarData(), "teacher", -1 };
-            teacherBodyFollow = PhotonNetwork.Instantiate(teacherBody.name, transform.position, transform.rotation, 0, d).GetComponent<FollowVRRig>();
-            // print(teacherBodyFollow.gameObject.name);
-            teacherBodyFollow.GetComponentInChildren<JointManager>().GetComponent<Animator>().enabled = false;
+            teacherBodyFollow = PhotonNetwork.Instantiate(teacherBody.name, transform.position, transform.rotation, 0, d).GetComponent<FollowVRRig>();          
+            if (teacherBodyFollow.GetComponentInChildren<JointManager>() != null)
+            { teacherBodyFollow.GetComponentInChildren<JointManager>().GetComponent<Animator>().enabled = false; }
             teacherBodyFollow.transform.position = new Vector3(0, .2f, 0);
             foreach (var item in teacherAvatars)
             {

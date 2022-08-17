@@ -9376,10 +9376,6 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
-    - target: {fileID: 1472935635313883270, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2787415314149681702, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -9472,17 +9468,9 @@ PrefabInstance:
       propertyPath: m_PresetInfoIsWorld
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4801129110312172189, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4801129110312172190, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
       propertyPath: m_Name
       value: CanvasLobby
-      objectReference: {fileID: 0}
-    - target: {fileID: 4801129110312172190, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4801129110312172258, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
       propertyPath: m_Pivot.x
@@ -9622,91 +9610,91 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4801129110432080331, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4801129110432080331, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4801129110432080331, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 750
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4801129110432080331, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 75.625
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4801129110432080331, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 375
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4801129110432080331, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -117.1875
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4801129110814679185, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4801129110814679185, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4801129110814679185, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 750
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4801129110814679185, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 375
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4801129110814679185, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -227.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4801129111813535326, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4801129111813535326, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4801129111813535326, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 750
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4801129111813535326, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 375
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4801129111813535326, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -77.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4801129112125258153, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4801129112125258153, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4801129112125258153, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 750
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4801129112125258153, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 79.375
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4801129112125258153, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 375
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4801129112125258153, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -39.6875
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5811075814717931939, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -9887,12 +9875,12 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 4801129111480781220}
           m_TargetAssemblyTypeName: LobbyCanvas, Assembly-CSharp
-          m_MethodName: CallVRPasswordInput
-          m_Mode: 1
+          m_MethodName: CallVRRegisterInput
+          m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
+            m_IntArgument: 3
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
@@ -9916,12 +9904,80 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 4801129111480781220}
           m_TargetAssemblyTypeName: LobbyCanvas, Assembly-CSharp
-          m_MethodName: CallVRUsernameInput
-          m_Mode: 1
+          m_MethodName: CallVRRegisterInput
+          m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!1 &4801129111480781228 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4482076726557136634, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
+  m_PrefabInstance: {fileID: 4801129111480781219}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4801129111480781229 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8816911478454482447, guid: 3f8036a2d67ed9b448f377f08930ff4e, type: 3}
+  m_PrefabInstance: {fileID: 4801129111480781219}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4801129111480781230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4801129111480781228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4801129111480781220}
+          m_TargetAssemblyTypeName: LobbyCanvas, Assembly-CSharp
+          m_MethodName: CallVRRegisterInput
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 4
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &4801129111480781231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4801129111480781229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4801129111480781220}
+          m_TargetAssemblyTypeName: LobbyCanvas, Assembly-CSharp
+          m_MethodName: CallVRRegisterInput
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 2
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0

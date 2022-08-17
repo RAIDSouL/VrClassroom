@@ -66,10 +66,10 @@ public class Playfabmanager : MonoBehaviour
         {
             request = new LoginWithPlayFabRequest
             {
-              Username = "Student2",
-              Password = "Student2"
-               // Username = "teacher02",
-               // Password = "teacher02"
+             // Username = "Student2",
+             // Password = "Student2"
+                Username = "teacher02",
+                Password = "teacher02"
             };
         }
         ////???????????????????????????????????????

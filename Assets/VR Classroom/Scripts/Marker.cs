@@ -31,6 +31,7 @@ namespace ChiliGames.VRClassroom {
         }
 
         void Update() {
+           // print(grabbed);
             //if the marker is not in possesion of the user, or is not grabbed, we don't run update.
             if (!pv.IsMine) return;
             if (!grabbed) return;
@@ -83,6 +84,10 @@ namespace ChiliGames.VRClassroom {
             if (touching) {
                 transform.rotation = lastAngle;
             }
+        }
+        public void _Hov()
+        {
+            print("assssssssss");
         }
     }
 }

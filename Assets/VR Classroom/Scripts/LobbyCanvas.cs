@@ -22,6 +22,11 @@ public class LobbyCanvas : CanvasManager {
     bool enablePassword = false;
     bool enableRoomname = false;
 
+    bool enableRegUsername = false;
+    bool enableRegEmail = false;
+    bool enableRegPassWord = false;
+    bool enableRegPassWordC = false;
+
     public override void SetInstance(bool t) {
         
         if (t)
@@ -52,12 +57,33 @@ public class LobbyCanvas : CanvasManager {
 
     private void Update() {
         if (PlatformSetting.Instance.platform.Equals(Platform.VR)) {
-            if (enableUsername) {
+            if (enableUsername) 
+            {
                 LoginGroup.GetComponent<Playfabmanager>().usernameInput.text = vrKey.text;
-            } else if (enablePassword) {
+            }
+            else if (enablePassword) 
+            {
                 LoginGroup.GetComponent<Playfabmanager>().passwordInput.text = vrKey.text;
-            } else if (enableRoomname) {
+            } 
+            else if (enableRoomname) 
+            {
                 RoomnameInput.text = vrKey.text;
+            }
+            else if (enableRegUsername)//reg
+            {
+                LoginGroup.GetComponent<Playfabmanager>().username2.text = vrKey.text;
+            }
+            else if (enableRegEmail)
+            {
+                LoginGroup.GetComponent<Playfabmanager>().emailInput2.text = vrKey.text;
+            }
+            else if (enableRegPassWord)
+            {
+                LoginGroup.GetComponent<Playfabmanager>().passwordInput2.text = vrKey.text;
+            }
+            else if (enableRegPassWordC)
+            {
+                LoginGroup.GetComponent<Playfabmanager>().cfpasswordInput2.text = vrKey.text;
             }
 
             if (vrKey.disabled) {
@@ -87,6 +113,22 @@ public class LobbyCanvas : CanvasManager {
         enableRoomname = true;
     }
 
+    public void CallVRRegisterInput(int index)
+    {
+        enableRegUsername = false;
+        enableRegEmail = false;
+        enableRegPassWord = false;
+        enableRegPassWordC = false;
+        VRKeyBoard(true);
+        switch (index) 
+        {
+            case 1: enableRegUsername = true; break;
+            case 2: enableRegEmail = true; break;
+            case 3: enableRegPassWord = true; break;
+            case 4: enableRegPassWordC = true; break;
+        }
+    }
+
     public void VRKeyBoard(bool index) {
         if (index == true) {
             vrKey.text = "";
@@ -98,7 +140,8 @@ public class LobbyCanvas : CanvasManager {
             }
             laser.enabled = false;
             laser.gameObject.GetComponent<LineRenderer>().enabled = false;
-        } else if (index == false) {
+        } 
+        else if (index == false) {
             if (initializeVRKeyboard.activeInHierarchy) {
                 initializeVRKeyboard.SetActive(false);
             }
@@ -109,6 +152,10 @@ public class LobbyCanvas : CanvasManager {
             enableUsername = false;
             enablePassword = false;
             enableRoomname = false;
+            enableRegUsername = false;
+            enableRegEmail = false;
+            enableRegPassWord = false;
+            enableRegPassWordC = false;
         }
     }
 

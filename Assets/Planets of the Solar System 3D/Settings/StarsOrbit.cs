@@ -5,9 +5,10 @@ using UnityEngine;
 public class StarsOrbit : MonoBehaviour
 {
     [SerializeField] float OrbitSpeed;
-
+    [SerializeField] GameObject planet;
     float rotateValue;
     Vector2 startValue;
+    [SerializeField] bool selfRotate;
 
     void Start()
     {
@@ -20,5 +21,7 @@ public class StarsOrbit : MonoBehaviour
     {
         rotateValue += OrbitSpeed * Time.deltaTime;
         gameObject.transform.localEulerAngles = new Vector3(startValue.x, startValue.y + rotateValue, 0);
+        if(selfRotate)
+        planet.transform.localEulerAngles = new Vector3(0, rotateValue*3, 0);
     }
 }
