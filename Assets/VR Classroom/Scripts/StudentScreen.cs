@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class StudentScreen : MonoBehaviour
 {
-    bool isActive = false;
+    [SerializeField] GameObject[] slideObj;//0 slide  1 board
+    int activeScreen = 3;
+    int currentFrame = 0;
     Material teacherScreen, selfMat;
     PhotonView pv;
     private void Start()
@@ -13,33 +15,46 @@ public class StudentScreen : MonoBehaviour
         pv = gameObject.transform.parent.transform.parent.GetComponentInChildren<PhotonView>();
         if (PlatformSetting.Instance.platform == Platform.ANDROID || (!pv.IsMine && pv != null))
         {
-            Destroy(gameObject);
+            Destroy(slideObj[1].gameObject);
+            Destroy(slideObj[0].gameObject);
             return;
         }
         else
         {
-            print(gameObject.transform.parent.GetComponentInChildren<PhotonView>());
-
+            //  print(gameObject.transform.parent.GetComponentInChildren<PhotonView>());
         }
         selfMat = gameObject.GetComponent<MeshRenderer>().material;
     }
-    public void SetObject()
-    {
-        isActive = !isActive;
-        if (isActive) //85 88
+    public void SetObject(int ID)
+    {       
+        if (ID != activeScreen)
         {
-            gameObject.transform.localPosition = new Vector3(.31f, .88f, .5f);
-            gameObject.transform.localScale = new Vector3(.5f, .32f, .8f);
+            hideAll();
+            slideObj[ID].gameObject.transform.localPosition = new Vector3(.31f, .88f, .5f);
+            slideObj[ID].gameObject.transform.localScale = new Vector3(.5f, .32f, .8f);
+            activeScreen = ID;
         }
         else
         {
-            gameObject.transform.localPosition = new Vector3(.31f, .85f, .5f);
-            gameObject.transform.localScale = new Vector3(.25f, .16f, .8f);
+            hideAll();
+            activeScreen = 3;
         }
+    }
+    void hideAll()
+    {
+        slideObj[0].gameObject.transform.localPosition = new Vector3(.31f, .85f, .5f);
+        slideObj[0].gameObject.transform.localScale = new Vector3(.25f, .16f, .8f);
+        slideObj[1].gameObject.transform.localPosition = new Vector3(.31f, 1.03f, .5f);
+        slideObj[1].gameObject.transform.localScale = new Vector3(.25f, .16f, .8f);
     }
     private void Update()
     {
-        // gameObject.GetComponent<MeshRenderer>().material = GameObject.Find("TeacherScreen").GetComponent<MeshRenderer>().material;
-        gameObject.GetComponent<MeshRenderer>().material.mainTexture = GameObject.Find("TeacherScreen").GetComponent<MeshRenderer>().material.mainTexture;
+        currentFrame++;
+        if (currentFrame % 2 != 0)
+        {
+            return;
+        }
+        slideObj[0].gameObject.GetComponent<MeshRenderer>().material.mainTexture = GameObject.Find("TeacherScreen").GetComponent<MeshRenderer>().material.mainTexture;
+        slideObj[1].gameObject.GetComponent<MeshRenderer>().material.mainTexture = GameObject.Find("Whiteboard R").GetComponent<MeshRenderer>().material.mainTexture;
     }
 }

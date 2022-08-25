@@ -15,7 +15,7 @@ MonoBehaviour:
   title: Space Graphics Toolkit/Starfield
   target: {fileID: 4800000, guid: 706e20a88b6696f4db41105f7866eb3a, type: 3}
   variantHash: -2002028410
-  projectHash: 2087627419
+  projectHash: 1696246639
   variants:
   - Pipe: 0
     Code: "//<HASH>-2002028410</HASH>\n////////////////////////////////////////\n//
