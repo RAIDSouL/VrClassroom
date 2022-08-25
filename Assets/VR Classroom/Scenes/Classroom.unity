@@ -4882,10 +4882,10 @@ RectTransform:
   m_GameObject: {fileID: 605181989}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: -1, z: 1}
   m_Children: []
   m_Father: {fileID: 1205462417}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -9374,7 +9374,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slideObj:
   - {fileID: 1106606548}
-  - {fileID: 1106606548}
+  - {fileID: 1645474573}
 --- !u!65 &1106606552
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10295,8 +10295,8 @@ RectTransform:
   - {fileID: 713836028}
   - {fileID: 561149841}
   - {fileID: 1888886078}
-  - {fileID: 1716206261}
   - {fileID: 605181990}
+  - {fileID: 1716206261}
   m_Father: {fileID: 0}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13317,7 +13317,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1205462417}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}

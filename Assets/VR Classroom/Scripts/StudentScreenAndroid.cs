@@ -5,16 +5,19 @@ using UnityEngine.UI;
 
 public class StudentScreenAndroid : MonoBehaviour
 {
-  //  bool isActive = false;
+    //  bool isActive = false;
     [SerializeField] GameObject[] miniScreen;
+ 
     int activeScreen = 3;
     private void Start()
     {
         if (PlatformSetting.Instance.platform != Platform.ANDROID)
         {
-            Destroy(gameObject);
+            Destroy(miniScreen[1].gameObject);
+            Destroy(miniScreen[0].gameObject);
             return;
         }
+        
     }
 
     // Update is called once per frame
@@ -33,19 +36,17 @@ public class StudentScreenAndroid : MonoBehaviour
             miniScreen[ID].gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(940, 700);
             activeScreen = ID;
         }
-        else 
+        else
         {
             closeAll();
             activeScreen = 3;
         }
-
-
     }
-    void closeAll() 
+    void closeAll()
     {
         miniScreen[0].gameObject.GetComponent<RectTransform>().localPosition = new Vector3(800, -380, 0);
         miniScreen[0].gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(235, 175);
-        miniScreen[1].gameObject.GetComponent<RectTransform>().localPosition = new Vector3(800, -380, 0);
-        miniScreen[1].gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(235, 360);
+        miniScreen[1].gameObject.GetComponent<RectTransform>().localPosition = new Vector3(800, -180, 0);
+        miniScreen[1].gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(235, 175);
     }
 }

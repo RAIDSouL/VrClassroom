@@ -32,6 +32,8 @@ public class StudentScreen : MonoBehaviour
             hideAll();
             slideObj[ID].gameObject.transform.localPosition = new Vector3(.31f, .88f, .5f);
             slideObj[ID].gameObject.transform.localScale = new Vector3(.5f, .32f, .8f);
+            if(ID==1)
+            slideObj[ID].gameObject.transform.localScale = new Vector3(-.5f, -.32f, .8f);
             activeScreen = ID;
         }
         else
@@ -42,13 +44,15 @@ public class StudentScreen : MonoBehaviour
     }
     void hideAll()
     {
-        slideObj[0].gameObject.transform.localPosition = new Vector3(.31f, .85f, .5f);
+        slideObj[0].gameObject.transform.localPosition = new Vector3(.31f, .85f, .55f);
         slideObj[0].gameObject.transform.localScale = new Vector3(.25f, .16f, .8f);
-        slideObj[1].gameObject.transform.localPosition = new Vector3(.31f, 1.03f, .5f);
-        slideObj[1].gameObject.transform.localScale = new Vector3(.25f, .16f, .8f);
+
+        slideObj[1].gameObject.transform.localPosition = new Vector3(.31f, 1.03f, .55f);
+        slideObj[1].gameObject.transform.localScale = new Vector3(-.25f, -.16f, .8f);
     }
     private void Update()
     {
+        print(activeScreen);
         currentFrame++;
         if (currentFrame % 2 != 0)
         {
