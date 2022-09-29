@@ -23,6 +23,7 @@ public class StudentScreenAndroid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print(miniScreen[0].gameObject.GetComponent<RectTransform>().anchoredPosition);
         miniScreen[0].gameObject.GetComponent<RawImage>().texture = GameObject.Find("TeacherScreen").GetComponent<MeshRenderer>().material.mainTexture;
         miniScreen[1].gameObject.GetComponent<RawImage>().texture = GameObject.Find("Whiteboard R").GetComponent<MeshRenderer>().material.mainTexture;
     }
@@ -32,8 +33,8 @@ public class StudentScreenAndroid : MonoBehaviour
         if (activeScreen != ID)
         {
             closeAll();
-            miniScreen[ID].gameObject.GetComponent<RectTransform>().localPosition = new Vector3(387, -81, 0);
-            miniScreen[ID].gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(940, 700);
+            miniScreen[ID].gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(-475, 150,-10);
+            miniScreen[ID].gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(1175, 875);
             activeScreen = ID;
         }
         else
@@ -44,9 +45,9 @@ public class StudentScreenAndroid : MonoBehaviour
     }
     void closeAll()
     {
-        miniScreen[0].gameObject.GetComponent<RectTransform>().localPosition = new Vector3(800, -380, 0);
+        miniScreen[0].gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(-45, 75, 0);
         miniScreen[0].gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(235, 175);
-        miniScreen[1].gameObject.GetComponent<RectTransform>().localPosition = new Vector3(800, -180, 0);
+        miniScreen[1].gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(-45, 275, 0);
         miniScreen[1].gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(235, 175);
     }
 }
