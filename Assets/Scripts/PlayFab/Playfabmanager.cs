@@ -62,16 +62,16 @@ public class Playfabmanager : MonoBehaviour
             Password = passwordInput.text
         };
 
-        if (usernameInput.text == "" || usernameInput.text == null)
-        {
-            request = new LoginWithPlayFabRequest
-            {
-              Username = "Student2",
-              Password = "Student2"
-              //  Username = "teacher02",
-              //  Password = "teacher02"
-            };
-        }
+      // if (usernameInput.text == "" || usernameInput.text == null)
+      // {
+      //     request = new LoginWithPlayFabRequest
+      //     {
+      //     // Username = "Student2",
+      //     // Password = "Student2"
+      //        Username = "teacher02",
+      //        Password = "teacher02"
+      //     };
+      // }
         ////???????????????????????????????????????
         PlayFabClientAPI.LoginWithPlayFab(request, OnLoginSuccess, OnError);
     }

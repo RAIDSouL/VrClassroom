@@ -162,14 +162,14 @@ public class NetworkManager : Scene {
         {
             setErrorStatus("Room name require.."); return;
         }
-        CreateRoom();
+       // CreateRoom();
         //  use
-        //  if (Playfabmanager._instance.getTeacher())
-        //  CreateRoom();
-        //  else 
-        //  {
-        //      setErrorStatus("Room not exist..");
-        //  }
+        if (Playfabmanager._instance.getTeacher())
+        CreateRoom();
+        else 
+        {
+            setErrorStatus("Room not exist..");
+        }
     }
     public void setErrorStatus(string st) { 
         errorStatus[0].text =st ; 

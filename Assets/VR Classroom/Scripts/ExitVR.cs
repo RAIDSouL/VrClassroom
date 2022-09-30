@@ -50,14 +50,14 @@ public class ExitVR : MonoBehaviour
         if (hold)
         {
             time += Time.deltaTime;
-            colorT = Mathf.Clamp(time / 5, .2f, 1);
+            colorT = Mathf.Clamp(time / 5, .5f, 1);
             mt.color = new Color(1, .24f, .24f, colorT);
             if (time > 3)
             { _ExitVR(); hold = false; }
         }
         else 
         {
-            mt.color=new Color(1, .24f, .24f, .2f);
+            mt.color=new Color(1, .24f, .24f, .5f);
         }
     }
 
